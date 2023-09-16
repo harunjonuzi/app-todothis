@@ -4,24 +4,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="dist/styles.css">
+  <link rel="stylesheet" href="style.css">
   <script src="/app/js/main.js" defer></script>
   <title>Todoology</title>
 </head>
 
 <body>
   <div class="container">
-    <div class="todo-app">
-      <h2>To-Do list <img src="app/images/icon.png" alt="Todolist application Icon"></h2>
+    <div class="application">
+      <div class="navigation">
+        <div class="navigation__left">
+          <!-- CIRCLES -->
+          <div class="red-circle"></div>
+          <div class="orange-circle"></div>
+          <div class="green-circle"></div>
 
-      <!-- Add Task Section -->
-      <div class="row">
-        <input type="text" id="input-box" placeholder="Add task here">
-        <button onclick="addTask()">Add</button>
+          <img src="/app/utilities/svg/menu.svg" alt="Hamburger icon" id="menu-icon">
+          <img src="/app/utilities/svg/home.svg" alt="Home icon" id="home-icon">
+          <input type="text" placeholder="Search" class="input-with-icon">
+        </div>
+        <div class="navigation__right"></div>
       </div>
-
-      <!-- Added Tasks Section -->
-      <ul id="list-container"></ul>
     </div>
   </div>
 </body>
