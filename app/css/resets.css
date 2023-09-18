@@ -1,27 +1,7 @@
-:root {
-    --first-color: #1E1E1E;
-    --second-color: #282828;
-    --third-color: #333333;
-    --fourth-color: #444444;
-    --fifth-color: #363636;
-
-    --priority-1: #ff0000b0;
-    --priority-2: #ff9100b0;
-    --priority-3: #0073ffb0;
-    --priority-4: #4e710c;
-
-    --main-first: #ff5f57;
-    --main-second: #FEBC2E;
-    --main-third: #28C840;
-
-    --aside-blue: #2a7eff;
-    --aside-green: #1C8C3A;
-    --aside-purple: #A970FF;
-}
-
 html {
     font-size: 100%;
     box-sizing: border-box;
+    line-sizing: normal;
 }
 
 *,
@@ -33,32 +13,86 @@ html {
 }
 
 body {
-    height: 100vh;
-    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    min-height: 100dvh;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(45deg, var(--first-color), var(--priority-3));
+    background: linear-gradient(45deg, var(--first-color), var(--priority-2));
 }
 
 img,
-picture {
-    max-width: 100%;
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
     display: block;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+audio:not([controls]) {
+    display: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+}
+
+h4 {
+    font-size: 1.00rem;
+}
+
+h5 {
+    font-size: 0.83rem;
+}
+
+h6 {
+    font-size: 0.67rem;
+}
+
+h1 {
+    margin: 0.67em 0;
 }
 
 a {
     text-decoration: none;
 }
 
-/* APPLICATION */
-.application {
-    width: 700px;
-    height: 800px;
-    margin: auto;
-    /* overflow: hidden; */
-    background-color: var(--first-color);
-    border-radius: 1rem;
-    border: 1px solid black;
-    box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+    display: block;
 }

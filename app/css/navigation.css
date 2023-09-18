@@ -55,7 +55,7 @@
     border-radius: 0.2rem;
     outline: none;
     margin-left: 0.9rem;
-    padding: 0.35rem 0.6rem;
+    padding: 0.35rem 0rem 0.35rem 1rem;
 }
 
 .navigation__input:focus {
@@ -64,7 +64,8 @@
 }
 
 .navigation__input::placeholder {
-    padding-left: 0.2rem;
+    /* padding-left: 0.2rem; */
+    color: #fff;
 }
 
 .navigation__input--btn {

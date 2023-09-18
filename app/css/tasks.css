@@ -1,5 +1,5 @@
 /* ASIDE */
-.aside {
+.tasks {
     width: calc(100% - 70%);
     height: calc(100% - 2.5rem);
     background-color: var(--second-color);
@@ -8,31 +8,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 12px;
+    font-weight: 300;
 }
 
-.aside__category {
+.tasks__category {
     display: flex;
     align-items: center;
     background-color: var(--second-color);
     width: calc(100% - 10%);
     color: #fff;
-    font-size: 12px;
-    font-weight: 200;
+
     padding: 0.3rem 0.6rem;
     margin-bottom: 0.3rem;
 }
 
-.aside__category:hover,
-.aside__category:focus {
+.tasks__category:hover,
+.tasks__category:focus {
     background-color: var(--third-color);
 }
 
 
-.aside__category img {
+.tasks__category img {
     padding-right: 0.4rem;
 }
 
-.aside__category span {
+.tasks__category span {
     font-size: 10px;
     color: #aaaaaa;
     margin-left: auto;
