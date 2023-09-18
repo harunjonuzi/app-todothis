@@ -4,28 +4,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css">
+  <!-- Styles -->
+  <script src="https://kit.fontawesome.com/e2ed1a58c3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="app/css/resets.css">
+  <link rel="stylesheet" href="app/css/navigation.css">
+  <link rel="stylesheet" href="app/css/aside.css">
+  <link rel="stylesheet" href="app/css/main.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap" rel="stylesheet">
+
+  <!-- Scripts -->
   <script src="/app/js/main.js" defer></script>
   <title>Todoology</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="application">
-      <div class="navigation">
-        <div class="navigation__left">
-          <!-- CIRCLES -->
-          <div class="red-circle"></div>
-          <div class="orange-circle"></div>
-          <div class="green-circle"></div>
-
-          <img src="/app/utilities/svg/menu.svg" alt="Hamburger icon" id="menu-icon">
-          <img src="/app/utilities/svg/home.svg" alt="Home icon" id="home-icon">
-          <input type="text" placeholder="Search" class="input-with-icon">
+  <div class="application">
+    <div class="navigation">
+      <!-- NAVIGATION LEFT -->
+      <div class="navigation__left">
+        <div class="circle-red"></div>
+        <div class="circle-orange"></div>
+        <div class="circle-green"></div>
+        <a href="#">
+          <img src="/app/utilities/svg/menu.svg" alt="Hamburger icon">
+        </a>
+        <a href="#">
+          <img src="/app/utilities/svg/home.svg" alt="Home icon">
+        </a>
+        <div class="navigation__search--wrapper">
+          <input type="text" placeholder="Search" class="navigation__input">
+          <a href="#" class="navigation__input--btn">
+            <img src="app/utilities/svg/search.svg" alt="">
+          </a>
         </div>
-        <div class="navigation__right"></div>
+      </div>
+
+      <!-- NAVIGATION RIGHT -->
+      <div class="navigation__right">
+        <a href="#">
+          <img src="/app/utilities/svg/plus.svg" alt="Plus icon">
+        </a>
+
+        <a href="#">
+          <img src="/app/utilities/svg/help-circle.svg" alt="Question icon">
+        </a>
+
+        <a href="#">
+          <img src="/app/utilities/svg/bell.svg" alt="Bell icon">
+        </a>
+
+        <a href="#">
+          <img src="/app/utilities/images/hjonuzi-profile-01(Optimized).png" alt="User icon" id="user-icon">
+        </a>
       </div>
     </div>
+
+    <!-- ASIDE SECTION -->
+    <aside class="aside">
+      <a class="btn--aside" href="#"><img src="app/utilities/svg/inbox.svg" id="icon-inbox">Inbox <span
+          class="counter">13</span>
+      </a>
+      <a class="btn--aside" href="#"><img src="app/utilities/svg/calendar.svg">Today <span class="counter">8</span>
+      </a>
+      <a class="btn--aside" href="#"><img src="app/utilities/svg/cpu.svg">Upcoming <span class="counter">2</span>
+      </a>
+    </aside>
+
+    <main class="main">
+
+    </main>
   </div>
 </body>
 
