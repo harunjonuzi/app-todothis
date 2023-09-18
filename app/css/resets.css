@@ -33,7 +33,7 @@ html {
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
     line-height: 1.5;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(45deg, var(--first-color), var(--priority-3));
@@ -53,8 +53,7 @@ a {
 .application {
     width: 700px;
     height: 800px;
-    margin-top: 2rem;
-    margin-inline: auto;
+    margin: auto;
     /* overflow: hidden; */
     background-color: var(--first-color);
     border-radius: 1rem;

@@ -1,16 +1,16 @@
 /* ASIDE */
 .aside {
-    padding-top: 1rem;
-    background-color: var(--second-color);
     width: calc(100% - 70%);
     height: calc(100% - 2.5rem);
+    background-color: var(--second-color);
+    padding-top: 1rem;
     border-radius: 0 0 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.btn--aside {
+.aside__category {
     display: flex;
     align-items: center;
     background-color: var(--second-color);
@@ -22,17 +22,17 @@
     margin-bottom: 0.3rem;
 }
 
-.btn--aside:hover,
-.btn--aside:focus {
+.aside__category:hover,
+.aside__category:focus {
     background-color: var(--third-color);
 }
 
 
-.btn--aside img {
+.aside__category img {
     padding-right: 0.4rem;
 }
 
-.btn--aside span {
+.aside__category span {
     font-size: 10px;
     color: #aaaaaa;
     margin-left: auto;
