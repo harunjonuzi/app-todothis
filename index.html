@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Styles -->
   <script src="https://kit.fontawesome.com/e2ed1a58c3.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="app/css/resets.css">
   <link rel="stylesheet" href="app/css/style.css">
   <link rel="stylesheet" href="app/css/navigation.css">
   <link rel="stylesheet" href="app/css/sidebar.css">
@@ -24,25 +23,44 @@
 
 <body>
   <div class="main-container">
-    <div class="navigation">
+    <div class="nav">
+
       <!-- NAVIGATION LEFT -->
-      <div class="navigation__left">
+      <div class="nav__left">
         <div class="circle-red"></div>
         <div class="circle-orange"></div>
         <div class="circle-green"></div>
-        <a href="#">
-          <img src="/app/utilities/svg/menu.svg" alt="Hamburger icon">
-        </a>
-        <a href="#">
-          <img src="/app/utilities/svg/home.svg" alt="Home icon">
-        </a>
-        <div class="navigation__search--wrapper">
-          <input type="text" placeholder="Search" class="navigation__input">
-          <a href="#" class="navigation__input--btn">
-            <img src="app/utilities/svg/search.svg" alt="">
-          </a>
+
+        <button class="btn-nav hamburger">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <button class="btn-nav home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white"
+            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </button>
+
+        <div class="nav__search-wrap">
+          <input type="text" placeholder="Search" class="nav__input">
+          <button class="btn-nav search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-search">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
         </div>
       </div>
+
 
       <!-- NAVIGATION RIGHT -->
       <div class="navigation__right">

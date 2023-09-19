@@ -1,81 +1,58 @@
-/* NAVIGATION */
-.navigation {
-    border-top-left-radius: 0.9rem;
-    border-top-right-radius: 0.9rem;
+.nav {
     height: 2.5rem;
+    width: 100%;
     background-color: var(--third-color);
     display: flex;
     justify-content: space-between;
 }
 
-/* NAVIGATION LEFT */
-.navigation__left {
+/* ------------------------------ */
+/* ------------------------------ */
+/* ------------------------------ */
+/* NAV LEFT */
+.nav__left {
     display: flex;
     gap: 0.5rem;
     align-items: center;
 }
 
-.circle-red {
-    cursor: pointer;
-    margin-left: 0.8rem;
-    content: "";
-    width: 13px;
-    height: 13px;
-    background-color: var(--main-first);
-    border-radius: 50%;
-}
-
-.circle-orange {
-    cursor: pointer;
-    content: "";
-    width: 13px;
-    height: 13px;
-    background-color: var(--main-second);
-    border-radius: 50%;
-}
-
-.circle-green {
-    cursor: pointer;
-    content: "";
-    width: 13px;
-    height: 13px;
-    background-color: var(--main-third);
-    border-radius: 50%;
-}
-
-.navigation__search--wrapper {
+/* ------------------------------ */
+/* ------------------------------ */
+/* ------------------------------ */
+/* NAV SEARCH */
+.nav__search-wrap {
     display: flex;
-    flex-direction: row-reverse;
+    align-items: center;
     position: relative;
 }
 
-.navigation__input {
+.nav__input {
     background-color: var(--fourth-color);
-    border: transparent;
+    padding: 0.35rem;
+    border: none;
     border-radius: 0.2rem;
     outline: none;
-    margin-left: 0.9rem;
-    padding: 0.35rem 0rem 0.35rem 1rem;
+    width: 10rem;
 }
 
-.navigation__input:focus {
-    color: #fff;
-    padding-left: 1rem;
-}
-
-.navigation__input::placeholder {
-    /* padding-left: 0.2rem; */
+.nav__input:focus {
     color: #fff;
 }
 
-.navigation__input--btn {
+.nav__input::placeholder {
+    color: #a6a6a6;
+    font-weight: 100;
+}
+
+.search {
     background-color: var(--fourth-color);
-    padding: 0.2rem;
-    border-radius: 0.2rem;
     position: absolute;
-    left: 0;
+    right: 0px;
 }
 
+/* ------------------------------ */
+/* ------------------------------ */
+/* ------------------------------ */
 /* NAVIGATION RIGHT */
 .navigation__right {
     display: flex;

@@ -21,11 +21,150 @@
     --tasks-purple: #A970FF;
 }
 
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    /* outline: 0.5px solid limegreen !important; */
+    /* background: rgb(0, 100, 0 / 0.05) !important; */
+}
+
+
+body {
+    /* Center the application */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Center the application */
+
+    color: #fff;
+    font-size: 1rem;
+    min-height: 100dvh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, var(--first-color), var(--priority-2));
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: block;
+    max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+}
+
+h4 {
+    font-size: 1.00rem;
+}
+
+h5 {
+    font-size: 0.83rem;
+}
+
+h6 {
+    font-size: 0.67rem;
+}
+
+h1 {
+    margin: 0.67em 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+    display: block;
+}
+
+.circle-red {
+    cursor: pointer;
+    margin-left: 0.8rem;
+    content: "";
+    width: 13px;
+    height: 13px;
+    background-color: var(--main-first);
+    border-radius: 50%;
+}
+
+.circle-orange {
+    cursor: pointer;
+    content: "";
+    width: 13px;
+    height: 13px;
+    background-color: var(--main-second);
+    border-radius: 50%;
+}
+
+.circle-green {
+    cursor: pointer;
+    content: "";
+    width: 13px;
+    height: 13px;
+    background-color: var(--main-third);
+    border-radius: 50%;
+}
+
+/* BUTTONS */
+.btn-nav {
+    color: #fff;
+    background-color: var(--third-color);
+    border: none;
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+}
+
+.btn-nav:hover {
+    background-color: var(--second-color);
+}
+
 /* APPLICATION */
 .main-container {
     width: 45rem;
     height: 50rem;
-    /* overflow: hidden; */
+    overflow: hidden;
     background-color: var(--first-color);
 
     border-radius: 1rem;
