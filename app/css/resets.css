@@ -1,23 +1,26 @@
 html {
     font-size: 100%;
     box-sizing: border-box;
-    line-sizing: normal;
 }
 
 *,
 *::before,
 *::after {
+    /* font-family: inherit; */
     box-sizing: inherit;
     margin: 0;
     padding: 0;
+    /* outline: 0.5px solid limegreen !important; */
+    /* background: rgb(0, 100, 0 / 0.05) !important; */
 }
 
+
 body {
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
-    font-size: 1.125rem;
+    font-size: 1.2rem;
     line-height: 1.6;
     min-height: 100dvh;
     font-family: 'Poppins', sans-serif;
@@ -33,7 +36,6 @@ iframe,
 embed,
 object {
     display: block;
-    vertical-align: middle;
     max-width: 100%;
 }
 

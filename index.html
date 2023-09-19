@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="app/css/resets.css">
   <link rel="stylesheet" href="app/css/style.css">
   <link rel="stylesheet" href="app/css/navigation.css">
-  <link rel="stylesheet" href="app/css/tasks.css">
-  <link rel="stylesheet" href="app/css/main.css">
+  <link rel="stylesheet" href="app/css/sidebar.css">
+  <link rel="stylesheet" href="app/css/todolist.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
 </head>
 
 <body>
-  <div class="application">
+  <div class="main-container">
     <div class="navigation">
       <!-- NAVIGATION LEFT -->
       <div class="navigation__left">
@@ -64,22 +64,82 @@
       </div>
     </div>
 
-    <!-- LISTS SECTION -->
-    <div class="tasks">
-      <a class="tasks__category" href="#"><img src="app/utilities/svg/inbox.svg" id="icon-inbox">Inbox <span
-          class="counter">13</span>
-      </a>
-      <a class="tasks__category active-list" href="#"><img src="app/utilities/svg/calendar.svg">Today <span
-          class="counter">8</span>
-      </a>
-      <a class="tasks__category" href="#"><img src="app/utilities/svg/cpu.svg">Upcoming <span class="counter">2</span>
-      </a>
+    <!-- SIDEBAR SECTION -->
+    <div class="second-container">
+
+      <div class="sidebar">
+        <a class="sidebar__category active-list" href="#"><img src="app/utilities/svg/inbox.svg" id="icon-inbox">Inbox
+          <p class="counter">13</p>
+        </a>
+        <a class="sidebar__category" href="#"><img src="app/utilities/svg/calendar.svg">Today <p class="counter">8</p>
+        </a>
+        <a class="sidebar__category" href="#"><img src="app/utilities/svg/cpu.svg">Upcoming <p class="counter">2</p>
+        </a>
+
+        <form action="">
+          <input type="text" class="new list" placeholder="enter new list" aria-label="enter new list">
+          <button class="btn list" aria-label="enter new list">+</button>
+        </form>
+      </div>
+
+      <!-- TO DO LIST SECTION -->
+      <div class="todolist">
+        <div class="todolist__header--wrapper">
+          <h2 class="todolist__header">Inbox</h2>
+
+          <!-- HEADER -->
+          <div class="todolist__header--icons">
+            <a href="#" class="todolist__header--btn"> <img src="app/utilities/svg/sliders.svg" alt=""> </a>
+            <a href="#" class="todolist__header--btn"> <img src="app/utilities/svg/message-square.svg" alt=""> </a>
+            <a href="#" class="todolist__header--btn"> <img src="app/utilities/svg/more-horizontal.svg" alt=""> </a>
+          </div>
+        </div>
+
+        <!-- BODY -->
+        <div class="todolist__body--wrapper">
+          <div class="todolist__tasks">
+
+            <!-- TASK 01 -->
+            <div class="task">
+              <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+              <input type="checkbox" id="task-1">
+              <label for="task-1"> <span class="custom-checkbox"></span> record todo video</label>
+            </div>
+            <!-- TASK 01 -->
+
+            <!-- TASK 02 -->
+            <div class="task">
+              <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+              <input type="checkbox" id="task-2">
+              <label for="task-2"> <span class="custom-checkbox"></span> read Quran</label>
+            </div>
+            <!-- TASK 02 -->
+
+
+            <!-- TASK 03 -->
+            <div class="task">
+              <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+              <input type="checkbox" id="task-3">
+              <label for="task-3"> <span class="custom-checkbox"></span> go to the gym</label>
+            </div>
+            <!-- TASK 03 -->
+
+          </div>
+          <div class="todolist__creator">
+
+            <form action="">
+              <input type="text" class="new task" placeholder="enter new task" aria-label="enter new task">
+              <button class="btn task" aria-label="enter new task">+</button>
+            </form>
+
+          </div>
+          <div class="todolist__delete">
+            <button class="btn delete">Clear completed tasks</button>
+            <button class="btn delete"> Delete list</button>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- MAIN SECTION -->
-    <main class="main">
-
-    </main>
   </div>
 </body>
 

@@ -5,6 +5,8 @@
     --fourth-color: #444444;
     --fifth-color: #363636;
 
+    --icons: #c2c2c2;
+
     --priority-1: #ff0000b0;
     --priority-2: #ff9100b0;
     --priority-3: #0073ffb0;
@@ -20,9 +22,9 @@
 }
 
 /* APPLICATION */
-.application {
-    width: 700px;
-    height: 800px;
+.main-container {
+    width: 45rem;
+    height: 50rem;
     /* overflow: hidden; */
     background-color: var(--first-color);
 
@@ -33,4 +35,10 @@
     box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+}
+
+.second-container {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 2.5rem);
 }

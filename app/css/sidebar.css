@@ -1,7 +1,6 @@
 /* ASIDE */
-.tasks {
+.sidebar {
     width: calc(100% - 70%);
-    height: calc(100% - 2.5rem);
     background-color: var(--second-color);
     padding-top: 1rem;
     border-radius: 0 0 0 1rem;
@@ -12,7 +11,7 @@
     font-weight: 300;
 }
 
-.tasks__category {
+.sidebar__category {
     display: flex;
     align-items: center;
     background-color: var(--second-color);
@@ -21,20 +20,49 @@
 
     padding: 0.3rem 0.6rem;
     margin-bottom: 0.3rem;
+
+    transition: all 250ms ease-in-out;
 }
 
-.tasks__category:hover,
-.tasks__category:focus {
+.sidebar__category:hover,
+.sidebar__category:focus {
     background-color: var(--third-color);
 }
 
 
-.tasks__category img {
+.sidebar__category img {
     padding-right: 0.4rem;
 }
 
-.tasks__category span {
+/* task-count */
+.sidebar__category p {
     font-size: 10px;
     color: #aaaaaa;
     margin-left: auto;
+}
+
+.sidebar form {
+    padding: 0.5rem 1rem;
+}
+
+.active-list {
+    font-weight: 600;
+}
+
+/* PROJECTS */
+.new {
+    background-color: var(--third-color);
+    border: none;
+    padding: 0.35rem 1rem;
+    outline: none;
+    width: 8rem;
+}
+
+.new::placeholder {
+    font-weight: 100;
+    color: hsla(0, 0%, 100%, 0.348);
+}
+
+.btn {
+    padding: 0.25rem 0.5rem;
 }
