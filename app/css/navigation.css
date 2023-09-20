@@ -54,7 +54,7 @@
 /* ------------------------------ */
 /* ------------------------------ */
 /* NAVIGATION RIGHT */
-.navigation__right {
+.nav__right {
     display: flex;
     flex-direction: row;
     gap: 0.8rem;
@@ -65,5 +65,10 @@
 #user-icon {
     width: 22px;
     height: 22px;
+    border-radius: 50%;
+}
+
+.user>img {
+    width: 1.5rem;
     border-radius: 50%;
 }
