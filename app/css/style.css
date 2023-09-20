@@ -19,6 +19,8 @@
     --tasks-blue: #2a7eff;
     --tasks-green: #1C8C3A;
     --tasks-purple: #A970FF;
+
+    --border-radius: 0.2rem;
 }
 
 html {
@@ -36,7 +38,6 @@ html {
     /* background: rgb(0, 100, 0 / 0.05) !important; */
 }
 
-
 body {
     /* Center the application */
     display: flex;
@@ -45,7 +46,6 @@ body {
     /* Center the application */
 
     color: #fff;
-    font-size: 1rem;
     min-height: 100dvh;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(45deg, var(--first-color), var(--priority-2));
@@ -149,19 +149,81 @@ section {
 }
 
 /* BUTTONS */
-.btn-nav {
+/* small */
+.btn-small {
     color: #fff;
     background-color: var(--third-color);
     border: none;
     padding: 0.2rem;
-    border-radius: 0.2rem;
+    border-radius: var(--border-radius);
 }
 
-.btn-nav:hover {
+.btn-small:hover {
     background-color: var(--second-color);
 }
 
-/* APPLICATION */
+/* input */
+.btn-input {
+    background-color: var(--third-color);
+    color: rgb(144, 144, 144);
+    padding: 0.4rem 0.7rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+/* sidebar */
+.btn-sidebar {
+    background-color: var(--second-color);
+    color: #fff;
+    width: calc(100% - 10%);
+    font-weight: 200;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    padding: 0.3rem 0.6rem;
+    margin-bottom: 0.3rem;
+
+    transition: all 250ms ease-in-out;
+}
+
+.btn-sidebar svg {
+    margin-right: 0.5rem;
+}
+
+.btn-sidebar:hover,
+.btn-sidebar:focus {
+    background-color: var(--third-color);
+}
+
+/* tasklist */
+.btn-tasklist {
+    background-color: var(--third-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.4rem;
+    cursor: pointer;
+}
+
+/* delete */
+.btn-delete {
+    background-color: var(--third-color);
+    color: white;
+    padding: 0.4rem 0.6rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.btn-delete:hover {
+    opacity: 0.8;
+}
+
+/* CONTAINERS */
 .main-container {
     width: 45rem;
     height: 50rem;

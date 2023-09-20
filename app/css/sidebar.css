@@ -1,64 +1,37 @@
-/* ASIDE */
 .sidebar {
     width: calc(100% - 70%);
     background-color: var(--second-color);
     padding-top: 1rem;
-    border-radius: 0 0 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 12px;
-    font-weight: 300;
-}
-
-.sidebar__category {
-    display: flex;
-    align-items: center;
-    background-color: var(--second-color);
-    width: calc(100% - 10%);
-    color: #fff;
-
-    padding: 0.3rem 0.6rem;
-    margin-bottom: 0.3rem;
-
-    transition: all 250ms ease-in-out;
-}
-
-.sidebar__category:hover,
-.sidebar__category:focus {
-    background-color: var(--third-color);
-}
-
-
-.sidebar__category img {
-    padding-right: 0.4rem;
 }
 
 /* task-count */
-.sidebar__category p {
+.counter {
     font-size: 10px;
     color: #aaaaaa;
     margin-left: auto;
 }
 
+/* sidebar input */
 .sidebar form {
     padding: 0.5rem 1rem;
+    display: flex;
+}
+
+.sidebar__input {
+    background-color: var(--third-color);
+    color: white;
+    width: calc(100% - 10%);
+    font-weight: 100;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.4rem 0.6rem;
+    outline: none;
 }
 
 .active-list {
-    font-weight: 600;
-}
-
-/* PROJECTS */
-.new {
+    font-weight: 400;
     background-color: var(--third-color);
-    border: none;
-    padding: 0.35rem 1rem;
-    outline: none;
-    width: 8rem;
-}
-
-.new::placeholder {
-    font-weight: 100;
-    color: hsla(0, 0%, 100%, 0.348);
 }
