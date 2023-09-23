@@ -4,24 +4,242 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="dist/styles.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="app/css/style.css">
+  <link rel="stylesheet" href="app/css/navigation.css">
+  <link rel="stylesheet" href="app/css/sidebar.css">
+  <link rel="stylesheet" href="app/css/tasklist.css">
+  <link rel="shortcut icon" href="#">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap" rel="stylesheet">
+
+  <!-- Scripts -->
   <script src="/app/js/main.js" defer></script>
   <title>Todoology</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="todo-app">
-      <h2>To-Do list <img src="app/images/icon.png" alt="Todolist application Icon"></h2>
+  <!-- ! Parent container -->
+  <div class="parent-container">
+    <div class="nav">
+      <!-- navigation left -->
+      <div class="nav__left">
 
-      <!-- Add Task Section -->
-      <div class="row">
-        <input type="text" id="input-box" placeholder="Add task here">
-        <button onclick="addTask()">Add</button>
+        <div class="nav__left--circles">
+          <div class="circle-red"></div>
+          <div class="circle-orange"></div>
+          <div class="circle-green"></div>
+        </div>
+
+        <button class="btn-small hamburger">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <button class="btn-small home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white"
+            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </button>
+
+        <div class="nav__search-wrap">
+          <input type="text" placeholder="Search" class="nav__input">
+          <button class="btn-small search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-search">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <!-- Added Tasks Section -->
-      <ul id="list-container"></ul>
+      <!-- navigation right -->
+      <div class="nav__right">
+
+        <button class="btn-small plus">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+
+        <button class="btn-small help">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </button>
+
+        <button class="btn-small bell">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+        </button>
+
+        <button class="btn-small user">
+          <img src="app/utilities/images/hjonuzi-profile-01(Optimized).png" alt="User icon">
+        </button>
+
+      </div>
+    </div>
+
+    <!-- ! Child container -->
+    <div class="child-container">
+      <!-- sidebar -->
+      <div class="sidebar">
+
+        <ul data-lists>
+          <!-- <li class="sidebar-list active-list">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-inbox">
+              <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+              <path
+                d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+              </path>
+            </svg>
+            Inbox
+            <span class="counter">21</span>
+          </li> -->
+
+          <!-- <li class="sidebar-list">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-calendar">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Today
+            <span class="counter">21</span>
+          </li> -->
+
+          <!-- <li class="sidebar-list">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-cpu">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <line x1="9" y1="1" x2="9" y2="4"></line>
+              <line x1="15" y1="1" x2="15" y2="4"></line>
+              <line x1="9" y1="20" x2="9" y2="23"></line>
+              <line x1="15" y1="20" x2="15" y2="23"></line>
+              <line x1="20" y1="9" x2="23" y2="9"></line>
+              <line x1="20" y1="14" x2="23" y2="14"></line>
+              <line x1="1" y1="9" x2="4" y2="9"></line>
+              <line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+            Upcoming
+            <span class="counter">21</span>
+          </li> -->
+        </ul>
+
+        <form action="" data-new-list-form>
+          <input type="text" class="sidebar__input" data-new-list-input placeholder="enter new list">
+          <button class="btn-input list">+</button>
+        </form>
+      </div>
+
+      <!-- tasklist -->
+      <div class="tasklist">
+
+        <!-- header -->
+        <div class="tasklist__header">
+          <h2>Inbox</h2>
+
+          <div class="tasklist__header--buttons">
+            <button class="btn-tasklist">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-sliders">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+                <line x1="1" y1="14" x2="7" y2="14"></line>
+                <line x1="9" y1="8" x2="15" y2="8"></line>
+                <line x1="17" y1="16" x2="23" y2="16"></line>
+              </svg>
+            </button>
+
+            <button class="btn-tasklist">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-message-square">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+
+            <button class="btn-tasklist">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-more-horizontal">
+                <circle cx="12" cy="12" r="1"></circle>
+                <circle cx="19" cy="12" r="1"></circle>
+                <circle cx="5" cy="12" r="1"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- body -->
+        <div class="tasklist__body">
+
+          <!-- TASK 01 -->
+          <div class="task">
+            <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+            <input type="checkbox" id="task-1">
+            <label for="task-1"> <span class="custom-checkbox"></span> Pray Salah on time!</label>
+          </div>
+
+          <!-- TASK 02 -->
+          <div class="task">
+            <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+            <input type="checkbox" id="task-2">
+            <label for="task-2"> <span class="custom-checkbox"></span> Read the Quran</label>
+          </div>
+
+          <!-- TASK 03 -->
+          <div class="task">
+            <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+            <input type="checkbox" id="task-3">
+            <label for="task-3"> <span class="custom-checkbox"></span> Play World of Warcraft's new Expansion!</label>
+          </div>
+
+        </div>
+
+        <!-- footer -->
+        <div class="tasklist__footer">
+
+          <form action="">
+            <input type="text" class="tasklist__input" placeholder="enter new task">
+            <button class="btn-input task">+</button>
+          </form>
+
+          <button class="btn-delete delete">Clear completed tasks</button>
+          <button class="btn-delete delete" data-delete-list-button=""> Delete list</button>
+
+        </div>
+      </div>
     </div>
   </div>
 </body>
