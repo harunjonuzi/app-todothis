@@ -26,6 +26,7 @@ Literally the best todolist application on my neighbourhood.
 ## Features
 
 - Feature #1
+- Feature #2
 
 ## Contributing
 
