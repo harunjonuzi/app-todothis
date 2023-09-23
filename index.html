@@ -93,7 +93,7 @@
         </button>
 
         <button class="btn-small user">
-          <img src="app/utilities/images/hjonuzi-profile-01(Optimized).png" alt="User icon">
+          <img src="app/utilities/images/user.png" alt="User icon">
         </button>
 
       </div>
@@ -151,19 +151,20 @@
           </li> -->
         </ul>
 
-        <form action="" data-new-list-form>
+        <form id="form-section" action="" data-new-list-form>
           <input type="text" class="sidebar__input" data-new-list-input placeholder="enter new list">
           <button class="btn-input list">+</button>
         </form>
       </div>
 
       <!-- tasklist -->
-      <div class="tasklist">
+      <div class="tasklist" data-list-display-container>
 
         <!-- header -->
         <div class="tasklist__header">
-          <h2>Inbox</h2>
+          <h2 data-list-title>Inbox</h2>
 
+          <p class="task-count" data-list-count>3 tasks remaining</p>
           <div class="tasklist__header--buttons">
             <button class="btn-tasklist">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -202,45 +203,46 @@
         </div>
 
         <!-- body -->
-        <div class="tasklist__body">
-
+        <div class="tasklist__body" data-tasks>
           <!-- TASK 01 -->
-          <div class="task">
-            <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+          <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+          <!-- <div class="task">
             <input type="checkbox" id="task-1">
             <label for="task-1"> <span class="custom-checkbox"></span> Watch the Oppenheimer movie on iMAX!</label>
-          </div>
+          </div> -->
 
           <!-- TASK 02 -->
-          <div class="task">
-            <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+          <!-- <div class="task">
             <input type="checkbox" id="task-2">
             <label for="task-2"> <span class="custom-checkbox"></span> Drink the most delicious Coffee ever</label>
-          </div>
+          </div> -->
 
           <!-- TASK 03 -->
-          <div class="task">
-            <!-- If you have an input with id and label for with the same id, you can click on text and it will toggle the checkbox -->
+          <!-- <div class="task">
             <input type="checkbox" id="task-3">
             <label for="task-3"> <span class="custom-checkbox"></span> Play World of Warcraft's new Expansion!</label>
-          </div>
-
+          </div> -->
         </div>
 
         <!-- footer -->
         <div class="tasklist__footer">
-
-          <form action="">
-            <input type="text" class="tasklist__input" placeholder="enter new task">
+          <form id="form-section" action="" data-new-task-form>
+            <input type="text" data-new-task-input class="tasklist__input" placeholder="enter new task">
             <button class="btn-input task">+</button>
           </form>
 
-          <button class="btn-delete delete">Clear completed tasks</button>
+          <button class="btn-delete delete" data-clear-complete-tasks-button>Clear completed tasks</button>
           <button class="btn-delete delete" data-delete-list-button=""> Delete list</button>
-
         </div>
+
       </div>
     </div>
+    <template id="task-template">
+      <div class="task">
+        <input type="checkbox">
+        <label> <span class="custom-checkbox"></span></label>
+      </div>
+    </template>
   </div>
 </body>
 

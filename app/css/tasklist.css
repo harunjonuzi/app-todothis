@@ -11,8 +11,16 @@
 .tasklist__header {
     /* outline: 2px solid green; */
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding-bottom: 1rem;
+}
+
+.task-count {
+    font-weight: 200;
+    font-size: 0.8rem;
+    margin-left: auto;
+    padding-right: 1rem;
 }
 
 .tasklist__header button {
