@@ -39,14 +39,28 @@
 /* =============================== */
 /* =============================== */
 /* body */
+/* we put relative here so we can use the strikethrough effect on the .task label::after */
 .task {
-    border-bottom: 1px solid hsla(0, 0%, 27%, 0.785);
+    border-bottom: 1px solid #454545c8;
+    position: relative;
 }
 
 .task label {
     display: flex;
     align-items: center;
     padding: 0.6rem 0;
+}
+
+.task label::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #454545c8;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 100ms ease-in-out;
 }
 
 label {
@@ -80,6 +94,16 @@ label {
     /* box-shadow: inset 0 0 0px 2px white; */
 }
 
+[type="checkbox"]:checked+label {
+    opacity: 0.5;
+}
+
+[type="checkbox"]:checked+label::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* the checkbox is actually there, we just cant see it, that's why we can use this [type='checkbox'] above */
 [type="checkbox"] {
     opacity: 0;
     position: absolute;
@@ -120,4 +144,29 @@ label {
 
 .tasklist__footer .delete:last-child {
     margin-left: 0.5rem;
+}
+
+/* tasklist */
+.btn-tasklist {
+    background-color: var(--third-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.4rem;
+    cursor: pointer;
+}
+
+/* delete */
+.btn-delete {
+    background-color: var(--third-color);
+    color: white;
+    padding: 0.4rem 0.6rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.btn-delete:hover {
+    opacity: 0.8;
 }

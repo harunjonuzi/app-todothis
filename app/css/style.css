@@ -23,6 +23,10 @@
     --border-radius: 0.2rem;
 }
 
+/* =========================== */
+/* =========================== */
+/* =========================== */
+/* RESET TEMPLATE */
 html {
     font-size: 100%;
     box-sizing: border-box;
@@ -119,6 +123,35 @@ section {
     display: block;
 }
 
+/* =========================== */
+/* =========================== */
+/* =========================== */
+/* Containers */
+.parent-container {
+    width: 45rem;
+    height: 50rem;
+    overflow: hidden;
+    background-color: var(--first-color);
+
+    border-radius: 1rem;
+    border: 0.5px solid black;
+    outline: 0.2px solid #ffffff36;
+
+    box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+}
+
+.child-container {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 2.5rem);
+}
+
+/* =========================== */
+/* =========================== */
+/* =========================== */
+/* Other elements */
 
 .circle-red {
     cursor: pointer;
@@ -148,7 +181,11 @@ section {
     border-radius: 50%;
 }
 
+/* =========================== */
+/* =========================== */
+/* =========================== */
 /* BUTTONS */
+
 /* small */
 .btn-small {
     color: #fff;
@@ -170,77 +207,4 @@ section {
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
-}
-
-/* sidebar */
-.btn-sidebar {
-    background-color: var(--second-color);
-    color: #fff;
-    width: calc(100% - 10%);
-    font-weight: 200;
-    border: none;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    padding: 0.3rem 0.6rem;
-    margin-bottom: 0.3rem;
-
-    transition: all 250ms ease-in-out;
-}
-
-.btn-sidebar svg {
-    margin-right: 0.5rem;
-}
-
-.btn-sidebar:hover,
-.btn-sidebar:focus {
-    background-color: var(--third-color);
-}
-
-/* tasklist */
-.btn-tasklist {
-    background-color: var(--third-color);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
-    padding: 0.4rem;
-    cursor: pointer;
-}
-
-/* delete */
-.btn-delete {
-    background-color: var(--third-color);
-    color: white;
-    padding: 0.4rem 0.6rem;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: all 200ms ease-in-out;
-}
-
-.btn-delete:hover {
-    opacity: 0.8;
-}
-
-/* CONTAINERS */
-.main-container {
-    width: 45rem;
-    height: 50rem;
-    overflow: hidden;
-    background-color: var(--first-color);
-
-    border-radius: 1rem;
-    border: 0.5px solid black;
-    outline: 0.2px solid #ffffff36;
-
-    box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
-}
-
-.second-container {
-    display: flex;
-    width: 100%;
-    height: calc(100% - 2.5rem);
 }
