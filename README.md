@@ -3,7 +3,7 @@
 
 # Todoology
 
-Literally the best todolist application on my neighbourhood.
+Literally the best todolist application in my neighborhood.
 
 ## Table of contents
 
