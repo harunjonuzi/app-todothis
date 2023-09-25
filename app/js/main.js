@@ -17,8 +17,108 @@ const clearCompletedTasksButton = document.querySelector(
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
+
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
+// Returns: an array of objects with id, name and tasks properties or an empty array if there is no data in local storage with the key LOCAL_STORAGE_LIST_KEY which is 'task.lists' in this case and we store it in a variable called lists and we use JSON.parse() method to convert the data from string to array of objects again.
+// For example: [{id: "1695574597216", name: "My first list", tasks: []}] or [].
+
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
+// Returns: a string value of the key in local storage which is a date format with random numbers converted to string using toString() method and we store it in a variable called selectedListId
+// For example: 1695574597216
+
+//////////////////////////////////////////
+//////////////////////////////////////////
+//////////////////////////////////////////
+// * Functions
+
+// Create Lists
+function createList(name) {
+  return {
+    id: Date.now().toString(),
+    name: name,
+    tasks: [],
+  };
+}
+
+// Create Tasks
+function createTask(name) {
+  return { id: Date.now().toString(), name: name, complete: false, tests: [] };
+}
+
+// Save new list and selected list id to local storage
+function save() {
+  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists)); //
+  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
+}
+
+function render() {
+  const selectedListObject = lists.find((list) => list.id === selectedListId);
+  clearElement(listsContainer);
+  renderLists();
+
+  if (selectedListId == null) {
+    listDisplayContainer.style.display = 'none';
+  } else {
+    listDisplayContainer.style.display = '';
+
+    if (selectedListObject) {
+      listTitleElement.innerText = selectedListObject.name;
+    } else {
+      return;
+    }
+
+    clearElement(tasksContainer);
+    renderTaskCount(selectedListObject);
+    renderTasks(selectedListObject);
+  }
+}
+
+function saveAndRender() {
+  save();
+  render();
+}
+
+// Render Lists
+function renderLists() {
+  lists.forEach((list) => {
+    const listElement = document.createElement('li'); // <li></li>
+    listElement.dataset.listId = list.id; // data-list-id="1695574597216"
+    listElement.classList.add('sidebar__list'); // <li class="sidebar-list"></li>
+    listElement.innerText = list.name; // <li class="sidebar-list">My first list</li>
+    if (list.id === selectedListId) {
+      listElement.classList.add('active-list'); // <li class="sidebar-list active-list">My first list</li>
+    }
+    listsContainer.appendChild(listElement); // <ul data-lists><li class="sidebar-list active-list">My first list</li></ul>
+  });
+}
+
+function renderTasks(selectedList) {
+  selectedList.tasks.forEach((task) => {
+    const taskElement = document.importNode(taskTemplate.content, true);
+    const checkbox = taskElement.querySelector('input');
+    checkbox.id = task.id;
+    checkbox.checked = task.complete;
+    const label = taskElement.querySelector('label');
+    label.htmlFor = task.id;
+    label.append(task.name);
+    tasksContainer.appendChild(taskElement);
+  });
+}
+
+function renderTaskCount(selectedList) {
+  const incompleteTaskCount = selectedList.tasks.filter(
+    (task) => !task.complete
+  ).length;
+  const taskString = incompleteTaskCount === 1 ? 'task' : 'tasks';
+  listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
+}
+
+function clearElement(element) {
+  // Clears the element from all its children elements (li) and their children elements (input and label) and their children elements (checkbox and text).
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
 
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -76,92 +176,5 @@ newTaskForm.addEventListener('submit', (e) => {
   selectedList.tasks.push(task);
   saveAndRender();
 });
-
-//////////////////////////////////////////
-//////////////////////////////////////////
-//////////////////////////////////////////
-// * Functions
-
-function createList(name) {
-  return {
-    id: Date.now().toString(),
-    name: name,
-    tasks: [],
-  };
-}
-
-function createTask(name) {
-  return { id: Date.now().toString(), name: name, complete: false };
-}
-
-function saveAndRender() {
-  save();
-  render();
-}
-
-function save() {
-  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
-  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
-}
-
-function render() {
-  const selectedList = lists.find((list) => list.id === selectedListId);
-  clearElement(listsContainer);
-  renderLists();
-
-  if (selectedListId == null) {
-    listDisplayContainer.style.display = 'none';
-  } else {
-    listDisplayContainer.style.display = '';
-
-    if (selectedList) {
-      listTitleElement.innerText = selectedList.name;
-    }
-
-    renderTaskCount(selectedList);
-    clearElement(tasksContainer);
-    renderTasks(selectedList);
-  }
-}
-
-function renderTasks(selectedList) {
-  selectedList.tasks.forEach((task) => {
-    const taskElement = document.importNode(taskTemplate.content, true);
-    const checkbox = taskElement.querySelector('input');
-    checkbox.id = task.id;
-    checkbox.checked = task.complete;
-    const label = taskElement.querySelector('label');
-    label.htmlFor = task.id;
-    label.append(task.name);
-    tasksContainer.appendChild(taskElement);
-  });
-}
-
-function renderTaskCount(selectedList) {
-  const incompleteTaskCount = selectedList.tasks.filter(
-    (task) => !task.complete
-  ).length;
-  const taskString = incompleteTaskCount === 1 ? 'task' : 'tasks';
-  listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
-}
-
-function renderLists() {
-  lists.forEach((list) => {
-    const listElement = document.createElement('li');
-    listElement.dataset.listId = list.id;
-    listElement.classList.add('sidebar-list');
-    listElement.innerText = list.name;
-    if (list.id === selectedListId) {
-      listElement.classList.add('active-list');
-    }
-    listsContainer.appendChild(listElement);
-  });
-}
-
-function clearElement(element) {
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
-  }
-}
 
 render();

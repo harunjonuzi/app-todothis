@@ -6,15 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Styles -->
   <link rel="stylesheet" href="app/css/style.css">
-  <link rel="stylesheet" href="app/css/navigation.css">
-  <link rel="stylesheet" href="app/css/sidebar.css">
   <link rel="stylesheet" href="app/css/tasklist.css">
   <link rel="shortcut icon" href="#">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
 
   <!-- Scripts -->
   <script src="/app/js/main.js" defer></script>
@@ -22,19 +20,17 @@
 </head>
 
 <body>
-  <div class="parent-container">
+  <main class="main">
     <div class="nav">
-
-      <!-- navigation left -->
       <div class="nav__left">
 
-        <div class="nav__left--circles">
-          <div class="circle-red"></div>
-          <div class="circle-orange"></div>
-          <div class="circle-green"></div>
+        <div class="nav__circles">
+          <div class="nav__circleRed"></div>
+          <div class="nav__circleOrange"></div>
+          <div class="nav__circleGreen"></div>
         </div>
 
-        <button class="btn-small hamburger">
+        <button class="btn__nav hamburger">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -43,7 +39,7 @@
           </svg>
         </button>
 
-        <button class="btn-small home">
+        <button class="btn__nav home">
           <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -51,23 +47,19 @@
           </svg>
         </button>
 
-        <div class="nav__search-wrap">
-          <input type="text" placeholder="Search" class="nav__input">
-          <button class="btn-small search">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-              class="feather feather-search">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </button>
+        <div class="nav__search">
+          <input class="input nav__input" type="text" placeholder="Search">
+          <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-search">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
         </div>
       </div>
 
-      <!-- navigation right -->
       <div class="nav__right">
-
-        <button class="btn-small plus">
+        <button class="btn__nav plus">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -75,7 +67,7 @@
           </svg>
         </button>
 
-        <button class="btn-small help">
+        <button class="btn__nav help">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
             <circle cx="12" cy="12" r="10"></circle>
@@ -84,7 +76,7 @@
           </svg>
         </button>
 
-        <button class="btn-small bell">
+        <button class="btn__nav bell">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -92,36 +84,40 @@
           </svg>
         </button>
 
-        <button class="btn-small user">
+        <button class="btn__nav user">
           <img src="app/utilities/images/user.png" alt="User icon">
         </button>
-
       </div>
     </div>
 
-    <!-- Child container -->
-    <div class="child-container">
+    <!-- || Block Element -->
+    <div class="container">
 
+      <!-- || Block Element -->
       <div class="sidebar">
-        <ul data-lists></ul>
+        <ul class="sidebar__lists" data-lists></ul>
 
-        <form id="form-section" action="" data-new-list-form>
-          <input type="text" class="sidebar__input" data-new-list-input placeholder="enter new list">
-          <button class="btn-input list">+</button>
+        <form class="sidebar__form" action="" data-new-list-form>
+          <input type="text" class="input sidebar__input" data-new-list-input placeholder="Add new list">
+          <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-plus">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
         </form>
-
       </div>
 
-      <!-- tasklist -->
+      <!-- || Block Element -->
       <div class="tasklist" data-list-display-container>
 
-        <!-- header -->
+        <!-- tasklist__header -->
         <div class="tasklist__header">
-          <h2 data-list-title>Inbox</h2>
-          <p class="task-count" data-list-count>3 tasks remaining</p>
+          <h2 class="tasklist__title" data-list-title></h2>
+          <p class="tasklist__counter" data-list-count></p>
 
-          <div class="tasklist__header--buttons">
-            <button class="btn-tasklist">
+          <div class="tasklist__buttons">
+            <button class="btn__tasklist">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-sliders">
@@ -137,7 +133,7 @@
               </svg>
             </button>
 
-            <button class="btn-tasklist">
+            <button class="btn__tasklist">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-message-square">
@@ -145,7 +141,7 @@
               </svg>
             </button>
 
-            <button class="btn-tasklist">
+            <button class="btn__tasklist">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-more-horizontal">
@@ -157,26 +153,28 @@
           </div>
         </div>
 
-        <!-- body -->
-        <div class="tasklist__body" data-tasks></div>
+        <!-- tasklist__tasks -->
+        <div class="tasklist__tasks" data-tasks></div>
 
-        <!-- footer -->
+        <!-- tasklist__footer -->
         <div class="tasklist__footer">
-          <form id="form-section" action="" data-new-task-form>
-            <input type="text" data-new-task-input class="tasklist__input" placeholder="enter new task">
-            <button class="btn-input task">+</button>
+          <form class="tasklist__form" action="" data-new-task-form>
+            <input class="input tasklist__input" type="text" data-new-task-input placeholder="Add new task">
+
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+              fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-plus">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
           </form>
 
           <button class="btn-delete delete" data-clear-complete-tasks-button>Clear completed tasks</button>
           <button class="btn-delete delete" data-delete-list-button=""> Delete list</button>
         </div>
-
       </div>
-      <!-- tasklist -->
-
     </div>
-    <!-- Child container -->
-  </div>
+  </main>
 
   <template id="task-template">
     <div class="task">

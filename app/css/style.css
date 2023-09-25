@@ -5,28 +5,15 @@
     --fourth-color: #444444;
     --fifth-color: #363636;
 
-    --icons: #c2c2c2;
-
-    --priority-1: #ff0000b0;
-    --priority-2: #ff9100b0;
-    --priority-3: #0073ffb0;
-    --priority-4: #4e710c;
-
-    --main-first: #ff5f57;
-    --main-second: #FEBC2E;
-    --main-third: #28C840;
-
-    --tasks-blue: #2a7eff;
-    --tasks-green: #1C8C3A;
-    --tasks-purple: #A970FF;
-
     --border-radius: 0.2rem;
+
+
 }
 
 /* =========================== */
 /* =========================== */
 /* =========================== */
-/* RESET TEMPLATE */
+/* || Reset */
 html {
     font-size: 100%;
     box-sizing: border-box;
@@ -39,20 +26,20 @@ html {
     margin: 0;
     padding: 0;
     /* outline: 0.5px solid limegreen !important; */
-    /* background: rgb(0, 100, 0 / 0.05) !important; */
 }
 
 body {
-    /* Center the application */
+    background: linear-gradient(45deg, var(--first-color), #007aaeb0);
+    color: #fff;
+    min-height: 100dvh;
+
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Center the application */
-
-    color: #fff;
-    min-height: 100dvh;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(45deg, var(--first-color), var(--priority-2));
 }
 
 img,
@@ -77,57 +64,37 @@ h6 {
     overflow-wrap: break-word;
 }
 
-h1 {
-    font-size: 2rem;
+button,
+input {
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
 }
 
-h2 {
-    font-size: 1.5rem;
+/* =========================== */
+/* || Inputs */
+.input {
+    color: white;
+    background-color: var(--third-color);
+    box-sizing: border-box;
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    padding: 0.2rem 0.4rem 0.2rem 1.6rem;
+    height: 1.7rem;
 }
 
-h3 {
-    font-size: 1.17rem;
-}
-
-h4 {
-    font-size: 1.00rem;
-}
-
-h5 {
-    font-size: 0.83rem;
-}
-
-h6 {
-    font-size: 0.67rem;
-}
-
-h1 {
-    margin: 0.67em 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section {
-    display: block;
+.input-icon {
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
 }
 
 /* =========================== */
 /* =========================== */
 /* =========================== */
-/* Containers */
-.parent-container {
+/* || Blocks */
+.main {
     width: 45rem;
     height: 50rem;
     overflow: hidden;
@@ -142,69 +109,283 @@ section {
     -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
 }
 
-.child-container {
-    display: flex;
+.nav {
+    height: 2.5rem;
     width: 100%;
+    background-color: var(--third-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.8rem;
+}
+
+.container {
+    display: flex;
     height: calc(100% - 2.5rem);
 }
 
 /* =========================== */
 /* =========================== */
 /* =========================== */
-/* Other elements */
+/* || Elements */
 
-.circle-red {
-    cursor: pointer;
-    margin-left: 0.8rem;
-    content: "";
-    width: 13px;
-    height: 13px;
-    background-color: var(--main-first);
-    border-radius: 50%;
+/* =========================== */
+/* =========================== */
+/* || nav__left */
+.nav__left {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
 }
 
-.circle-orange {
-    cursor: pointer;
-    content: "";
-    width: 13px;
-    height: 13px;
-    background-color: var(--main-second);
-    border-radius: 50%;
+.nav__circles {
+    display: flex;
+    gap: 0.5rem;
 }
 
-.circle-green {
+.nav__circleRed {
     cursor: pointer;
     content: "";
     width: 13px;
     height: 13px;
-    background-color: var(--main-third);
+    background-color: #FF5F57;
     border-radius: 50%;
 }
 
-/* =========================== */
-/* =========================== */
-/* =========================== */
-/* BUTTONS */
+.nav__circleOrange {
+    cursor: pointer;
+    content: "";
+    width: 13px;
+    height: 13px;
+    background-color: #FEBC2E;
+    border-radius: 50%;
+}
 
-/* small */
-.btn-small {
-    color: #fff;
+.nav__circleGreen {
+    cursor: pointer;
+    content: "";
+    width: 13px;
+    height: 13px;
+    background-color: #28C840;
+    border-radius: 50%;
+}
+
+/* nav__search */
+.nav__search {
+    position: relative;
+}
+
+.nav__input {
+    background-color: var(--fourth-color);
+}
+
+/* nav__right */
+.nav__right {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.user>img {
+    width: 20px;
+    border-radius: 50%;
+}
+
+/* btn__nav */
+.btn__nav {
     background-color: var(--third-color);
     border: none;
-    padding: 0.2rem;
     border-radius: var(--border-radius);
+    padding: 0.2rem;
+    transition: all 200ms ease-in-out;
 }
 
-.btn-small:hover {
+.btn__nav:hover {
+    background-color: var(--fourth-color);
+}
+
+/* =========================== */
+/* =========================== */
+/* || sidebar */
+.sidebar {
+    width: calc(100% - 70%);
+    background-color: var(--second-color);
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar__lists {
+    width: 100%;
+}
+
+.sidebar__list {
+    font-size: 0.9rem;
+    list-style-type: none;
+    width: calc(100% - 10%);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+
+    margin: 0 auto;
+    margin-bottom: 0.3rem;
+    padding: 0.3rem 0.6rem;
+
+    transition: all 250ms ease-in-out;
+}
+
+.sidebar__list:hover {
+    background-color: var(--third-color);
+}
+
+.sidebar__form {
+    width: calc(100% - 10%);
+    position: relative;
+}
+
+.sidebar__input {
+    width: 100%;
+}
+
+.active-list {
+    font-weight: 400;
+    background-color: var(--third-color);
+}
+
+/* =========================== */
+/* =========================== */
+/* || tasklist */
+.tasklist {
+    padding: 1.2rem 2rem;
+    width: calc(100% - 30%);
+}
+
+/* tasklist__header */
+.tasklist__header {
+    /* border: 2px solid pink; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.tasklist__title {
+    font-size: 1.5rem;
+}
+
+.tasklist__counter {
+    font-size: 0.9rem;
+    margin-left: auto;
+    padding-right: 1rem;
+}
+
+.tasklist__buttons {
+    /* Not empty */
+}
+
+/* btn__tasklist */
+.btn__tasklist {
+    background-color: var(--first-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.2rem;
+    transition: all 200ms ease-in-out;
+}
+
+.btn__tasklist:hover {
     background-color: var(--second-color);
 }
 
-/* input */
-.btn-input {
-    background-color: var(--third-color);
-    color: rgb(144, 144, 144);
-    padding: 0.4rem 0.7rem;
+/* ======================== */
+/* tasklist__tasks */
+.tasklist__tasks {
+    /* Not empty */
+}
+
+.task {
+    font-size: 0.9rem;
+    border-bottom: 1px solid #454545c8;
+    position: relative;
+}
+
+.task label {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0;
+}
+
+/* =========================== */
+/* Strikethrough effect */
+.task label::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #454545c8;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 100ms ease-in-out;
+}
+
+[type="checkbox"]:checked+label::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+[type="checkbox"]:checked+label {
+    opacity: 0.5;
+}
+
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+/* =========================== */
+
+.custom-checkbox {
+    display: inline-block;
+    width: .75em;
+    height: .75em;
+    margin-right: 0.4em;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 50%;
+
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+}
+
+.task:hover .custom-checkbox {
+    transform: scale(1.3);
+    color: var(--first-color);
+}
+
+/* tasklist__footer */
+.tasklist__footer {
+    padding-top: 1rem;
+}
+
+.tasklist__form {
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.tasklist__input {
+    width: 100%;
+}
+
+.btn-delete {
+    background-color: var(--second-color);
+    color: #cfcfcf;
+    padding: 0.5rem 0.7rem;
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
+
+    transition: all 200ms ease-in-out;
+}
+
+.btn-delete:hover {
+    background-color: var(--third-color);
 }
