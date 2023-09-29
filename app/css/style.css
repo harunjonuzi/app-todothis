@@ -278,9 +278,7 @@ input {
     padding-right: 1rem;
 }
 
-.tasklist__buttons {
-    /* Not empty */
-}
+
 
 /* btn__tasklist */
 .btn__tasklist {
@@ -297,9 +295,6 @@ input {
 
 /* ======================== */
 /* tasklist__tasks */
-.tasklist__tasks {
-    /* Not empty */
-}
 
 .task {
     font-size: 0.9rem;
