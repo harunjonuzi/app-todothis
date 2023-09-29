@@ -1,22 +1,24 @@
-const listsContainer = document.querySelector('[data-lists]');
-const newListForm = document.querySelector('[data-new-list-form]');
-const newListInput = document.querySelector('[data-new-list-input]');
-const deleteListButton = document.querySelector('[data-delete-list-button]');
+// Changed remote link
+
+const listsContainer = document.querySelector("[data-lists]");
+const newListForm = document.querySelector("[data-new-list-form]");
+const newListInput = document.querySelector("[data-new-list-input]");
+const deleteListButton = document.querySelector("[data-delete-list-button]");
 const listDisplayContainer = document.querySelector(
-  '[data-list-display-container]'
+  "[data-list-display-container]"
 );
-const listTitleElement = document.querySelector('[data-list-title]');
-const listCountElement = document.querySelector('[data-list-count]');
-const tasksContainer = document.querySelector('[data-tasks]');
-const taskTemplate = document.getElementById('task-template');
-const newTaskForm = document.querySelector('[data-new-task-form]');
-const newTaskInput = document.querySelector('[data-new-task-input]');
+const listTitleElement = document.querySelector("[data-list-title]");
+const listCountElement = document.querySelector("[data-list-count]");
+const tasksContainer = document.querySelector("[data-tasks]");
+const taskTemplate = document.getElementById("task-template");
+const newTaskForm = document.querySelector("[data-new-task-form]");
+const newTaskInput = document.querySelector("[data-new-task-input]");
 const clearCompletedTasksButton = document.querySelector(
-  '[data-clear-complete-tasks-button]'
+  "[data-clear-complete-tasks-button]"
 );
 
-const LOCAL_STORAGE_LIST_KEY = 'task.lists';
-const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
+const LOCAL_STORAGE_LIST_KEY = "task.lists";
+const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
 
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 // Returns: an array of objects with id, name and tasks properties or an empty array if there is no data in local storage with the key LOCAL_STORAGE_LIST_KEY which is 'task.lists' in this case and we store it in a variable called lists and we use JSON.parse() method to convert the data from string to array of objects again.
@@ -57,9 +59,9 @@ function render() {
   renderLists();
 
   if (selectedListId == null) {
-    listDisplayContainer.style.display = 'none';
+    listDisplayContainer.style.display = "none";
   } else {
-    listDisplayContainer.style.display = '';
+    listDisplayContainer.style.display = "";
 
     if (selectedListObject) {
       listTitleElement.innerText = selectedListObject.name;
@@ -81,12 +83,12 @@ function saveAndRender() {
 // Render Lists
 function renderLists() {
   lists.forEach((list) => {
-    const listElement = document.createElement('li'); // <li></li>
+    const listElement = document.createElement("li"); // <li></li>
     listElement.dataset.listId = list.id; // data-list-id="1695574597216"
-    listElement.classList.add('sidebar__list'); // <li class="sidebar-list"></li>
+    listElement.classList.add("sidebar__list"); // <li class="sidebar-list"></li>
     listElement.innerText = list.name; // <li class="sidebar-list">My first list</li>
     if (list.id === selectedListId) {
-      listElement.classList.add('active-list'); // <li class="sidebar-list active-list">My first list</li>
+      listElement.classList.add("active-list"); // <li class="sidebar-list active-list">My first list</li>
     }
     listsContainer.appendChild(listElement); // <ul data-lists><li class="sidebar-list active-list">My first list</li></ul>
   });
@@ -95,10 +97,10 @@ function renderLists() {
 function renderTasks(selectedList) {
   selectedList.tasks.forEach((task) => {
     const taskElement = document.importNode(taskTemplate.content, true);
-    const checkbox = taskElement.querySelector('input');
+    const checkbox = taskElement.querySelector("input");
     checkbox.id = task.id;
     checkbox.checked = task.complete;
-    const label = taskElement.querySelector('label');
+    const label = taskElement.querySelector("label");
     label.htmlFor = task.id;
     label.append(task.name);
     tasksContainer.appendChild(taskElement);
@@ -109,7 +111,7 @@ function renderTaskCount(selectedList) {
   const incompleteTaskCount = selectedList.tasks.filter(
     (task) => !task.complete
   ).length;
-  const taskString = incompleteTaskCount === 1 ? 'task' : 'tasks';
+  const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
   listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
 }
 
@@ -125,15 +127,15 @@ function clearElement(element) {
 //////////////////////////////////////////
 // * Event listeners
 
-listsContainer.addEventListener('click', (e) => {
-  if (e.target.tagName.toLowerCase() === 'li') {
+listsContainer.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "li") {
     selectedListId = e.target.dataset.listId;
     saveAndRender();
   }
 });
 
-tasksContainer.addEventListener('click', (e) => {
-  if (e.target.tagName.toLowerCase() === 'input') {
+tasksContainer.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "input") {
     const selectedList = lists.find((list) => list.id === selectedListId);
     const selectedTask = selectedList.tasks.find(
       (task) => task.id === e.target.id
@@ -144,32 +146,32 @@ tasksContainer.addEventListener('click', (e) => {
   }
 });
 
-deleteListButton.addEventListener('click', (e) => {
+deleteListButton.addEventListener("click", (e) => {
   lists = lists.filter((list) => list.id !== selectedListId);
   selectedListId = null;
   saveAndRender();
 });
 
-clearCompletedTasksButton.addEventListener('click', (e) => {
+clearCompletedTasksButton.addEventListener("click", (e) => {
   const selectedList = lists.find((list) => list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
   saveAndRender();
 });
 
-newListForm.addEventListener('submit', (e) => {
+newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const listName = newListInput.value;
-  if (listName == null || listName === '') return;
+  if (listName == null || listName === "") return;
   const list = createList(listName);
   newListInput.value = null;
   lists.push(list);
   saveAndRender();
 });
 
-newTaskForm.addEventListener('submit', (e) => {
+newTaskForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const taskName = newTaskInput.value;
-  if (taskName == null || taskName === '') return;
+  if (taskName == null || taskName === "") return;
   const task = createTask(taskName);
   newTaskInput.value = null;
   const selectedList = lists.find((list) => list.id === selectedListId);
