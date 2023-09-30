@@ -1,13 +1,12 @@
 :root {
-    --first-color: #1E1E1E;
-    --second-color: #282828;
-    --third-color: #333333;
-    --fourth-color: #444444;
-    --fifth-color: #363636;
+    --main-first: #1E1E1E;
+    --main-second: #282828;
+    --main-third: #333333;
+
+    --shade-first: #444444;
+    --shade-second: #363636;
 
     --border-radius: 0.2rem;
-
-
 }
 
 /* =========================== */
@@ -29,11 +28,11 @@ html {
 }
 
 body {
-    background: linear-gradient(45deg, var(--first-color), #007aaeb0);
-    color: #fff;
+    background: linear-gradient(45deg, var(--main-first), #007aaeb0);
+    color: whitesmoke;
     min-height: 100dvh;
 
-    font-size: 16px;
+    font-size: 1rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
 
@@ -42,40 +41,52 @@ body {
     align-items: center;
 }
 
+p {
+    white-space: nowrap;
+}
+
 img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
+svg {
     display: block;
     max-width: 100%;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    overflow-wrap: break-word;
-}
+
 
 button,
 input {
     font-size: 0.9rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
+
+
+}
+
+.outer-container {
+    width: 45rem;
+    height: 50rem;
+    overflow: hidden;
+    background-color: var(--main-first);
+
+    border-radius: 1rem;
+    border: 0.5px solid black;
+    outline: 0.2px solid #ffffff36;
+
+    box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    display: flex;
+    height: calc(100% - 2.5rem);
 }
 
 /* =========================== */
 /* || Inputs */
 .input {
     color: white;
-    background-color: var(--third-color);
+    background-color: var(--main-third);
     box-sizing: border-box;
     border: none;
     border-radius: var(--border-radius);
@@ -92,42 +103,15 @@ input {
 
 /* =========================== */
 /* =========================== */
-/* =========================== */
-/* || Blocks */
-.main {
-    width: 45rem;
-    height: 50rem;
-    overflow: hidden;
-    background-color: var(--first-color);
-
-    border-radius: 1rem;
-    border: 0.5px solid black;
-    outline: 0.2px solid #ffffff36;
-
-    box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
-}
-
+/* || nav */
 .nav {
     height: 2.5rem;
-    width: 100%;
-    background-color: var(--third-color);
+    background-color: var(--main-third);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 0.8rem;
 }
-
-.container {
-    display: flex;
-    height: calc(100% - 2.5rem);
-}
-
-/* =========================== */
-/* =========================== */
-/* =========================== */
-/* || Elements */
 
 /* =========================== */
 /* =========================== */
@@ -146,8 +130,8 @@ input {
 .nav__circleRed {
     cursor: pointer;
     content: "";
-    width: 13px;
-    height: 13px;
+    width: 12px;
+    height: 12px;
     background-color: #FF5F57;
     border-radius: 50%;
 }
@@ -155,8 +139,8 @@ input {
 .nav__circleOrange {
     cursor: pointer;
     content: "";
-    width: 13px;
-    height: 13px;
+    width: 12px;
+    height: 12px;
     background-color: #FEBC2E;
     border-radius: 50%;
 }
@@ -164,8 +148,8 @@ input {
 .nav__circleGreen {
     cursor: pointer;
     content: "";
-    width: 13px;
-    height: 13px;
+    width: 12px;
+    height: 12px;
     background-color: #28C840;
     border-radius: 50%;
 }
@@ -176,7 +160,7 @@ input {
 }
 
 .nav__input {
-    background-color: var(--fourth-color);
+    background-color: var(--shade-first);
 }
 
 /* nav__right */
@@ -192,7 +176,7 @@ input {
 
 /* btn__nav */
 .btn__nav {
-    background-color: var(--third-color);
+    background-color: var(--main-third);
     border: none;
     border-radius: var(--border-radius);
     padding: 0.2rem;
@@ -200,7 +184,7 @@ input {
 }
 
 .btn__nav:hover {
-    background-color: var(--fourth-color);
+    background-color: var(--shade-first);
 }
 
 /* =========================== */
@@ -208,7 +192,7 @@ input {
 /* || sidebar */
 .sidebar {
     width: calc(100% - 70%);
-    background-color: var(--second-color);
+    background-color: var(--main-second);
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -217,6 +201,8 @@ input {
 
 .sidebar__lists {
     width: 100%;
+
+
 }
 
 .sidebar__list {
@@ -231,10 +217,19 @@ input {
     padding: 0.3rem 0.6rem;
 
     transition: all 250ms ease-in-out;
+
+    /* Prevents text from going to a new line */
+    white-space: nowrap;
+
+    /* Hides the text that is going outside the container */
+    overflow: hidden;
+
+    /* Add ... to the end of the longer text */
+    text-overflow: ellipsis;
 }
 
 .sidebar__list:hover {
-    background-color: var(--third-color);
+    background-color: var(--main-third);
 }
 
 .sidebar__form {
@@ -248,7 +243,7 @@ input {
 
 .active-list {
     font-weight: 400;
-    background-color: var(--third-color);
+    background-color: var(--main-third);
 }
 
 /* =========================== */
@@ -261,28 +256,43 @@ input {
 
 /* tasklist__header */
 .tasklist__header {
-    /* border: 2px solid pink; */
+    width: 100%;
+    padding-bottom: 1rem;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 1rem;
 }
 
 .tasklist__title {
-    font-size: 1.5rem;
+    width: 45%;
+    font-size: 1.2rem;
+    padding-right: 0.4rem;
+
+    /* Prevents text from going to a new line */
+    white-space: nowrap;
+
+    /* Hides the text that is going outside the container */
+    overflow: hidden;
+
+    /* Add ... to the end of the longer text */
+    text-overflow: ellipsis;
 }
 
 .tasklist__counter {
+    width: 30%;
     font-size: 0.9rem;
     margin-left: auto;
     padding-right: 1rem;
 }
 
-
+.tasklist__buttons {
+    width: 22%;
+}
 
 /* btn__tasklist */
 .btn__tasklist {
-    background-color: var(--first-color);
+    background-color: var(--main-first);
     border: none;
     border-radius: var(--border-radius);
     padding: 0.2rem;
@@ -290,7 +300,7 @@ input {
 }
 
 .btn__tasklist:hover {
-    background-color: var(--second-color);
+    background-color: var(--main-second);
 }
 
 /* ======================== */
@@ -353,7 +363,7 @@ input {
 
 .task:hover .custom-checkbox {
     transform: scale(1.3);
-    color: var(--first-color);
+    color: var(--main-first);
 }
 
 /* tasklist__footer */
@@ -371,7 +381,7 @@ input {
 }
 
 .btn-delete {
-    background-color: var(--second-color);
+    background-color: var(--main-second);
     color: #cfcfcf;
     padding: 0.5rem 0.7rem;
     border: none;
@@ -382,5 +392,5 @@ input {
 }
 
 .btn-delete:hover {
-    background-color: var(--third-color);
+    background-color: var(--main-third);
 }
