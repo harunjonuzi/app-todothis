@@ -21,7 +21,6 @@
 <body>
   <div class="outer-container">
     <nav class="nav">
-
       <div class="nav__left">
         <div class="nav__circles">
           <div class="nav__circleRed"></div>
@@ -46,15 +45,15 @@
           </svg>
         </button>
 
-        <div class="nav__search">
-          <input class="input nav__input" type="text" placeholder="Search">
+        <form class="input-wrap" action="">
+          <input class="input" type="text" placeholder="Search">
           <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
             fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-search">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-        </div>
+        </form>
       </div>
 
       <div class="nav__right">
@@ -89,14 +88,15 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="inner-container">
+      <!-- aside -->
+      <aside class="aside">
+        <ul class="aside__lists" data-lists>
+          <!-- <li class="aside__list active-list"></li> -->
+        </ul>
 
-      <!-- || Block Element -->
-      <div class="sidebar">
-        <ul class="sidebar__lists" data-lists></ul>
-
-        <form class="sidebar__form" action="" data-new-list-form>
-          <input type="text" class="input sidebar__input" data-new-list-input placeholder="Add new list">
+        <form class="aside__form input-wrap" action="" data-new-list-form>
+          <input class="input" type="text" class="input sidebar__input" data-new-list-input placeholder="Add new list">
           <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
             fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-plus">
@@ -104,18 +104,16 @@
             <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
         </form>
-      </div>
+      </aside>
 
-      <!-- || Block Element -->
-      <div class="tasklist" data-list-display-container>
+      <!-- main -->
+      <main class="main" data-list-display-container>
 
-        <!-- tasklist__header -->
-        <div class="tasklist__header">
-          <h2 class="tasklist__title" data-list-title></h2>
-          <p class="tasklist__counter" data-list-count></p>
-
-          <div class="tasklist__buttons">
-            <button class="btn__tasklist">
+        <div class="main__header">
+          <h2 class="main__title" data-list-title></h2>
+          <p class="main__counter" data-list-count></p>
+          <div class="main__buttons">
+            <button class="btn-main-settings">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-sliders">
@@ -131,7 +129,7 @@
               </svg>
             </button>
 
-            <button class="btn__tasklist">
+            <button class="btn-main-settings">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-message-square">
@@ -139,7 +137,7 @@
               </svg>
             </button>
 
-            <button class="btn__tasklist">
+            <button class="btn-main-settings">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-more-horizontal">
@@ -151,26 +149,28 @@
           </div>
         </div>
 
-        <!-- tasklist__tasks -->
-        <div class="tasklist__tasks" data-tasks></div>
-
-        <!-- tasklist__footer -->
-        <div class="tasklist__footer">
-          <form class="tasklist__form" action="" data-new-task-form>
-            <input class="input tasklist__input" type="text" data-new-task-input placeholder="Add new task">
-
-            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-              fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-              class="feather feather-plus">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-          </form>
-
-          <button class="btn-delete delete" data-clear-complete-tasks-button>Clear completed tasks</button>
-          <button class="btn-delete delete" data-delete-list-button=""> Delete list</button>
+        <div data-tasks>
+          <!-- <div class="task">
+            <input type="checkbox" id="21387918475">
+            <label> <span class="custom-checkbox"></span>Buy tomatoes</label>
+          </div> -->
         </div>
-      </div>
+
+        <form class="main__form input-wrap" action="" data-new-task-form>
+          <input class="input" type="text" data-new-task-input placeholder="Add new task">
+
+          <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-plus">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </form>
+
+        <button class="btn-main-delete" data-clear-complete-tasks-button>Clear completed tasks</button>
+        <button class="btn-main-delete" data-delete-list-button=""> Delete list</button>
+      </main>
+
     </div>
   </div>
 

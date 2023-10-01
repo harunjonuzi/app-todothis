@@ -51,15 +51,11 @@ svg {
     max-width: 100%;
 }
 
-
-
 button,
 input {
     font-size: 0.9rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
-
-
 }
 
 .outer-container {
@@ -77,33 +73,53 @@ input {
     -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
 }
 
-.container {
+.inner-container {
     display: flex;
     height: calc(100% - 2.5rem);
+    width: 100%;
 }
 
 /* =========================== */
-/* || Inputs */
+/* 🔖 ===== Templates ===== 🔖 */
+/* =========================== */
+.input-wrap {
+    background-color: var(--shade-first);
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius);
+    padding: 0.2rem 0.4rem;
+}
+
 .input {
     color: white;
-    background-color: var(--main-third);
-    box-sizing: border-box;
+    background-color: var(--shade-first);
     border: none;
-    border-radius: var(--border-radius);
     outline: none;
-    padding: 0.2rem 0.4rem 0.2rem 1.6rem;
-    height: 1.7rem;
 }
 
 .input-icon {
-    position: absolute;
-    top: 0.2rem;
-    left: 0.2rem;
+    cursor: pointer;
 }
 
 /* =========================== */
+/* 🔖 ===== NAVIGATION ===== 🔖 */
 /* =========================== */
-/* || nav */
+
+/* btn__nav */
+.btn__nav {
+    background-color: var(--main-third);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.2rem;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.btn__nav:hover {
+    background-color: var(--shade-first);
+
+}
+
 .nav {
     height: 2.5rem;
     background-color: var(--main-third);
@@ -113,7 +129,6 @@ input {
     padding: 0 0.8rem;
 }
 
-/* =========================== */
 /* =========================== */
 /* || nav__left */
 .nav__left {
@@ -154,18 +169,11 @@ input {
     border-radius: 50%;
 }
 
-/* nav__search */
-.nav__search {
-    position: relative;
-}
-
-.nav__input {
-    background-color: var(--shade-first);
-}
-
+/* =========================== */
 /* nav__right */
 .nav__right {
     display: flex;
+    align-items: center;
     gap: 0.2rem;
 }
 
@@ -174,49 +182,37 @@ input {
     border-radius: 50%;
 }
 
-/* btn__nav */
-.btn__nav {
-    background-color: var(--main-third);
-    border: none;
-    border-radius: var(--border-radius);
-    padding: 0.2rem;
-    transition: all 200ms ease-in-out;
-}
-
-.btn__nav:hover {
-    background-color: var(--shade-first);
-}
-
 /* =========================== */
+/* 🔖 ===== ASIDE ===== 🔖 */
 /* =========================== */
-/* || sidebar */
-.sidebar {
-    width: calc(100% - 70%);
+.aside {
+    width: 20rem;
+    height: 100%;
     background-color: var(--main-second);
     padding-top: 1rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+
+    transition: transform 150ms ease-in-out;
 }
 
-.sidebar__lists {
+.aside__lists {
     width: 100%;
-
-
 }
 
-.sidebar__list {
+.aside__list {
     font-size: 0.9rem;
     list-style-type: none;
     width: calc(100% - 10%);
     border-radius: var(--border-radius);
-    cursor: pointer;
 
     margin: 0 auto;
     margin-bottom: 0.3rem;
     padding: 0.3rem 0.6rem;
-
     transition: all 250ms ease-in-out;
+    cursor: pointer;
 
     /* Prevents text from going to a new line */
     white-space: nowrap;
@@ -228,17 +224,14 @@ input {
     text-overflow: ellipsis;
 }
 
-.sidebar__list:hover {
+.aside__list:hover {
     background-color: var(--main-third);
 }
 
-.sidebar__form {
+.aside__form {
     width: calc(100% - 10%);
-    position: relative;
-}
-
-.sidebar__input {
-    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 .active-list {
@@ -247,15 +240,17 @@ input {
 }
 
 /* =========================== */
+/* 🔖 ===== MAIN ===== 🔖 */
 /* =========================== */
-/* || tasklist */
-.tasklist {
+.main {
     padding: 1.2rem 2rem;
-    width: calc(100% - 30%);
+    /* width: calc(100% - 30%); */
+    width: 100%;
+    overflow-y: scroll;
 }
 
-/* tasklist__header */
-.tasklist__header {
+/* main__header */
+.main__header {
     width: 100%;
     padding-bottom: 1rem;
 
@@ -264,10 +259,9 @@ input {
     justify-content: space-between;
 }
 
-.tasklist__title {
-    width: 45%;
+.main__title {
+    width: 15ch;
     font-size: 1.2rem;
-    padding-right: 0.4rem;
 
     /* Prevents text from going to a new line */
     white-space: nowrap;
@@ -279,19 +273,14 @@ input {
     text-overflow: ellipsis;
 }
 
-.tasklist__counter {
-    width: 30%;
+.main__counter {
     font-size: 0.9rem;
     margin-left: auto;
-    padding-right: 1rem;
+    padding: 0 0.5rem;
 }
 
-.tasklist__buttons {
-    width: 22%;
-}
-
-/* btn__tasklist */
-.btn__tasklist {
+/* btn */
+.btn-main-settings {
     background-color: var(--main-first);
     border: none;
     border-radius: var(--border-radius);
@@ -299,34 +288,33 @@ input {
     transition: all 200ms ease-in-out;
 }
 
-.btn__tasklist:hover {
+.btn-main-settings:hover {
     background-color: var(--main-second);
 }
 
 /* ======================== */
-/* tasklist__tasks */
-
+/* task > input & label > span */
 .task {
     font-size: 0.9rem;
     border-bottom: 1px solid #454545c8;
     position: relative;
 }
 
+/* checkbox and text alignment */
 .task label {
     display: flex;
     align-items: center;
     padding: 0.6rem 0;
 }
 
-/* =========================== */
-/* Strikethrough effect */
+/* strikethrough effect */
 .task label::after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     height: 2px;
-    background-color: #454545c8;
+    background-color: var(--shade-first);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 100ms ease-in-out;
@@ -341,12 +329,11 @@ input {
     opacity: 0.5;
 }
 
+/* hide the original checkbox from <input type="checkbox"> */
 [type="checkbox"] {
     opacity: 0;
     position: absolute;
 }
-
-/* =========================== */
 
 .custom-checkbox {
     display: inline-block;
@@ -363,24 +350,15 @@ input {
 
 .task:hover .custom-checkbox {
     transform: scale(1.3);
-    color: var(--main-first);
 }
 
-/* tasklist__footer */
-.tasklist__footer {
-    padding-top: 1rem;
+.main__form {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
 }
 
-.tasklist__form {
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-.tasklist__input {
-    width: 100%;
-}
-
-.btn-delete {
+.btn-main-delete {
     background-color: var(--main-second);
     color: #cfcfcf;
     padding: 0.5rem 0.7rem;
@@ -391,6 +369,22 @@ input {
     transition: all 200ms ease-in-out;
 }
 
-.btn-delete:hover {
+.btn-main-delete:hover {
     background-color: var(--main-third);
+}
+
+/* =========================== */
+/* 🔖 ===== Scrollbar Styling ===== 🔖 */
+/* =========================== */
+::-webkit-scrollbar {
+    background-color: var(--main-first);
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-third);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--main-second);
 }

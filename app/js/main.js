@@ -83,22 +83,25 @@ function saveAndRender() {
 // Render Lists
 function renderLists() {
   lists.forEach((list) => {
-    const listElement = document.createElement("li"); // <li></li>
-    listElement.dataset.listId = list.id; // data-list-id="1695574597216"
-    listElement.classList.add("sidebar__list"); // <li class="sidebar-list"></li>
-    listElement.innerText = list.name; // <li class="sidebar-list">My first list</li>
+    const listElement = document.createElement("li"); //
+    listElement.dataset.listId = list.id; //
+    listElement.classList.add("aside__list"); //
+    listElement.innerText = list.name; //
     if (list.id === selectedListId) {
-      listElement.classList.add("active-list"); // <li class="sidebar-list active-list">My first list</li>
+      listElement.classList.add("active-list"); //
     }
-    listsContainer.appendChild(listElement); // <ul data-lists><li class="sidebar-list active-list">My first list</li></ul>
+    listsContainer.appendChild(listElement); //
   });
 }
 
 function renderTasks(selectedList) {
   selectedList.tasks.forEach((task) => {
     const taskElement = document.importNode(taskTemplate.content, true);
+
     const checkbox = taskElement.querySelector("input");
     checkbox.id = task.id;
+    // <input type="checkbox" id="21387918475"></input>
+
     checkbox.checked = task.complete;
     const label = taskElement.querySelector("label");
     label.htmlFor = task.id;
