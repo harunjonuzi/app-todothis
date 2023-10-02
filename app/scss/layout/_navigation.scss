@@ -1,0 +1,78 @@
+@use '../abstracts' as a;
+
+/* btn__nav */
+.btn__nav {
+    background-color: a.$main-third;
+    border: none;
+    border-radius: a.$border-radius;
+    padding: 0.2rem;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.btn__nav:hover {
+    background-color: a.$shade-first;
+
+}
+
+.nav {
+    height: 2.5rem;
+    background-color: a.$main-third;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.8rem;
+}
+
+/* =========================== */
+/* || nav__left */
+.nav__left {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.nav__circles {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav__circleRed {
+    cursor: pointer;
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #FF5F57;
+    border-radius: 50%;
+}
+
+.nav__circleOrange {
+    cursor: pointer;
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #FEBC2E;
+    border-radius: 50%;
+}
+
+.nav__circleGreen {
+    cursor: pointer;
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #28C840;
+    border-radius: 50%;
+}
+
+/* =========================== */
+/* nav__right */
+.nav__right {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.user>img {
+    width: 20px;
+    border-radius: 50%;
+}

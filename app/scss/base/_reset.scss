@@ -1,0 +1,89 @@
+@use '../abstracts' as a;
+
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    /* outline: 0.5px solid limegreen !important; */
+}
+
+body {
+    background: linear-gradient(45deg, a.$main-first, hsla(198, 100%, 34%, 0.69));
+    color: hsl(0, 0%, 96%);
+    min-height: 100dvh;
+
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    white-space: nowrap;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input {
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+}
+
+.outer-container {
+    width: 45rem;
+    height: 50rem;
+    overflow: hidden;
+    background-color: a.$main-first;
+
+    border-radius: 1rem;
+    border: 0.5px solid black;
+    outline: 0.2px solid #ffffff36;
+
+    box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+}
+
+.inner-container {
+    display: flex;
+    height: calc(100% - 2.5rem);
+    width: 100%;
+}
+
+/* =========================== */
+/* 🔖 ===== Templates ===== 🔖 */
+/* =========================== */
+.input-wrap {
+    background-color: a.$shade-first;
+    display: flex;
+    align-items: center;
+    border-radius: a.$border-radius;
+    padding: 0.2rem 0.4rem;
+}
+
+.input {
+    color: white;
+    background-color: a.$shade-first;
+    border: none;
+    outline: none;
+}
+
+.input-icon {
+    cursor: pointer;
+}
