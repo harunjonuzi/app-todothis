@@ -1,0 +1,12 @@
+{
+  "name": "app-todoology",
+  "version": "1.0.0",
+  "description": "![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/harunjonuzi/App-Todoology) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
