@@ -11,7 +11,6 @@ html {
     box-sizing: inherit;
     margin: 0;
     padding: 0;
-    /* outline: 0.5px solid limegreen !important; */
 }
 
 body {
@@ -66,24 +65,6 @@ input {
     width: 100%;
 }
 
-/* =========================== */
-/* 🔖 ===== Templates ===== 🔖 */
-/* =========================== */
-.input-wrap {
-    background-color: a.$shade-first;
-    display: flex;
-    align-items: center;
-    border-radius: a.$border-radius;
-    padding: 0.2rem 0.4rem;
-}
-
-.input {
-    color: white;
-    background-color: a.$shade-first;
-    border: none;
-    outline: none;
-}
-
-.input-icon {
+.form-icon {
     cursor: pointer;
 }

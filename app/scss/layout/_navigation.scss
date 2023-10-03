@@ -1,20 +1,5 @@
 @use '../abstracts' as a;
 
-/* btn__nav */
-.btn__nav {
-    background-color: a.$main-third;
-    border: none;
-    border-radius: a.$border-radius;
-    padding: 0.2rem;
-    cursor: pointer;
-    transition: all 200ms ease-in-out;
-}
-
-.btn__nav:hover {
-    background-color: a.$shade-first;
-
-}
-
 .nav {
     height: 2.5rem;
     background-color: a.$main-third;
@@ -22,57 +7,53 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 0.8rem;
-}
 
-/* =========================== */
-/* || nav__left */
-.nav__left {
-    display: flex;
-    align-items: center;
-    gap: 0.2rem;
-}
+    // nav__left
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
 
-.nav__circles {
-    display: flex;
-    gap: 0.5rem;
-}
+        .circles {
+            display: flex;
+            gap: 0.5rem;
 
-.nav__circleRed {
-    cursor: pointer;
-    content: "";
-    width: 12px;
-    height: 12px;
-    background-color: #FF5F57;
-    border-radius: 50%;
-}
+            &__Red {
+                @include a.circleNav;
+                background-color: #FF5F57;
+            }
 
-.nav__circleOrange {
-    cursor: pointer;
-    content: "";
-    width: 12px;
-    height: 12px;
-    background-color: #FEBC2E;
-    border-radius: 50%;
-}
+            &__Orange {
+                @include a.circleNav;
+                background-color: #FEBC2E;
+            }
 
-.nav__circleGreen {
-    cursor: pointer;
-    content: "";
-    width: 12px;
-    height: 12px;
-    background-color: #28C840;
-    border-radius: 50%;
-}
+            &__Green {
+                @include a.circleNav;
+                background-color: #28C840;
+            }
+        }
+    }
 
-/* =========================== */
-/* nav__right */
-.nav__right {
-    display: flex;
-    align-items: center;
-    gap: 0.2rem;
-}
+    &__form {
+        @include a.form;
+        background-color: a.$shade-first;
 
-.user>img {
-    width: 20px;
-    border-radius: 50%;
+        &-input {
+            @include a.form-input;
+            background-color: a.$shade-first;
+        }
+    }
+
+    // nav__right
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    .user>img {
+        width: 20px;
+        border-radius: 50%;
+    }
 }

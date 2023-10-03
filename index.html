@@ -20,15 +20,17 @@
 
 <body>
   <div class="outer-container">
+    <!-- nav -->
     <nav class="nav">
+      <!-- nav__right -->
       <div class="nav__left">
-        <div class="nav__circles">
-          <div class="nav__circleRed"></div>
-          <div class="nav__circleOrange"></div>
-          <div class="nav__circleGreen"></div>
+        <div class="circles">
+          <div class="circles__Red"></div>
+          <div class="circles__Orange"></div>
+          <div class="circles__Green"></div>
         </div>
 
-        <button class="btn__nav hamburger">
+        <button class="btn nav__btn hamburger">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -37,7 +39,7 @@
           </svg>
         </button>
 
-        <button class="btn__nav home">
+        <button class="btn nav__btn home">
           <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -45,9 +47,9 @@
           </svg>
         </button>
 
-        <form class="input-wrap" action="">
-          <input class="input" type="text" placeholder="Search">
-          <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+        <form class="nav__form" action="">
+          <input class="nav__form-input" type="text" placeholder="Search">
+          <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
             fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-search">
             <circle cx="11" cy="11" r="8"></circle>
@@ -56,8 +58,9 @@
         </form>
       </div>
 
+      <!-- nav__right -->
       <div class="nav__right">
-        <button class="btn__nav plus">
+        <button class="btn nav__btn plus">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -65,7 +68,7 @@
           </svg>
         </button>
 
-        <button class="btn__nav help">
+        <button class="btn nav__btn help">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
             <circle cx="12" cy="12" r="10"></circle>
@@ -74,7 +77,7 @@
           </svg>
         </button>
 
-        <button class="btn__nav bell">
+        <button class="btn nav__btn bell">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -82,22 +85,25 @@
           </svg>
         </button>
 
-        <button class="btn__nav user">
+        <button class="btn nav__btn user">
           <img src="app/utilities/images/user.png" alt="User icon">
         </button>
       </div>
+
     </nav>
 
     <div class="inner-container">
       <!-- aside -->
       <aside class="aside">
+        <!-- aside_lists -->
         <ul class="aside__lists" data-lists>
           <!-- <li class="aside__list active-list"></li> -->
         </ul>
 
         <form class="aside__form input-wrap" action="" data-new-list-form>
-          <input class="input" type="text" class="input sidebar__input" data-new-list-input placeholder="Add new list">
-          <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+          <input class="aside__form-input" type="text" class="input sidebar__input" data-new-list-input
+            placeholder="Add new list">
+          <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
             fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-plus">
             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -109,57 +115,59 @@
       <!-- main -->
       <main class="main" data-list-display-container>
 
+        <!-- main__header -->
         <div class="main__header">
           <h2 class="main__title" data-list-title></h2>
           <p class="main__counter" data-list-count></p>
-          <div class="main__buttons">
-            <button class="btn-main-settings">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-sliders">
-                <line x1="4" y1="21" x2="4" y2="14"></line>
-                <line x1="4" y1="10" x2="4" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12" y2="3"></line>
-                <line x1="20" y1="21" x2="20" y2="16"></line>
-                <line x1="20" y1="12" x2="20" y2="3"></line>
-                <line x1="1" y1="14" x2="7" y2="14"></line>
-                <line x1="9" y1="8" x2="15" y2="8"></line>
-                <line x1="17" y1="16" x2="23" y2="16"></line>
-              </svg>
-            </button>
+          <button class="btn main__btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-sliders">
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+          </button>
 
-            <button class="btn-main-settings">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-message-square">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-              </svg>
-            </button>
+          <button class="btn main__btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-message-square">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </button>
 
-            <button class="btn-main-settings">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-more-horizontal">
-                <circle cx="12" cy="12" r="1"></circle>
-                <circle cx="19" cy="12" r="1"></circle>
-                <circle cx="5" cy="12" r="1"></circle>
-              </svg>
-            </button>
-          </div>
+          <button class="btn main__btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-more-horizontal">
+              <circle cx="12" cy="12" r="1"></circle>
+              <circle cx="19" cy="12" r="1"></circle>
+              <circle cx="5" cy="12" r="1"></circle>
+            </svg>
+          </button>
         </div>
 
+        <!-- main__tasks -->
         <div data-tasks>
-          <!-- <div class="task">
-            <input type="checkbox" id="21387918475">
-            <label> <span class="custom-checkbox"></span>Buy tomatoes</label>
-          </div> -->
+          <!-- <template id="task-template">
+            <div class="task">
+              <input class="task__checkbox" type="checkbox">
+              <label> <span class="task__custom-checkbox"></span></label>
+            </div>
+          </template> -->
         </div>
 
-        <form class="main__form input-wrap" action="" data-new-task-form>
-          <input class="input" type="text" data-new-task-input placeholder="Add new task">
+        <form class="main__form" action="" data-new-task-form>
+          <input class="main__form-input" type="text" data-new-task-input placeholder="Add new task">
 
-          <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+          <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
             fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-plus">
             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -167,8 +175,8 @@
           </svg>
         </form>
 
-        <button class="btn-main-delete" data-clear-complete-tasks-button>Clear completed tasks</button>
-        <button class="btn-main-delete" data-delete-list-button=""> Delete list</button>
+        <button class="btn main__btn-delete" data-clear-complete-tasks-button>Clear completed tasks</button>
+        <button class="btn main__btn-delete" data-delete-list-button=""> Delete list</button>
       </main>
 
     </div>
@@ -176,8 +184,8 @@
 
   <template id="task-template">
     <div class="task">
-      <input type="checkbox">
-      <label> <span class="custom-checkbox"></span></label>
+      <input class="task__checkbox" type="checkbox">
+      <label> <span class="task__custom-checkbox"></span></label>
     </div>
   </template>
 
