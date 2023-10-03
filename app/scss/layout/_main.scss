@@ -37,7 +37,7 @@
     }
 
     &__form {
-        background-color: a.$shade-second;
+        background-color: a.$main-second;
 
         display: flex;
         justify-content: space-between;
@@ -46,7 +46,7 @@
         @include a.form;
 
         &-input {
-            background-color: a.$shade-second;
+            background-color: inherit;
             @include a.form-input;
         }
     }

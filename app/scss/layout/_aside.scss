@@ -44,15 +44,16 @@
 
     &__form {
         @include a.form;
-        background-color: a.$shade-second;
+        background-color: a.$main-second;
+        outline: 2px solid a.$shade-first;
 
         width: calc(100% - 10%);
         justify-content: space-between;
-        margin-bottom: 1rem;
+        margin: 0.5rem 0 1rem 0;
 
         &-input {
             @include a.form-input;
-            background-color: a.$shade-second;
+            background-color: inherit;
         }
     }
 }

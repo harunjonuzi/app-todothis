@@ -41,7 +41,7 @@
 
         &-input {
             @include a.form-input;
-            background-color: a.$shade-first;
+            background-color: inherit;
         }
     }
 
