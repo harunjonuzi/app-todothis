@@ -15,7 +15,7 @@ Literally the best todolist application in my neighborhood.
 
 ## Overview
 
-![Screenshot-1](app/utilities/images/screenshot1.png)
+![Screenshot-1](app/utilities/images/screenshot-1.png)
 
 ## Installation
 
