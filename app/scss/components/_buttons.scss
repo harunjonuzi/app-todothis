@@ -1,0 +1,38 @@
+@use '../abstracts' as a;
+
+.nav__btn {
+    background-color: a.$main-third;
+    padding: 0.2rem;
+
+    &:hover {
+        background-color: a.$shade-first;
+    }
+}
+
+.main__btn {
+    background-color: a.$main-first;
+    padding: 0.2rem;
+    margin-left: 0.3rem;
+
+    &:hover {
+        background-color: a.$main-second;
+    }
+}
+
+.main__btn-delete {
+    background-color: a.$main-second;
+    padding: 0.5rem 0.7rem;
+    color: hsl(0, 0%, 93%);
+
+    &:hover {
+        background-color: a.$main-third;
+    }
+
+}
+
+.btn {
+    border: none;
+    border-radius: a.$border-radius;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}

@@ -1,0 +1,108 @@
+@use '../abstracts' as a;
+
+.main {
+    padding: 1.2rem 2rem;
+    /* width: calc(100% - 30%); */
+    width: 100%;
+    overflow-y: scroll;
+
+    /* main__header */
+    &__header {
+        width: 100%;
+        padding-bottom: 1rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title {
+        width: 15ch;
+        font-size: 1.2rem;
+
+        /* Prevents text from going to a new line */
+        white-space: nowrap;
+
+        /* Hides the text that is going outside the container */
+        overflow: hidden;
+
+        /* Add ... to the end of the longer text */
+        text-overflow: ellipsis;
+    }
+
+    &__counter {
+        font-size: 0.9rem;
+        margin-left: auto;
+        padding: 0 0.5rem;
+    }
+
+    &__form {
+        background-color: a.$shade-second;
+
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0;
+
+        @include a.form;
+
+        &-input {
+            background-color: a.$shade-second;
+            @include a.form-input;
+        }
+    }
+}
+
+.task {
+    font-size: 0.9rem;
+    border-bottom: 1px solid #454545c8;
+    position: relative;
+
+    &__checkbox {
+        opacity: 0;
+        position: absolute;
+
+        &:checked+label::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        &:checked+label {
+            opacity: 0.5;
+        }
+    }
+
+    &__custom-checkbox {
+        display: inline-block;
+        width: .75em;
+        height: .75em;
+        margin-right: 0.4em;
+        cursor: pointer;
+        border: 1px solid white;
+        border-radius: 50%;
+
+        transform: scale(1);
+        transition: transform 200ms ease-in-out;
+    }
+
+    &:hover .task__custom-checkbox {
+        transform: scale(1.3);
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 0;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: a.$shade-first;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 100ms ease-in-out;
+        }
+    }
+}
