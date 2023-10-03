@@ -1,0 +1,327 @@
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(45deg, #1E1E1E, hsla(198, 100%, 34%, 0.69));
+  color: hsl(0, 0%, 96%);
+  min-height: 100dvh;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  white-space: nowrap;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+}
+
+.outer-container {
+  width: 45rem;
+  height: 50rem;
+  overflow: hidden;
+  background-color: #1E1E1E;
+  border-radius: 1rem;
+  border: 0.5px solid black;
+  outline: 0.2px solid rgba(255, 255, 255, 0.2117647059);
+  box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 4px 21px 4px rgba(0, 0, 0, 0.5);
+}
+
+.inner-container {
+  display: flex;
+  height: calc(100% - 2.5rem);
+  width: 100%;
+}
+
+.form-icon {
+  cursor: pointer;
+}
+
+.nav__btn {
+  background-color: #333333;
+  padding: 0.2rem;
+}
+.nav__btn:hover {
+  background-color: #444444;
+}
+
+.main__btn {
+  background-color: #1E1E1E;
+  padding: 0.2rem;
+  margin-left: 0.3rem;
+}
+.main__btn:hover {
+  background-color: #282828;
+}
+
+.main__btn-delete {
+  background-color: #282828;
+  padding: 0.5rem 0.7rem;
+  color: hsl(0, 0%, 93%);
+}
+.main__btn-delete:hover {
+  background-color: #333333;
+}
+
+.btn {
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+::-webkit-scrollbar {
+  background-color: #1E1E1E;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333333;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #282828;
+}
+
+.aside {
+  width: 20rem;
+  height: 100%;
+  background-color: #282828;
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  transition: transform 150ms ease-in-out;
+}
+.aside__lists {
+  width: 100%;
+}
+.aside__list {
+  font-size: 0.9rem;
+  list-style-type: none;
+  width: 90%;
+  border-radius: 0.2rem;
+  margin: 0 auto;
+  margin-bottom: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  /* Prevents text from going to a new line */
+  white-space: nowrap;
+  /* Hides the text that is going outside the container */
+  overflow: hidden;
+  /* Add ... to the end of the longer text */
+  text-overflow: ellipsis;
+}
+.aside__list:hover {
+  background-color: #333333;
+}
+.aside__form {
+  display: flex;
+  align-items: center;
+  border-radius: 0.2rem;
+  padding: 0.2rem 0.4rem;
+  background-color: #282828;
+  outline: 2px solid #444444;
+  width: 90%;
+  justify-content: space-between;
+  margin: 0.5rem 0 1rem 0;
+}
+.aside__form-input {
+  color: white;
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: inherit;
+}
+
+.active-list {
+  font-weight: 400;
+  background-color: #333333;
+}
+
+.main {
+  padding: 1.2rem 2rem;
+  /* width: calc(100% - 30%); */
+  width: 100%;
+  overflow-y: scroll;
+  /* main__header */
+}
+.main__header {
+  width: 100%;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main__title {
+  width: 15ch;
+  font-size: 1.2rem;
+  /* Prevents text from going to a new line */
+  white-space: nowrap;
+  /* Hides the text that is going outside the container */
+  overflow: hidden;
+  /* Add ... to the end of the longer text */
+  text-overflow: ellipsis;
+}
+.main__counter {
+  font-size: 0.9rem;
+  margin-left: auto;
+  padding: 0 0.5rem;
+}
+.main__form {
+  background-color: #282828;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  border-radius: 0.2rem;
+  padding: 0.2rem 0.4rem;
+}
+.main__form-input {
+  background-color: inherit;
+  color: white;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.task {
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(69, 69, 69, 0.7843137255);
+  position: relative;
+}
+.task__checkbox {
+  opacity: 0;
+  position: absolute;
+}
+.task__checkbox:checked + label::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.task__checkbox:checked + label {
+  opacity: 0.5;
+}
+.task__custom-checkbox {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-right: 0.4em;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
+}
+.task:hover .task__custom-checkbox {
+  transform: scale(1.3);
+}
+.task label {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 0;
+}
+.task label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #444444;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 100ms ease-in-out;
+}
+
+.nav {
+  height: 2.5rem;
+  background-color: #333333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.8rem;
+}
+.nav__left {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.nav__left .circles {
+  display: flex;
+  gap: 0.5rem;
+}
+.nav__left .circles__Red {
+  cursor: pointer;
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #FF5F57;
+}
+.nav__left .circles__Orange {
+  cursor: pointer;
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #FEBC2E;
+}
+.nav__left .circles__Green {
+  cursor: pointer;
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #28C840;
+}
+.nav__form {
+  display: flex;
+  align-items: center;
+  border-radius: 0.2rem;
+  padding: 0.2rem 0.4rem;
+  background-color: #444444;
+}
+.nav__form-input {
+  color: white;
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: inherit;
+}
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.nav .user > img {
+  width: 20px;
+  border-radius: 50%;
+}/*# sourceMappingURL=styles.css.map */
