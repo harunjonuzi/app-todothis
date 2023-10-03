@@ -183,3 +183,22 @@ newTaskForm.addEventListener("submit", (e) => {
 });
 
 render();
+
+// Aside menu toggle
+const btnHamburger = document.querySelector(".hamburger");
+const asideMenu = document.querySelector(".aside");
+const mainMenu = document.querySelector(".menu");
+
+let toggleMe = true;
+
+btnHamburger.addEventListener("click", function () {
+  if (toggleMe) {
+    // asideMenu.style.transform = "translateX(-300px)";
+    asideMenu.style.display = "none";
+  } else {
+    // asideMenu.style.transform = "translateX(0)";
+    asideMenu.style.display = "";
+  }
+
+  toggleMe = !toggleMe;
+});
