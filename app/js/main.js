@@ -28,10 +28,9 @@ let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 // Returns: a string value of the key in local storage which is a date format with random numbers converted to string using toString() method and we store it in a variable called selectedListId
 // For example: 1695574597216
 
-//////////////////////////////////////////
-//////////////////////////////////////////
-//////////////////////////////////////////
-// * Functions
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+console.log("🔖 Functions");
 
 // Create Lists
 function createList(name) {
@@ -42,17 +41,23 @@ function createList(name) {
   };
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 // Create Tasks
 function createTask(name) {
   return { id: Date.now().toString(), name: name, complete: false, tests: [] };
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 // Save new list and selected list id to local storage
 function save() {
   localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists)); //
   localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 function render() {
   const selectedListObject = lists.find((list) => list.id === selectedListId);
   clearElement(listsContainer);
@@ -75,11 +80,15 @@ function render() {
   }
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 function saveAndRender() {
   save();
   render();
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 // Render Lists
 function renderLists() {
   lists.forEach((list) => {
@@ -94,6 +103,8 @@ function renderLists() {
   });
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 function renderTasks(selectedList) {
   selectedList.tasks.forEach((task) => {
     const taskElement = document.importNode(taskTemplate.content, true);
@@ -110,6 +121,8 @@ function renderTasks(selectedList) {
   });
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 function renderTaskCount(selectedList) {
   const incompleteTaskCount = selectedList.tasks.filter(
     (task) => !task.complete
@@ -118,6 +131,8 @@ function renderTaskCount(selectedList) {
   listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 function clearElement(element) {
   // Clears the element from all its children elements (li) and their children elements (input and label) and their children elements (checkbox and text).
   while (element.firstChild) {
@@ -125,10 +140,9 @@ function clearElement(element) {
   }
 }
 
-//////////////////////////////////////////
-//////////////////////////////////////////
-//////////////////////////////////////////
-// * Event listeners
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+console.log("🔖 Event Listeners");
 
 listsContainer.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "li") {
@@ -137,6 +151,8 @@ listsContainer.addEventListener("click", (e) => {
   }
 });
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 tasksContainer.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "input") {
     const selectedList = lists.find((list) => list.id === selectedListId);
@@ -149,18 +165,24 @@ tasksContainer.addEventListener("click", (e) => {
   }
 });
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 deleteListButton.addEventListener("click", (e) => {
   lists = lists.filter((list) => list.id !== selectedListId);
   selectedListId = null;
   saveAndRender();
 });
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 clearCompletedTasksButton.addEventListener("click", (e) => {
   const selectedList = lists.find((list) => list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
   saveAndRender();
 });
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const listName = newListInput.value;
@@ -171,6 +193,8 @@ newListForm.addEventListener("submit", (e) => {
   saveAndRender();
 });
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 newTaskForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const taskName = newTaskInput.value;
@@ -184,7 +208,10 @@ newTaskForm.addEventListener("submit", (e) => {
 
 render();
 
-// Aside menu toggle
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+console.log("🔖 Aside menu toggle");
+
 const btnHamburger = document.querySelector(".hamburger");
 const asideMenu = document.querySelector(".aside");
 const mainMenu = document.querySelector(".menu");
