@@ -2,7 +2,7 @@
 
 const listsContainer = document.querySelector("[data-lists]");
 const newListForm = document.querySelector("[data-new-list-form]");
-const newListInput = document.querySelector("[data-new-list-input]");
+const newListFormInput = document.querySelector("[data-new-list-input]");
 const deleteListButton = document.querySelector("[data-delete-list-button]");
 const listDisplayContainer = document.querySelector(
   "[data-list-display-container]"
@@ -17,15 +17,16 @@ const clearCompletedTasksButton = document.querySelector(
   "[data-clear-complete-tasks-button]"
 );
 
+// We store these keys into newly named strings
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
 
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
-// Returns: an array of objects with id, name and tasks properties or an empty array if there is no data in local storage with the key LOCAL_STORAGE_LIST_KEY which is 'task.lists' in this case and we store it in a variable called lists and we use JSON.parse() method to convert the data from string to array of objects again.
-// For example: [{id: "1695574597216", name: "My first list", tasks: []}] or [].
+// Gets and Stores: A string object that is converted to json with JSON.parse, containing id, name & tasks array properties or an empty array if there is no data in local storage with the key LOCAL_STORAGE_LIST_KEY which is 'task.lists'.
+// We will populate the lists array with new lists
 
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
-// Returns: a string value of the key in local storage which is a date format with random numbers converted to string using toString() method and we store it in a variable called selectedListId
+// Gets and Stores: a string value of the key in local storage which is a date format with random numbers converted to string using toString() method and we store it in a variable called selectedListId
 // For example: 1695574597216
 
 ////////////////////////////////////////////////
@@ -41,11 +42,46 @@ function createList(name) {
   };
 }
 
+// Create Permanent Lists
+const inbox = {
+  id: "1000000000",
+  name: "Inbox",
+  tasks: [],
+};
+
+const upcoming = {
+  id: "2000000000",
+  name: "Upcoming",
+  tasks: [],
+};
+
+const archive = {
+  id: "3000000000",
+  name: "Archive",
+  tasks: [],
+};
+
+function createPermanentLists() {
+  if (
+    selectedListId === "1000000000" ||
+    selectedListId === "2000000000" ||
+    selectedListId === "3000000000"
+  ) {
+    return;
+  } else {
+    lists.push(inbox);
+    lists.push(upcoming);
+    lists.push(archive);
+  }
+}
+
+createPermanentLists();
+
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 // Create Tasks
 function createTask(name) {
-  return { id: Date.now().toString(), name: name, complete: false, tests: [] };
+  return { id: Date.now().toString(), name: name, complete: false };
 }
 
 ////////////////////////////////////////////////
@@ -168,9 +204,17 @@ tasksContainer.addEventListener("click", (e) => {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 deleteListButton.addEventListener("click", (e) => {
-  lists = lists.filter((list) => list.id !== selectedListId);
-  selectedListId = null;
-  saveAndRender();
+  if (
+    selectedListId === "1000000000" ||
+    selectedListId === "2000000000" ||
+    selectedListId === "3000000000"
+  ) {
+    return;
+  } else {
+    lists = lists.filter((list) => list.id !== selectedListId);
+    selectedListId = null;
+    saveAndRender();
+  }
 });
 
 ////////////////////////////////////////////////
@@ -185,10 +229,19 @@ clearCompletedTasksButton.addEventListener("click", (e) => {
 ////////////////////////////////////////////////
 newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const listName = newListInput.value;
+  // 1.0 listName = the value that we put inside the form
+  const listName = newListFormInput.value;
+
+  // 2.0 If the input value is empty, do nothing
   if (listName == null || listName === "") return;
+
+  // 3.0 Create an object named list which will populate it with an id, name and tasks [] array.
   const list = createList(listName);
-  newListInput.value = null;
+
+  // 4.0 Empty/clear the input bar after submiting
+  newListFormInput.value = null;
+
+  // 5.0
   lists.push(list);
   saveAndRender();
 });
