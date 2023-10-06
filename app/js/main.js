@@ -31,9 +31,8 @@ let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-console.log("🔖 Functions");
+// 🔖 createList
 
-// Create Lists
 function createList(name) {
   return {
     id: Date.now().toString(),
@@ -42,30 +41,34 @@ function createList(name) {
   };
 }
 
-// Create Permanent Lists
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// 🔖 Create Permanent Lists
+
 const inbox = {
-  id: "1000000000",
+  id: "10",
   name: "Inbox",
   tasks: [],
 };
 
 const upcoming = {
-  id: "2000000000",
+  id: "20",
   name: "Upcoming",
   tasks: [],
 };
 
 const archive = {
-  id: "3000000000",
+  id: "30",
   name: "Archive",
   tasks: [],
 };
 
 function createPermanentLists() {
   if (
-    selectedListId === "1000000000" ||
-    selectedListId === "2000000000" ||
-    selectedListId === "3000000000"
+    selectedListId === "10" ||
+    selectedListId === "20" ||
+    selectedListId === "30" ||
+    selectedListId === "null"
   ) {
     return;
   } else {
@@ -74,7 +77,6 @@ function createPermanentLists() {
     lists.push(archive);
   }
 }
-
 createPermanentLists();
 
 ////////////////////////////////////////////////
@@ -88,8 +90,16 @@ function createTask(name) {
 ////////////////////////////////////////////////
 // Save new list and selected list id to local storage
 function save() {
-  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists)); //
-  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
+  if (
+    selectedListId === "10" ||
+    selectedListId === "20" ||
+    selectedListId === "30"
+  ) {
+    return;
+  } else {
+    localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists)); //
+    localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
+  }
 }
 
 ////////////////////////////////////////////////
@@ -127,6 +137,19 @@ function saveAndRender() {
 ////////////////////////////////////////////////
 // Render Lists
 function renderLists() {
+  lists.forEach((list) => {
+    const listElement = document.createElement("li"); //
+    listElement.dataset.listId = list.id; //
+    listElement.classList.add("aside__list"); //
+    listElement.innerText = list.name; //
+    if (list.id === selectedListId) {
+      listElement.classList.add("active-list"); //
+    }
+    listsContainer.appendChild(listElement); //
+  });
+}
+
+function renderPermaLists() {
   lists.forEach((list) => {
     const listElement = document.createElement("li"); //
     listElement.dataset.listId = list.id; //
@@ -205,9 +228,9 @@ tasksContainer.addEventListener("click", (e) => {
 ////////////////////////////////////////////////
 deleteListButton.addEventListener("click", (e) => {
   if (
-    selectedListId === "1000000000" ||
-    selectedListId === "2000000000" ||
-    selectedListId === "3000000000"
+    selectedListId === "10" ||
+    selectedListId === "20" ||
+    selectedListId === "30"
   ) {
     return;
   } else {
@@ -259,7 +282,7 @@ newTaskForm.addEventListener("submit", (e) => {
   saveAndRender();
 });
 
-render();
+saveAndRender();
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -282,3 +305,15 @@ btnHamburger.addEventListener("click", function () {
 
   toggleMe = !toggleMe;
 });
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+console.log("🔖 Permanent List styling");
+// const inboxPerma = document.querySelector('[data-list-id="10"]');
+// inboxPerma.style.color = "green";
+
+// const upcomingPerma = document.querySelector('[data-list-id="20"]');
+// upcomingPerma.style.color = "blue";
+
+// const archivePerma = document.querySelector('[data-list-id="30"]');
+// archivePerma.style.color = "purple";
