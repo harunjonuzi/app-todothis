@@ -1,38 +1,36 @@
 import { clearElement } from "./clear.js";
 import { createList } from "./createList.js";
 import { createTask } from "./createTask.js";
-
+////////////////////////////////////////////////////////!
 const asideListsContainer = document.querySelector("[data-aside-lists]");
 const asideNewListForm = document.querySelector("[data-aside-new-list-form]");
-const asideNewListFormImg = asideNewListForm.querySelector("img");
 const asideNewListFormInput = document.querySelector(
   "[data-aside-new-list-input]"
 );
+const asideNewListFormImg = asideNewListForm.querySelector("img");
 const asideDeleteListButton = document.querySelector(
-  "[data-aside-delete-list-button]"
+  "[data-aside-delete-list]"
 );
+////////////////////////////////////////////////////////!
 const mainTasksDisplayContainer = document.querySelector(
-  "[data-main-tasks-display-container]"
+  "[data-main-tasks-container]"
 );
-const mainNewTaskForm = document.querySelector("[data-new-task-form]");
-const mainNewTaskInput = document.querySelector("[data-new-task-input]");
+const mainListTitle = document.querySelector("[data-main-list-title]");
+const mainListCounter = document.querySelector("[data-main-list-count]");
+const mainNewTaskForm = document.querySelector("[data-main-new-task-form]");
+const mainNewTaskInput = document.querySelector("[data-main-new-task-input]");
 const mainClearCompletedTasksButton = document.querySelector(
-  "[data-main-clear-complete-tasks-button]"
+  "[data-main-clear-tasks]"
 );
-const mainListTitleElement = document.querySelector("[data-main-list-title]");
-const mainListCountElement = document.querySelector("[data-main-list-count]");
-////////////////////////////////////////////////
-const taskHTMLTemplate = document.getElementById("task-template");
 const mainTasksWrapper = document.querySelector("[data-tasks-wrapper]");
-////////////////////////////////////////////////
+const mainTaskHTMLTemplate = document.getElementById("task-template");
+////////////////////////////////////////////////////////!
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_KEY = "task.selectedListId";
-////////////////////////////////////////////////
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
-// This is an empty array in the beginning, then we populate it with lists that are objects turned into strings and put into Local Storage.
+// Empty array in the beginning, we populate it with permanentLists(), and then lists becomes an array of objects stored inside the localStorage
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_KEY);
-// We get the value of the "task.selectedListId"
-
+////////////////////////////////////////////////////////!
 const svgElementOne = document.querySelector("#svgElement-01");
 const svgElementTwo = document.querySelector("#svgElement-02");
 const svgElementThree = document.querySelector("#svgElement-03");
@@ -211,7 +209,7 @@ function renderLists() {
 // 🟢
 function renderTasks(selectedList) {
   selectedList.tasks.forEach((task) => {
-    const taskElement = document.importNode(taskHTMLTemplate.content, true);
+    const taskElement = document.importNode(mainTaskHTMLTemplate.content, true);
     const checkbox = taskElement.querySelector("input");
     checkbox.id = task.id; // Return: <input id="1696599101686" type="checkbox">
     checkbox.checked = task.complete; // Return: <input id="1696599101686" type="checkbox" checked="">
@@ -229,7 +227,7 @@ function renderTaskCount(selectedList) {
     (item) => !item.complete
   ).length;
   const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
-  mainListCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
+  mainListCounter.innerText = `${incompleteTaskCount} ${taskString} remaining`;
 }
 
 ////////////////////////////////////////////////////////!
@@ -242,8 +240,11 @@ function renderGraphics() {
 
   if (selectedList.id === "10" && selectedList.tasks.length === 0) {
     svgElementOne.style.display = "block";
+    // svgElementOne.style.opacity = "1";
+    // svgElementOne.style.transform = "scaleY(1)";
   } else {
     svgElementOne.style.display = "none";
+    // svgElementOne.style.opacity = "0";
   }
 
   if (selectedList.id === "20" && selectedList.tasks.length === 0) {
@@ -283,7 +284,7 @@ function render() {
     // 02 Phase
     const selectedSheesh = lists.find((item) => (item.id = selectedListId));
     // Return: {id: '10', name: 'Inbox', tasks: Array(0)}
-    mainListTitleElement.innerText = selectedSheesh.name;
+    mainListTitle.innerText = selectedSheesh.name;
     renderLists();
     renderGraphics();
 
@@ -300,7 +301,7 @@ function render() {
     clearElement(asideListsContainer);
 
     // 02 Phase
-    mainListTitleElement.innerText = selectedList.name;
+    mainListTitle.innerText = selectedList.name;
     renderLists();
     renderGraphics();
 
@@ -309,10 +310,6 @@ function render() {
     renderTasks(selectedList);
     renderTaskCount(selectedList);
   }
-
-  // * Every other Render of the Application, reason we are not taking this out of the else statement is because on the first render the applicatin will check if lists are empty and run only the if statement, if we take this out of the else statement it will run this code on the first render as well.
-  // if (lists.length !== 0) {
-  // }
 }
 
 function saveAndRender() {
@@ -323,6 +320,5 @@ function saveAndRender() {
 ////////////////////////////////////////////////////////!
 ////////////////////////////////////////////////////////!
 ////////////////////////////////////////////////////////!
-
 // 🚀 RUNNING THE APPLICATION 🚀 //
 render();

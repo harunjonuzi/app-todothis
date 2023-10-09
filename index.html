@@ -63,13 +63,6 @@
     </nav>
     <div class="inner-container">
       <aside class="aside">
-
-        <!-- <ul class="aside__lists" data-aside-lists-permanent>
-          <li data-list-id="10" class="aside__list active-list"> Inbox </li>
-          <li data-list-id="20" class="aside__list"> Today </li>
-          <li data-list-id="30" class="aside__list"> Upcoming </li>
-        </ul> -->
-
         <ul class="aside__lists" data-aside-lists>
           <!-- <li data-list-id="list.id" class="aside__list active-list"></li> -->
         </ul>
@@ -81,7 +74,7 @@
         </form>
       </aside>
 
-      <main class="main" data-main-tasks-display-container>
+      <main class="main" data-main-tasks-container>
         <div class="main__header">
           <h2 class="main__title" data-main-list-title></h2>
           <p class="main__counter" data-main-list-count></p>
@@ -99,6 +92,7 @@
           </button>
         </div>
 
+        <!-- Display them when tasks are empty -->
         <div id="svgElement-01">
           <img src="app/utilities/svg/DrawKit Vector Illustration Project Manager (5).svg"
             alt="Workstation Illustration">
@@ -126,13 +120,14 @@
           </template> -->
         </div>
 
-        <form class="main__form" action="" data-new-task-form>
-          <input class="main__form-input" maxlength="50" type="text" data-new-task-input placeholder="Add new task">
+        <form class="main__form" action="" data-main-new-task-form>
+          <input class="main__form-input" maxlength="50" type="text" data-main-new-task-input
+            placeholder="Add new task">
           <img src="app/utilities/svg/plus.svg" alt="">
         </form>
 
-        <button class="btn main__btn-delete" data-main-clear-complete-tasks-button>Clear completed tasks</button>
-        <button class="btn main__btn-delete" data-aside-delete-list-button=""> Delete list</button>
+        <button class="btn main__btn-delete" data-main-clear-tasks>Clear completed tasks</button>
+        <button class="btn main__btn-delete" data-aside-delete-list=""> Delete list</button>
       </main>
     </div>
   </div>

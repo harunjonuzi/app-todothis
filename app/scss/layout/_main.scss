@@ -123,6 +123,9 @@
 ////////////////////////////////
 #svgElement-01 {
     display: none;
+    // opacity: 0;
+    // transform: scaleY(0);
+    // transition: opacity 400ms ease-in-out // display: none;
 }
 
 #svgElement-01>img {
