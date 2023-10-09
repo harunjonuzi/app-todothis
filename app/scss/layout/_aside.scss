@@ -45,6 +45,7 @@
     &__form {
         @include a.form;
         background-color: a.$main-second;
+        outline-offset: -2px;
         outline: 2px solid a.$shade-first;
 
         width: calc(100% - 10%);
@@ -55,6 +56,8 @@
             @include a.form-input;
             background-color: inherit;
         }
+
+
 
         img {
             cursor: pointer;

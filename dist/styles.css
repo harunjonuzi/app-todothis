@@ -143,8 +143,9 @@ input {
   display: flex;
   align-items: center;
   border-radius: 0.2rem;
-  padding: 0.4rem 0.6rem;
+  padding: 0.3rem 0.6rem;
   background-color: #282828;
+  outline-offset: -2px;
   outline: 2px solid #444444;
   width: 90%;
   justify-content: space-between;
@@ -210,7 +211,7 @@ input {
   display: flex;
   align-items: center;
   border-radius: 0.2rem;
-  padding: 0.4rem 0.6rem;
+  padding: 0.3rem 0.6rem;
 }
 .main__form-input {
   background-color: inherit;
@@ -335,7 +336,7 @@ input {
   display: flex;
   align-items: center;
   border-radius: 0.2rem;
-  padding: 0.4rem 0.6rem;
+  padding: 0.3rem 0.6rem;
   background-color: #444444;
   padding: 0.1rem 0.4rem;
 }
