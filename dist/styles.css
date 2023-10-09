@@ -23,10 +23,6 @@ body {
   align-items: center;
 }
 
-p {
-  white-space: nowrap;
-}
-
 img,
 svg {
   display: block;
@@ -233,6 +229,19 @@ input {
   transform: scale(1.4);
   transform: rotate(45deg);
 }
+.main__svg img {
+  margin: 0 auto;
+  width: 80%;
+  opacity: 0.8;
+  filter: grayscale(40%);
+}
+.main__svg h3 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.main__svg p {
+  text-align: center;
+}
 
 .task {
   font-size: 0.9rem;
@@ -279,69 +288,6 @@ input {
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 100ms ease-in-out;
-}
-
-#svgElement-01 {
-  margin-top: 2rem;
-  display: none;
-}
-
-#svgElement-01 > img {
-  margin: 0 auto;
-  width: 80%;
-  opacity: 0.8;
-}
-
-#svgElement-01 > h3 {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-#svgElement-01 > p {
-  white-space: normal;
-  text-align: center;
-}
-
-#svgElement-02 {
-  margin-top: 2rem;
-  display: none;
-}
-
-#svgElement-02 > img {
-  margin: 0 auto;
-  width: 80%;
-  opacity: 0.8;
-}
-
-#svgElement-02 > h3 {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-#svgElement-02 > p {
-  white-space: normal;
-  text-align: center;
-}
-
-#svgElement-03 {
-  margin-top: 2rem;
-  display: none;
-}
-
-#svgElement-03 > img {
-  margin: 0 auto;
-  width: 80%;
-  opacity: 0.8;
-}
-
-#svgElement-03 > h3 {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-#svgElement-03 > p {
-  white-space: normal;
-  text-align: center;
 }
 
 .nav {

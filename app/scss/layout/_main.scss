@@ -62,6 +62,24 @@
             }
         }
     }
+
+    &__svg {
+        img {
+            margin: 0 auto;
+            width: 80%;
+            opacity: 0.8;
+            filter: grayscale(40%);
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            text-align: center;
+        }
+    }
 }
 
 .task {
@@ -121,72 +139,69 @@
 
 ////////////////////////////////
 ////////////////////////////////
-#svgElement-01 {
-    margin-top: 2rem;
-    display: none;
-    // opacity: 0;
-    // transform: scaleY(0);
-    // transition: opacity 400ms ease-in-out // display: none;
-}
+// #svgElement-01 {
+//     margin-top: 2rem;
+//     display: none;
+//     // opacity: 0;
+//     // transform: scaleY(0);
+//     // transition: opacity 400ms ease-in-out // display: none;
+// }
 
-#svgElement-01>img {
-    margin: 0 auto;
-    width: 80%;
-    opacity: 0.8;
-}
+// #svgElement-01>img {
+//     margin: 0 auto;
+//     width: 80%;
+//     opacity: 0.8;
+// }
 
-#svgElement-01>h3 {
-    text-align: center;
-    margin-bottom: 0.5rem;
-}
+// #svgElement-01>h3 {
+//     text-align: center;
+//     margin-bottom: 0.5rem;
+// }
 
-#svgElement-01>p {
-    white-space: normal;
-    text-align: center;
-}
-
-////////////////////////////////
-////////////////////////////////
-#svgElement-02 {
-    margin-top: 2rem;
-    display: none;
-}
-
-#svgElement-02>img {
-    margin: 0 auto;
-    width: 80%;
-    opacity: 0.8;
-}
-
-#svgElement-02>h3 {
-    text-align: center;
-    margin-bottom: 0.5rem;
-}
-
-#svgElement-02>p {
-    white-space: normal;
-    text-align: center;
-}
+// #svgElement-01>p {
+//     text-align: center;
+// }
 
 ////////////////////////////////
 ////////////////////////////////
-#svgElement-03 {
-    margin-top: 2rem;
-    display: none;
-}
+// #svgElement-02 {
+//     margin-top: 2rem;
+//     display: none;
+// }
 
-#svgElement-03>img {
-    margin: 0 auto;
-    width: 80%;
-    opacity: 0.8;
-}
+// #svgElement-02>img {
+//     margin: 0 auto;
+//     width: 80%;
+//     opacity: 0.8;
+// }
 
-#svgElement-03>h3 {
-    text-align: center;
-    margin-bottom: 0.5rem;
-}
+// #svgElement-02>h3 {
+//     text-align: center;
+//     margin-bottom: 0.5rem;
+// }
 
-#svgElement-03>p {
-    white-space: normal;
-    text-align: center;
-}
+// #svgElement-02>p {
+//     text-align: center;
+// }
+
+////////////////////////////////
+////////////////////////////////
+// #svgElement-03 {
+//     margin-top: 2rem;
+//     display: none;
+// }
+
+// #svgElement-03>img {
+//     margin: 0 auto;
+//     width: 80%;
+//     opacity: 0.8;
+// }
+
+// #svgElement-03>h3 {
+//     text-align: center;
+//     margin-bottom: 0.5rem;
+// }
+
+// #svgElement-03>p {
+//     text-align: center;
+// }
