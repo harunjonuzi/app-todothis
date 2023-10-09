@@ -12,17 +12,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+  <link rel="icon" href="app/utilities/svg/codesandbox.svg">
 
   <!-- Scripts -->
-  <script src="app/js/main.js" defer></script>
+  <script src="app/js/main.js" type="module"></script>
   <title>Todoology</title>
 </head>
 
 <body>
   <div class="outer-container">
-    <!-- nav -->
     <nav class="nav">
-      <!-- nav__right -->
       <div class="nav__left">
         <div class="circles">
           <div class="circles__Red"></div>
@@ -31,131 +30,94 @@
         </div>
 
         <button class="btn nav__btn hamburger">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
-            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+          <img src="app/utilities/svg/menu.svg" alt="">
         </button>
 
         <button class="btn nav__btn home">
-          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white"
-            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-          </svg>
+          <img src="app/utilities/svg/home.svg" alt="">
         </button>
 
         <form class="nav__form" action="">
           <input class="nav__form-input" type="text" placeholder="Search">
-          <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-            fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-search">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
+          <img src="app/utilities/svg/search.svg" alt="">
         </form>
       </div>
 
-      <!-- nav__right -->
       <div class="nav__right">
         <button class="btn nav__btn plus">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
-            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
+          <img src="app/utilities/svg/plus.svg" alt="">
         </button>
 
         <button class="btn nav__btn help">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
-            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-          </svg>
+          <img src="app/utilities/svg/help-circle.svg" alt="">
         </button>
 
         <button class="btn nav__btn bell">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
-            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-          </svg>
+          <img src="app/utilities/svg/bell.svg" alt="">
         </button>
 
         <button class="btn nav__btn user">
           <img src="app/utilities/images/user.png" alt="User icon">
         </button>
       </div>
-
     </nav>
-
     <div class="inner-container">
-      <!-- aside -->
       <aside class="aside">
-        <!-- aside_lists -->
-        <ul class="aside__lists" data-lists>
-          <!-- <li class="aside__list active-list"></li> -->
+
+        <!-- <ul class="aside__lists" data-aside-lists-permanent>
+          <li data-list-id="10" class="aside__list active-list"> Inbox </li>
+          <li data-list-id="20" class="aside__list"> Today </li>
+          <li data-list-id="30" class="aside__list"> Upcoming </li>
+        </ul> -->
+
+        <ul class="aside__lists" data-aside-lists>
+          <!-- <li data-list-id="list.id" class="aside__list active-list"></li> -->
         </ul>
 
-        <form class="aside__form input-wrap" action="" data-new-list-form>
-          <input class="aside__form-input" type="text" class="input sidebar__input" data-new-list-input
+        <form class="aside__form input-wrap" action="" data-aside-new-list-form>
+          <input class="aside__form-input" type="text" class="input sidebar__input" data-aside-new-list-input
             placeholder="Add new list">
-          <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-            fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-plus">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
+          <img src="app/utilities/svg/plus.svg" alt="">
         </form>
       </aside>
 
-      <!-- main -->
-      <main class="main" data-list-display-container>
-
-        <!-- main__header -->
+      <main class="main" data-main-tasks-display-container>
         <div class="main__header">
-          <h2 class="main__title" data-list-title></h2>
-          <p class="main__counter" data-list-count></p>
+          <h2 class="main__title" data-main-list-title></h2>
+          <p class="main__counter" data-main-list-count></p>
+
           <button class="btn main__btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-              class="feather feather-sliders">
-              <line x1="4" y1="21" x2="4" y2="14"></line>
-              <line x1="4" y1="10" x2="4" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12" y2="3"></line>
-              <line x1="20" y1="21" x2="20" y2="16"></line>
-              <line x1="20" y1="12" x2="20" y2="3"></line>
-              <line x1="1" y1="14" x2="7" y2="14"></line>
-              <line x1="9" y1="8" x2="15" y2="8"></line>
-              <line x1="17" y1="16" x2="23" y2="16"></line>
-            </svg>
+            <img src="app/utilities/svg/sliders.svg" alt="">
           </button>
 
           <button class="btn main__btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-              class="feather feather-message-square">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
+            <img src="app/utilities/svg/message-square.svg" alt="">
           </button>
 
           <button class="btn main__btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-              class="feather feather-more-horizontal">
-              <circle cx="12" cy="12" r="1"></circle>
-              <circle cx="19" cy="12" r="1"></circle>
-              <circle cx="5" cy="12" r="1"></circle>
-            </svg>
+            <img src="app/utilities/svg/more-horizontal.svg" alt="">
           </button>
         </div>
 
-        <!-- main__tasks -->
-        <div data-tasks>
+        <div id="svgElement-01">
+          <img src="app/utilities/svg/DrawKit Vector Illustration Project Manager (5).svg"
+            alt="Workstation Illustration">
+          <h3> You have completed all your tasks, congratulations!</h3>
+        </div>
+
+        <div id="svgElement-02">
+          <img src="app/utilities/svg/DrawKit Vector Illustration Project Manager (8).svg"
+            alt="Workstation Illustration">
+          <h3> You have completed all your tasks, congratulations!</h3>
+        </div>
+
+        <div id="svgElement-03">
+          <img src="app/utilities/svg/DrawKit Vector Illustration Project Manager (10).svg"
+            alt="Workstation Illustration">
+          <h3> You have completed all your tasks, congratulations!</h3>
+        </div>
+
+        <div data-tasks-wrapper>
           <!-- <template id="task-template">
             <div class="task">
               <input class="task__checkbox" type="checkbox">
@@ -166,30 +128,21 @@
 
         <form class="main__form" action="" data-new-task-form>
           <input class="main__form-input" maxlength="50" type="text" data-new-task-input placeholder="Add new task">
-
-          <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-            fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-plus">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
+          <img src="app/utilities/svg/plus.svg" alt="">
         </form>
 
-        <button class="btn main__btn-delete" data-clear-complete-tasks-button>Clear completed tasks</button>
-        <button class="btn main__btn-delete" data-delete-list-button=""> Delete list</button>
+        <button class="btn main__btn-delete" data-main-clear-complete-tasks-button>Clear completed tasks</button>
+        <button class="btn main__btn-delete" data-aside-delete-list-button=""> Delete list</button>
       </main>
-
     </div>
   </div>
 
   <template id="task-template">
     <div class="task">
       <input class="task__checkbox" type="checkbox">
-      <label> <span class="task__custom-checkbox"></span></label>
+      <label><span class="task__custom-checkbox"></span></label>
     </div>
   </template>
-
-
 </body>
 
 </html>

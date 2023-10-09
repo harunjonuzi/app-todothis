@@ -38,6 +38,7 @@
     &__form {
         @include a.form;
         background-color: a.$shade-first;
+        padding: 0.1rem 0.4rem;
 
         &-input {
             @include a.form-input;

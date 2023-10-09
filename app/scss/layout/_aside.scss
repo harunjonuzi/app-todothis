@@ -1,7 +1,7 @@
 @use '../abstracts' as a;
 
 .aside {
-    width: 20rem;
+    width: 350px;
     height: 100%;
     background-color: a.$main-second;
     padding-top: 1rem;
@@ -57,10 +57,6 @@
         }
     }
 }
-
-
-
-
 
 .active-list {
     font-weight: 400;

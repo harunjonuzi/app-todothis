@@ -110,7 +110,7 @@ input {
 }
 
 .aside {
-  width: 20rem;
+  width: 350px;
   height: 100%;
   background-color: #282828;
   padding-top: 1rem;
@@ -147,7 +147,7 @@ input {
   display: flex;
   align-items: center;
   border-radius: 0.2rem;
-  padding: 0.2rem 0.4rem;
+  padding: 0.4rem 0.6rem;
   background-color: #282828;
   outline: 2px solid #444444;
   width: 90%;
@@ -204,7 +204,7 @@ input {
   display: flex;
   align-items: center;
   border-radius: 0.2rem;
-  padding: 0.2rem 0.4rem;
+  padding: 0.4rem 0.6rem;
 }
 .main__form-input {
   background-color: inherit;
@@ -261,6 +261,51 @@ input {
   transition: transform 100ms ease-in-out;
 }
 
+#svgElement-01 {
+  display: none;
+}
+
+#svgElement-01 > img {
+  margin: 0 auto;
+  width: 80%;
+  opacity: 0.8;
+}
+
+#svgElement-01 > h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#svgElement-02 {
+  display: none;
+}
+
+#svgElement-02 > img {
+  margin: 0 auto;
+  width: 80%;
+  opacity: 0.8;
+}
+
+#svgElement-02 > h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#svgElement-03 {
+  display: none;
+}
+
+#svgElement-03 > img {
+  margin: 0 auto;
+  width: 80%;
+  opacity: 0.8;
+}
+
+#svgElement-03 > h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 .nav {
   height: 2.5rem;
   background-color: #333333;
@@ -306,8 +351,9 @@ input {
   display: flex;
   align-items: center;
   border-radius: 0.2rem;
-  padding: 0.2rem 0.4rem;
+  padding: 0.4rem 0.6rem;
   background-color: #444444;
+  padding: 0.1rem 0.4rem;
 }
 .nav__form-input {
   color: white;
