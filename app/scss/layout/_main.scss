@@ -122,6 +122,7 @@
 ////////////////////////////////
 ////////////////////////////////
 #svgElement-01 {
+    margin-top: 2rem;
     display: none;
     // opacity: 0;
     // transform: scaleY(0);
@@ -136,12 +137,18 @@
 
 #svgElement-01>h3 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#svgElement-01>p {
+    white-space: normal;
+    text-align: center;
 }
 
 ////////////////////////////////
 ////////////////////////////////
 #svgElement-02 {
+    margin-top: 2rem;
     display: none;
 }
 
@@ -153,12 +160,18 @@
 
 #svgElement-02>h3 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#svgElement-02>p {
+    white-space: normal;
+    text-align: center;
 }
 
 ////////////////////////////////
 ////////////////////////////////
 #svgElement-03 {
+    margin-top: 2rem;
     display: none;
 }
 
@@ -170,5 +183,10 @@
 
 #svgElement-03>h3 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#svgElement-03>p {
+    white-space: normal;
+    text-align: center;
 }
