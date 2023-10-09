@@ -55,6 +55,18 @@
             @include a.form-input;
             background-color: inherit;
         }
+
+        img {
+            cursor: pointer;
+            transform: scale(1);
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.4);
+                transform: rotate(45deg);
+            }
+        }
     }
 }
 

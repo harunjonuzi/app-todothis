@@ -56,7 +56,6 @@ const upcoming = {
 ////////////////////////////////////////////////////////!
 ////////////////////////////////////////////////////////!
 ////////////////////////////////////////////////////////!
-
 // 🟢 We create new lists and populate the aside menu
 // Click: ENTER
 asideNewListForm.addEventListener("submit", (e) => {
@@ -89,7 +88,6 @@ asideNewListFormImg.addEventListener("click", function () {
 });
 
 ////////////////////////////////////////////////////////!
-
 // 🟢 Whichever list we click, we set the value of the data-list-id to the selectedListId
 asideListsContainer.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "li") {
@@ -100,7 +98,6 @@ asideListsContainer.addEventListener("click", (e) => {
 });
 
 ////////////////////////////////////////////////////////!
-
 // 🟢 Delete lists button
 asideDeleteListButton.addEventListener("click", () => {
   if (
@@ -118,7 +115,6 @@ asideDeleteListButton.addEventListener("click", () => {
 });
 
 ////////////////////////////////////////////////////////!
-
 // 🟢 Toggle side menu
 const btnHamburger = document.querySelector(".hamburger");
 const asideMenu = document.querySelector(".aside");
@@ -138,64 +134,51 @@ btnHamburger.addEventListener("click", function () {
 ////////////////////////////////////////////////////////!
 ////////////////////////////////////////////////////////!
 ////////////////////////////////////////////////////////!
-
-// 🔖 TASKS 🔖 - We create tasks and put them inside the corresponding selectedList tasks array
+// 🟢 We create tasks and put them inside the corresponding selectedList tasks array
 mainNewTaskForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  // console.log(e.target);
 
   const taskName = mainNewTaskInput.value;
-  // 1.0 - taskName = 'Buy tomatoes'
-
   if (taskName == null || taskName === "") return;
-  // 2.0 - If taskName is empy, do nothing
-
   const task = createTask(taskName);
-  // 3.0 - task = { id: Date.now().toString(), name: 'Buy tomatoes', complete: false }
-
   mainNewTaskInput.value = null;
-  // 4.0 - We reset the input value
-
   const selectedList = lists.find((item) => item.id === selectedListId);
-  // 5.0 selectedList = {id: '10', name: 'Inbox', tasks: Array(2)}
-
   selectedList.tasks.push(task);
-  // 6.0 We go inside the selectedList object's tasks array and push the newly created task
-
-  // renderTasks(selectedList); // SPUNON TASK RENDERI
-  // saveAndRender();
+  saveAndRender();
 });
 
-////////////////////////////////////////////////
-// 🔖 TASKS 🔖 Check and uncheck state of the tasks inside the main container
-// Without this the clear completed tasks button will not work
-// mainTasksWrapper.addEventListener("click", (e) => {
-//   // console.log(e.target);
+////////////////////////////////////////////////////////!
+// 🟢 Check and uncheck state of the tasks inside the main container without this the clear completed tasks button will not work
+mainTasksWrapper.addEventListener("click", (e) => {
+  console.log(e.target);
 
-//   if (e.target.tagName.toLowerCase() === "input") {
-//     const selectedList = lists.find((item) => item.id === selectedListId);
-//     // selectedList = {id: "10", name: "Inbox", tasks: []}
+  if (e.target.tagName.toLowerCase() === "input") {
+    const selectedList = lists.find((item) => item.id === selectedListId);
+    // Return: {id: '10', name: 'Inbox', tasks: Array(0)}
 
-//     const selectedTask = selectedList.tasks.find(
-//       (item) => item.id === e.target.id
-//       // selectedTask = {id: "1696599101686", name: "Buy tomatoes", complete: false}
-//     );
+    const selectedTask = selectedList.tasks.find(
+      (item) => item.id === e.target.id
+    );
+    // Return: {id: '1696599101686', name: 'Buy tomatoes', complete: false}
 
-//     selectedTask.complete = e.target.checked;
-//     // We toggle the true and false state of the complete key inside that task (object)
+    selectedTask.complete = e.target.checked;
+    // We toggle the true and false state of the complete key inside that task (object)
 
-//     save();
-//     renderTaskCount(selectedList);
-//   }
-// });
+    save();
+    renderTaskCount(selectedList);
+  }
+});
 
-////////////////////////////////////////////////
-// 🔖 TASKS 🔖 - Clear completed tasks
-// mainClearCompletedTasksButton.addEventListener("click", (e) => {
-//   const selectedList = lists.find((list) => list.id === selectedListId);
-//   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
-//   saveAndRender();
-// });
+////////////////////////////////////////////////////////!
+// 🟢 Clear completed tasks
+mainClearCompletedTasksButton.addEventListener("click", () => {
+  const selectedList = lists.find((list) => list.id === selectedListId);
+  // Return: {id: '10', name: 'Inbox', tasks: Array(0)}
+
+  selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
+  // Explain: We are filtering the tasks array and returning only the tasks that are not complete (false)
+  saveAndRender();
+});
 
 ////////////////////////////////////////////////////////!
 ////////////////////////////////////////////////////////!
@@ -225,39 +208,37 @@ function renderLists() {
 }
 
 ////////////////////////////////////////////////////////!
-//
+// 🟢
 function renderTasks(selectedList) {
   selectedList.tasks.forEach((task) => {
     const taskElement = document.importNode(taskHTMLTemplate.content, true);
-
     const checkbox = taskElement.querySelector("input");
-    checkbox.id = task.id;
-    // <input type="checkbox" id="21387918475"></input>
-
-    checkbox.checked = task.complete;
+    checkbox.id = task.id; // Return: <input id="1696599101686" type="checkbox">
+    checkbox.checked = task.complete; // Return: <input id="1696599101686" type="checkbox" checked="">
     const label = taskElement.querySelector("label");
-    label.htmlFor = task.id;
-    label.append(task.name);
+    label.htmlFor = task.id; // Return: <label for="1696599101686">Buy tomatoes</label>
+    label.append(task.name); // Here we take the name of the task and append it to the label
 
     mainTasksWrapper.appendChild(taskElement);
   });
 }
 
-// function renderTaskCount(selectedList) {
-//   const incompleteTaskCount = selectedList.tasks.filter(
-//     (item) => !item.complete
-//   ).length;
-//   const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
-//   mainListCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
-// }
+// 🟢
+function renderTaskCount(selectedList) {
+  const incompleteTaskCount = selectedList.tasks.filter(
+    (item) => !item.complete
+  ).length;
+  const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
+  mainListCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
+}
 
 ////////////////////////////////////////////////////////!
 // 🟢
 function renderGraphics() {
-  console.log(lists);
+  // console.log(lists);
 
   const selectedList = lists.find((list) => list.id === selectedListId);
-  console.log(selectedList);
+  // console.log(selectedList);
 
   if (selectedList.id === "10" && selectedList.tasks.length === 0) {
     svgElementOne.style.display = "block";
@@ -290,11 +271,8 @@ function save() {
 
 // 🟢
 function render() {
-  const selectedLeest = lists.find((item) => item.id === selectedListId);
-
-  // * First Initial Render of the Application
   if (lists.length === 0) {
-    // console.log("First Render");
+    console.log("Initial Render of the Application");
 
     // 01 Phase
     selectedListId = "10";
@@ -306,25 +284,35 @@ function render() {
     const selectedSheesh = lists.find((item) => (item.id = selectedListId));
     // Return: {id: '10', name: 'Inbox', tasks: Array(0)}
     mainListTitleElement.innerText = selectedSheesh.name;
-
     renderLists();
     renderGraphics();
+
+    // We don't need these two because the tasks.array is empty in the beginning
+    // clearElement(mainTasksWrapper);
     // renderTasks(selectedSheesh);
-    // renderTaskCount(selectedList);
-  } else {
-    // * Every other Render of the Application
-    // console.log("Second Render");
+
+    renderTaskCount(selectedSheesh);
+  } else if (lists.length !== 0) {
+    console.log("Rendered the Application");
 
     // 01 Phase
+    const selectedList = lists.find((item) => item.id === selectedListId);
     clearElement(asideListsContainer);
 
     // 02 Phase
-    mainListTitleElement.innerText = selectedLeest.name;
+    mainListTitleElement.innerText = selectedList.name;
     renderLists();
-    // renderTasks(selectedLeest);
     renderGraphics();
-    // renderTaskCount(selectedList);
+
+    // Main function of our application is to clear and re-render the lists and tasks, thats why I was getting an error (duplicatino) when I was trying to render the tasks without clearing them first.
+    clearElement(mainTasksWrapper);
+    renderTasks(selectedList);
+    renderTaskCount(selectedList);
   }
+
+  // * Every other Render of the Application, reason we are not taking this out of the else statement is because on the first render the applicatin will check if lists are empty and run only the if statement, if we take this out of the else statement it will run this code on the first render as well.
+  // if (lists.length !== 0) {
+  // }
 }
 
 function saveAndRender() {

@@ -161,6 +161,16 @@ input {
   width: 100%;
   background-color: inherit;
 }
+.aside__form img {
+  cursor: pointer;
+  transform: scale(1);
+  transition: all 200ms ease-in-out;
+}
+.aside__form img:hover {
+  opacity: 0.8;
+  transform: scale(1.4);
+  transform: rotate(45deg);
+}
 
 .active-list {
   font-weight: 400;
@@ -212,6 +222,16 @@ input {
   border: none;
   outline: none;
   width: 100%;
+}
+.main__form img {
+  cursor: pointer;
+  transform: scale(1);
+  transition: all 200ms ease-in-out;
+}
+.main__form img:hover {
+  opacity: 0.8;
+  transform: scale(1.4);
+  transform: rotate(45deg);
 }
 
 .task {
