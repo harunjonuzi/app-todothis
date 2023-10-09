@@ -1,221 +1,121 @@
-// Changed remote link
-
-const listsContainer = document.querySelector("[data-lists]");
-const newListForm = document.querySelector("[data-new-list-form]");
-const newListInput = document.querySelector("[data-new-list-input]");
-const deleteListButton = document.querySelector("[data-delete-list-button]");
-const listDisplayContainer = document.querySelector(
-  "[data-list-display-container]"
+import { clearElement } from "./clear.js";
+import { createList } from "./createList.js";
+import { createTask } from "./createTask.js";
+////////////////////////////////////////////////////////!
+const asideListsContainer = document.querySelector("[data-aside-lists]");
+const asideNewListForm = document.querySelector("[data-aside-new-list-form]");
+const asideNewListFormInput = document.querySelector(
+  "[data-aside-new-list-input]"
 );
-const listTitleElement = document.querySelector("[data-list-title]");
-const listCountElement = document.querySelector("[data-list-count]");
-const tasksContainer = document.querySelector("[data-tasks]");
-const taskTemplate = document.getElementById("task-template");
-const newTaskForm = document.querySelector("[data-new-task-form]");
-const newTaskInput = document.querySelector("[data-new-task-input]");
-const clearCompletedTasksButton = document.querySelector(
-  "[data-clear-complete-tasks-button]"
+const asideNewListFormImg = asideNewListForm.querySelector("img");
+const asideDeleteListButton = document.querySelector(
+  "[data-aside-delete-list]"
 );
-
+////////////////////////////////////////////////////////!
+const mainTasksDisplayContainer = document.querySelector(
+  "[data-main-tasks-container]"
+);
+const mainListTitle = document.querySelector("[data-main-list-title]");
+const mainListCounter = document.querySelector("[data-main-list-count]");
+const mainNewTaskForm = document.querySelector("[data-main-new-task-form]");
+const mainNewTaskInput = document.querySelector("[data-main-new-task-input]");
+const mainClearCompletedTasksButton = document.querySelector(
+  "[data-main-clear-tasks]"
+);
+const mainTasksWrapper = document.querySelector("[data-tasks-wrapper]");
+const mainTaskHTMLTemplate = document.getElementById("task-template");
+////////////////////////////////////////////////////////!
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
-const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
-
+const LOCAL_STORAGE_SELECTED_LIST_KEY = "task.selectedListId";
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
-// Returns: an array of objects with id, name and tasks properties or an empty array if there is no data in local storage with the key LOCAL_STORAGE_LIST_KEY which is 'task.lists' in this case and we store it in a variable called lists and we use JSON.parse() method to convert the data from string to array of objects again.
-// For example: [{id: "1695574597216", name: "My first list", tasks: []}] or [].
+// Empty array in the beginning, we populate it with permanentLists(), and then lists becomes an array of objects stored inside the localStorage
+let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_KEY);
+////////////////////////////////////////////////////////!
+const svgElementOne = document.querySelector("#svgElement-01");
+const svgElementTwo = document.querySelector("#svgElement-02");
+const svgElementThree = document.querySelector("#svgElement-03");
 
-let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
-// Returns: a string value of the key in local storage which is a date format with random numbers converted to string using toString() method and we store it in a variable called selectedListId
-// For example: 1695574597216
+const inbox = {
+  id: "10",
+  name: "Inbox",
+  tasks: [],
+};
+const today = {
+  id: "20",
+  name: "Today",
+  tasks: [],
+};
+const upcoming = {
+  id: "30",
+  name: "Upcoming",
+  tasks: [],
+};
 
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-console.log("🔖 Functions");
-
-// Create Lists
-function createList(name) {
-  return {
-    id: Date.now().toString(),
-    name: name,
-    tasks: [],
-  };
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-// Create Tasks
-function createTask(name) {
-  return { id: Date.now().toString(), name: name, complete: false, tests: [] };
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-// Save new list and selected list id to local storage
-function save() {
-  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists)); //
-  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-function render() {
-  const selectedListObject = lists.find((list) => list.id === selectedListId);
-  clearElement(listsContainer);
-  renderLists();
-
-  if (selectedListId == null) {
-    listDisplayContainer.style.display = "none";
-  } else {
-    listDisplayContainer.style.display = "";
-
-    if (selectedListObject) {
-      listTitleElement.innerText = selectedListObject.name;
-    } else {
-      return;
-    }
-
-    clearElement(tasksContainer);
-    renderTaskCount(selectedListObject);
-    renderTasks(selectedListObject);
-  }
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-function saveAndRender() {
-  save();
-  render();
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-// Render Lists
-function renderLists() {
-  lists.forEach((list) => {
-    const listElement = document.createElement("li"); //
-    listElement.dataset.listId = list.id; //
-    listElement.classList.add("aside__list"); //
-    listElement.innerText = list.name; //
-    if (list.id === selectedListId) {
-      listElement.classList.add("active-list"); //
-    }
-    listsContainer.appendChild(listElement); //
-  });
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-function renderTasks(selectedList) {
-  selectedList.tasks.forEach((task) => {
-    const taskElement = document.importNode(taskTemplate.content, true);
-
-    const checkbox = taskElement.querySelector("input");
-    checkbox.id = task.id;
-    // <input type="checkbox" id="21387918475"></input>
-
-    checkbox.checked = task.complete;
-    const label = taskElement.querySelector("label");
-    label.htmlFor = task.id;
-    label.append(task.name);
-    tasksContainer.appendChild(taskElement);
-  });
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-function renderTaskCount(selectedList) {
-  const incompleteTaskCount = selectedList.tasks.filter(
-    (task) => !task.complete
-  ).length;
-  const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
-  listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-function clearElement(element) {
-  // Clears the element from all its children elements (li) and their children elements (input and label) and their children elements (checkbox and text).
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
-  }
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-console.log("🔖 Event Listeners");
-
-listsContainer.addEventListener("click", (e) => {
-  if (e.target.tagName.toLowerCase() === "li") {
-    selectedListId = e.target.dataset.listId;
-    saveAndRender();
-  }
-});
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-tasksContainer.addEventListener("click", (e) => {
-  if (e.target.tagName.toLowerCase() === "input") {
-    const selectedList = lists.find((list) => list.id === selectedListId);
-    const selectedTask = selectedList.tasks.find(
-      (task) => task.id === e.target.id
-    );
-    selectedTask.complete = e.target.checked;
-    save();
-    renderTaskCount(selectedList);
-  }
-});
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-deleteListButton.addEventListener("click", (e) => {
-  lists = lists.filter((list) => list.id !== selectedListId);
-  selectedListId = null;
-  saveAndRender();
-});
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-clearCompletedTasksButton.addEventListener("click", (e) => {
-  const selectedList = lists.find((list) => list.id === selectedListId);
-  selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
-  saveAndRender();
-});
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-newListForm.addEventListener("submit", (e) => {
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+// 🟢 We create new lists and populate the aside menu
+// Click: ENTER
+asideNewListForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const listName = newListInput.value;
+
+  // 01 Phase
+  const listName = asideNewListFormInput.value;
   if (listName == null || listName === "") return;
   const list = createList(listName);
-  newListInput.value = null;
+  // Create an object named list which will populate it with an id, name and tasks [] array.
+
+  // 02 Phase
+  asideNewListFormInput.value = null;
   lists.push(list);
   saveAndRender();
 });
 
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-newTaskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const taskName = newTaskInput.value;
-  if (taskName == null || taskName === "") return;
-  const task = createTask(taskName);
-  newTaskInput.value = null;
-  const selectedList = lists.find((list) => list.id === selectedListId);
-  selectedList.tasks.push(task);
+// Click: IMG BUTTON
+asideNewListFormImg.addEventListener("click", function () {
+  // 01 Phase
+  const listName = asideNewListFormInput.value;
+  if (listName == null || listName === "") return;
+  const list = createList(listName);
+  // Create an object named list which will populate it with an id, name and tasks [] array.
+
+  // 02 Phase
+  asideNewListFormInput.value = null;
+  lists.push(list);
   saveAndRender();
 });
 
-render();
+////////////////////////////////////////////////////////!
+// 🟢 Whichever list we click, we set the value of the data-list-id to the selectedListId
+asideListsContainer.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "li") {
+    selectedListId = e.target.dataset.listId;
+    console.log(selectedListId);
+    saveAndRender();
+  }
+});
 
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-console.log("🔖 Aside menu toggle");
+////////////////////////////////////////////////////////!
+// 🟢 Delete lists button
+asideDeleteListButton.addEventListener("click", () => {
+  if (
+    selectedListId === "10" ||
+    selectedListId === "20" ||
+    selectedListId === "30"
+  ) {
+    console.log("Cannot delete permanent lists!");
+    return;
+  } else {
+    lists = lists.filter((list) => list.id !== selectedListId);
+    selectedListId = "10";
+    saveAndRender();
+  }
+});
 
+////////////////////////////////////////////////////////!
+// 🟢 Toggle side menu
 const btnHamburger = document.querySelector(".hamburger");
 const asideMenu = document.querySelector(".aside");
-const mainMenu = document.querySelector(".menu");
-
 let toggleMe = true;
 
 btnHamburger.addEventListener("click", function () {
@@ -226,6 +126,199 @@ btnHamburger.addEventListener("click", function () {
     // asideMenu.style.transform = "translateX(0)";
     asideMenu.style.display = "";
   }
-
   toggleMe = !toggleMe;
 });
+
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+// 🟢 We create tasks and put them inside the corresponding selectedList tasks array
+mainNewTaskForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const taskName = mainNewTaskInput.value;
+  if (taskName == null || taskName === "") return;
+  const task = createTask(taskName);
+  mainNewTaskInput.value = null;
+  const selectedList = lists.find((item) => item.id === selectedListId);
+  selectedList.tasks.push(task);
+  saveAndRender();
+});
+
+////////////////////////////////////////////////////////!
+// 🟢 Check and uncheck state of the tasks inside the main container without this the clear completed tasks button will not work
+mainTasksWrapper.addEventListener("click", (e) => {
+  console.log(e.target);
+
+  if (e.target.tagName.toLowerCase() === "input") {
+    const selectedList = lists.find((item) => item.id === selectedListId);
+    // Return: {id: '10', name: 'Inbox', tasks: Array(0)}
+
+    const selectedTask = selectedList.tasks.find(
+      (item) => item.id === e.target.id
+    );
+    // Return: {id: '1696599101686', name: 'Buy tomatoes', complete: false}
+
+    selectedTask.complete = e.target.checked;
+    // We toggle the true and false state of the complete key inside that task (object)
+
+    save();
+    renderTaskCount(selectedList);
+  }
+});
+
+////////////////////////////////////////////////////////!
+// 🟢 Clear completed tasks
+mainClearCompletedTasksButton.addEventListener("click", () => {
+  const selectedList = lists.find((list) => list.id === selectedListId);
+  // Return: {id: '10', name: 'Inbox', tasks: Array(0)}
+
+  selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
+  // Explain: We are filtering the tasks array and returning only the tasks that are not complete (false)
+  saveAndRender();
+});
+
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+
+// 🟢
+function pushPermanentLists() {
+  lists.push(inbox);
+  lists.push(today);
+  lists.push(upcoming);
+}
+
+////////////////////////////////////////////////////////!
+// 🟢
+function renderLists() {
+  lists.forEach((list) => {
+    const asideListElement = document.createElement("li");
+    asideListElement.dataset.listId = list.id;
+    asideListElement.classList.add("aside__list");
+    asideListElement.innerText = list.name;
+
+    if (list.id === selectedListId) {
+      asideListElement.classList.add("active-list");
+    }
+    asideListsContainer.appendChild(asideListElement);
+  });
+}
+
+////////////////////////////////////////////////////////!
+// 🟢
+function renderTasks(selectedList) {
+  selectedList.tasks.forEach((task) => {
+    const taskElement = document.importNode(mainTaskHTMLTemplate.content, true);
+    const checkbox = taskElement.querySelector("input");
+    checkbox.id = task.id; // Return: <input id="1696599101686" type="checkbox">
+    checkbox.checked = task.complete; // Return: <input id="1696599101686" type="checkbox" checked="">
+    const label = taskElement.querySelector("label");
+    label.htmlFor = task.id; // Return: <label for="1696599101686">Buy tomatoes</label>
+    label.append(task.name); // Here we take the name of the task and append it to the label
+
+    mainTasksWrapper.appendChild(taskElement);
+  });
+}
+
+// 🟢
+function renderTaskCount(selectedList) {
+  const incompleteTaskCount = selectedList.tasks.filter(
+    (item) => !item.complete
+  ).length;
+  const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
+  mainListCounter.innerText = `${incompleteTaskCount} ${taskString} remaining`;
+}
+
+////////////////////////////////////////////////////////!
+// 🟢
+function renderGraphics() {
+  // console.log(lists);
+
+  const selectedList = lists.find((list) => list.id === selectedListId);
+  // console.log(selectedList);
+
+  if (selectedList.id === "10" && selectedList.tasks.length === 0) {
+    svgElementOne.style.display = "block";
+    // svgElementOne.style.opacity = "1";
+    // svgElementOne.style.transform = "scaleY(1)";
+  } else {
+    svgElementOne.style.display = "none";
+    // svgElementOne.style.opacity = "0";
+  }
+
+  if (selectedList.id === "20" && selectedList.tasks.length === 0) {
+    svgElementTwo.style.display = "block";
+  } else {
+    svgElementTwo.style.display = "none";
+  }
+
+  if (selectedList.id === "30" && selectedList.tasks.length === 0) {
+    svgElementThree.style.display = "block";
+  } else {
+    svgElementThree.style.display = "none";
+  }
+}
+
+////////////////////////////////////////////////////////!
+// 🟢
+function save() {
+  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
+  // setItem('tasks.lists', [{id: '10', name: 'Inbox', tasks: [] }])
+
+  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_KEY, selectedListId);
+  // setItem('tasks.selectedListId', 2138917848932)
+}
+
+// 🟢
+function render() {
+  if (lists.length === 0) {
+    console.log("Initial Render of the Application");
+
+    // 01 Phase
+    selectedListId = "10";
+    clearElement(asideListsContainer);
+    pushPermanentLists();
+    save();
+
+    // 02 Phase
+    const selectedSheesh = lists.find((item) => (item.id = selectedListId));
+    // Return: {id: '10', name: 'Inbox', tasks: Array(0)}
+    mainListTitle.innerText = selectedSheesh.name;
+    renderLists();
+    renderGraphics();
+
+    // We don't need these two because the tasks.array is empty in the beginning
+    // clearElement(mainTasksWrapper);
+    // renderTasks(selectedSheesh);
+
+    renderTaskCount(selectedSheesh);
+  } else if (lists.length !== 0) {
+    console.log("Rendered the Application");
+
+    // 01 Phase
+    const selectedList = lists.find((item) => item.id === selectedListId);
+    clearElement(asideListsContainer);
+
+    // 02 Phase
+    mainListTitle.innerText = selectedList.name;
+    renderLists();
+    renderGraphics();
+
+    // Main function of our application is to clear and re-render the lists and tasks, thats why I was getting an error (duplicatino) when I was trying to render the tasks without clearing them first.
+    clearElement(mainTasksWrapper);
+    renderTasks(selectedList);
+    renderTaskCount(selectedList);
+  }
+}
+
+function saveAndRender() {
+  save();
+  render();
+}
+
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+// 🚀 RUNNING THE APPLICATION 🚀 //
+render();
