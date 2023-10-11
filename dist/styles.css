@@ -245,6 +245,8 @@ input {
 }
 
 .task {
+  display: flex;
+  align-items: center;
   font-size: 0.9rem;
   border-bottom: 1px solid rgba(69, 69, 69, 0.7843137255);
   position: relative;
@@ -260,6 +262,30 @@ input {
 .task__checkbox:checked + label {
   opacity: 0.5;
 }
+.task__checkbox:checked + label ~ img {
+  opacity: 0.5;
+}
+.task__checkbox:checked + label ~ input {
+  opacity: 0.5;
+}
+.task__checkbox:checked .edit-button, .task__checkbox:checked .save-button {
+  opacity: 0.5;
+}
+.task label {
+  padding: 0.6rem 0;
+}
+.task label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 18px;
+  height: 2px;
+  background-color: #444444;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 100ms ease-in-out;
+}
 .task__custom-checkbox {
   display: inline-block;
   width: 0.75em;
@@ -274,21 +300,33 @@ input {
 .task:hover .task__custom-checkbox {
   transform: scale(1.3);
 }
-.task label {
-  display: flex;
-  align-items: center;
-  padding: 0.6rem 0;
+.task__input {
+  color: white;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #1E1E1E;
+  padding-left: 0.1rem;
+  cursor: pointer;
 }
-.task label::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #444444;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 100ms ease-in-out;
+.task .edit-button {
+  padding: 0 0.2rem;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 200ms ease-in-out;
+}
+.task:hover .edit-button {
+  opacity: 1;
+}
+.task .save-button {
+  display: none;
+  padding: 0 0.2rem;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 200ms ease-in-out;
+}
+.task:hover .save-button {
+  opacity: 1;
 }
 
 .nav {
