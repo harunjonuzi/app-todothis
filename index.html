@@ -94,7 +94,7 @@
 
 
 
-        <div data-tasks-wrapper>
+        <div id="task-wrapper" data-tasks-wrapper>
           <!-- <template id="task-template">
             <div class="task">
               <input class="task__checkbox" type="checkbox">
@@ -139,7 +139,12 @@
   <template id="task-template">
     <div class="task">
       <input class="task__checkbox" type="checkbox">
-      <label><span class="task__custom-checkbox"></span></label>
+      <label><span class="task__custom-checkbox"></span>
+      </label>
+      <input type="text" class="task__input" readonly>
+
+      <img class="edit-button" src="app/utilities/svg/edit.svg" alt="Edit button">
+      <img class="save-button" src="app/utilities/svg/save.svg" alt="Edit button">
     </div>
   </template>
 </body>
