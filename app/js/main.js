@@ -4,24 +4,16 @@ import { createTask } from "./createTask.js";
 ////////////////////////////////////////////////////////!
 const asideListsContainer = document.querySelector("[data-aside-lists]");
 const asideNewListForm = document.querySelector("[data-aside-new-list-form]");
-const asideNewListFormInput = document.querySelector(
-  "[data-aside-new-list-input]"
-);
+const asideNewListFormInput = document.querySelector("[data-aside-new-list-input]");
 const asideNewListFormImg = asideNewListForm.querySelector("img");
-const asideDeleteListButton = document.querySelector(
-  "[data-aside-delete-list]"
-);
+const asideDeleteListButton = document.querySelector("[data-aside-delete-list]");
 ////////////////////////////////////////////////////////!
-const mainTasksDisplayContainer = document.querySelector(
-  "[data-main-tasks-container]"
-);
+const mainTasksDisplayContainer = document.querySelector("[data-main-tasks-container]");
 const mainListTitle = document.querySelector("[data-main-list-title]");
 const mainListCounter = document.querySelector("[data-main-list-count]");
 const mainNewTaskForm = document.querySelector("[data-main-new-task-form]");
 const mainNewTaskInput = document.querySelector("[data-main-new-task-input]");
-const mainClearCompletedTasksButton = document.querySelector(
-  "[data-main-clear-tasks]"
-);
+const mainClearCompletedTasksButton = document.querySelector("[data-main-clear-tasks]");
 const mainTasksWrapper = document.querySelector("[data-tasks-wrapper]");
 const mainTaskHTMLTemplate = document.getElementById("task-template");
 ////////////////////////////////////////////////////////!
@@ -31,6 +23,7 @@ let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 // Empty array in the beginning, we populate it with permanentLists(), and then lists becomes an array of objects stored inside the localStorage
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_KEY);
 ////////////////////////////////////////////////////////!
+const taskWrapper = document.querySelector("#task-wrapper");
 const svgElementOne = document.querySelector("#svgElement-01");
 const svgElementTwo = document.querySelector("#svgElement-02");
 const svgElementThree = document.querySelector("#svgElement-03");
@@ -99,11 +92,7 @@ asideListsContainer.addEventListener("click", (e) => {
 ////////////////////////////////////////////////////////!
 // 🟢 Delete lists button
 asideDeleteListButton.addEventListener("click", () => {
-  if (
-    selectedListId === "10" ||
-    selectedListId === "20" ||
-    selectedListId === "30"
-  ) {
+  if (selectedListId === "10" || selectedListId === "20" || selectedListId === "30") {
     console.log("Cannot delete permanent lists!");
     return;
   } else {
@@ -153,9 +142,7 @@ mainTasksWrapper.addEventListener("click", (e) => {
     const selectedList = lists.find((item) => item.id === selectedListId);
     // Return: {id: '10', name: 'Inbox', tasks: Array(0)}
 
-    const selectedTask = selectedList.tasks.find(
-      (item) => item.id === e.target.id
-    );
+    const selectedTask = selectedList.tasks.find((item) => item.id === e.target.id);
     // Return: {id: '1696599101686', name: 'Buy tomatoes', complete: false}
 
     selectedTask.complete = e.target.checked;
@@ -249,71 +236,86 @@ function renderLists() {
 // 🟢
 function renderTasks(selectedList) {
   selectedList.tasks.forEach((task) => {
-    const taskElement = document.importNode(mainTaskHTMLTemplate.content, true);
-    const checkbox = taskElement.querySelector(".task__checkbox");
-    const inputText = taskElement.querySelector(".task__input");
-    const label = taskElement.querySelector("label");
-    const editTaskButton = taskElement.querySelector(".edit-button");
-    const saveTaskButton = taskElement.querySelector(".save-button");
+    // 2.0 Create elements
+    const taskDiv = document.createElement("div");
+    const checkboxInput = document.createElement("input");
+    const label = document.createElement("label");
+    const span = document.createElement("span");
+    const inputText = document.createElement("input");
+    const editButton = document.createElement("img");
+    const saveButton = document.createElement("img");
 
-    checkbox.id = task.id;
-    // Return: <input id="1696599101686" type="checkbox">
+    // 3.0 Set classes and attributes
+    taskDiv.classList.add("task");
+    checkboxInput.classList.add("task__checkbox");
+    checkboxInput.setAttribute("type", "checkbox");
+    span.classList.add("task__custom-checkbox");
+    inputText.classList.add("task__input");
+    inputText.setAttribute("type", "text");
+    inputText.setAttribute("readonly", true);
+    editButton.classList.add("edit-button");
+    editButton.setAttribute("src", "app/utilities/svg/edit.svg");
+    editButton.setAttribute("alt", "Edit button for tasks");
+    saveButton.classList.add("save-button");
+    saveButton.setAttribute("src", "app/utilities/svg/save.svg");
+    saveButton.setAttribute("alt", "Save button for tasks");
 
-    checkbox.checked = task.complete;
-    // Return: <input id="1696599101686" type="checkbox" checked="">
+    // 4.0 Append elements in the corresponding places
+    taskDiv.appendChild(checkboxInput);
+    taskDiv.appendChild(label);
+    label.appendChild(span);
+    taskDiv.appendChild(inputText);
+    taskDiv.appendChild(editButton);
+    taskDiv.appendChild(saveButton);
 
+    // 5.0 Populate the elements with users input
+    checkboxInput.id = task.id;
+    checkboxInput.checked = task.complete;
     label.htmlFor = task.id;
-    // Return: <label for="1696599101686">Buy tomatoes</label>
-
     inputText.value = task.name;
-    // Return: Here we take the name of the task and append it to the input
+    // inputText.id = task.id;
+    editButton.id = task.id;
+    editButton.dataset.id = task.id;
+    saveButton.id = task.id;
+    saveButton.dataset.id = task.id;
 
-    inputText.id = task.id;
-
-    editTaskButton.id = task.id;
-    // Return: <img id='1696599101686' src="app/utilities/svg/edit.svg" alt="Edit button">
-
-    saveTaskButton.id = task.id;
-    // Return: <img id='1696599101686' src="app/utilities/svg/edit.svg" alt="Edit button">
-
+    ////////////////////////////////////////////////////////!
     // 🟢 Edit feature
-    editTaskButton.addEventListener("click", () => {
-      saveTaskButton.style.display = "block";
-      editTaskButton.style.display = "none";
+    function handleEdit() {
+      saveButton.style.display = "block";
+      editButton.style.display = "none";
 
       inputText.removeAttribute("readonly");
       inputText.focus();
-    });
+    }
+    editButton.addEventListener("click", handleEdit);
 
+    ////////////////////////////////////////////////////////!
     // 🟢 Save feature
     function handleSave() {
-      const currentTask = selectedList.tasks.find(
-        (item) => item.id === editTaskButton.id
-      );
+      const currentTask = selectedList.tasks.find((item) => item.id === editButton.id);
       currentTask.name = inputText.value;
-      saveTaskButton.style.display = "none";
-      editTaskButton.style.display = "block";
+      saveButton.style.display = "none";
+      editButton.style.display = "block";
       saveAndRender();
     }
+    saveButton.addEventListener("click", handleSave);
 
-    saveTaskButton.addEventListener("click", handleSave);
+    // 🟢 Save on "Enter"
+    inputText.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        handleSave();
+      }
+    });
 
-    // TODO - Enter is not working
-    // saveTaskButton.addEventListener("keydown", (e) => {
-    //   if (e.key === "Enter") {
-    //     handleSave();
-    //   }
-    // });
-
-    mainTasksWrapper.appendChild(taskElement);
+    mainTasksWrapper.appendChild(taskDiv);
   });
 }
 
+////////////////////////////////////////////////////////!
 // 🟢
 function renderTaskCount(selectedList) {
-  const incompleteTaskCount = selectedList.tasks.filter(
-    (item) => !item.complete
-  ).length;
+  const incompleteTaskCount = selectedList.tasks.filter((item) => !item.complete).length;
   const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
   mainListCounter.innerText = `${incompleteTaskCount} ${taskString} remaining`;
 }
@@ -372,6 +374,28 @@ function renderGraphics() {
 //   },
 //   false
 // );
+
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+
+// TODO Wanting to remove the edit and save feature from inside the function
+// const selectedLeest = lists.find((item) => item.id === selectedListId);
+// console.log(selectedLeest);
+
+// mainTasksWrapper.addEventListener("click", (e) => {
+//   if (e.target.classList.contains("edit-button")) {
+//     console.log("EDIT BUTTON");
+//     const imgEdit = e.target;
+//   } else {
+//     console.log("SAVE BUTTON");
+//     const imgSave = e.target;
+//   }
+// });
+
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
+////////////////////////////////////////////////////////!
 
 ////////////////////////////////////////////////////////!
 // 🟢
