@@ -21,3 +21,8 @@
     outline: none;
     width: 100%;
 }
+
+@mixin color-scheme($text, $bg) {
+    background-color: $bg;
+    color: $text;
+}

@@ -5,37 +5,85 @@
     height: 100%;
     background-color: a.$main-second;
     padding-top: 1rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     overflow-y: scroll;
-
     transition: transform 150ms ease-in-out;
 
-    &__lists {
-        width: 100%;
+    &__permanents {
+        width: 90%;
+        margin-inline: auto;
+
+
     }
 
-    &__list {
-        font-size: 0.9rem;
-        list-style-type: none;
-        width: calc(100% - 10%);
+    hr {
+        width: 90%;
+        border: 1px solid a.$shade-first;
+        margin-top: 0.6rem;
+        margin-bottom: 0.8rem;
+        margin-inline: auto;
+    }
+
+    &__customs {
+        width: 90%;
+        margin-inline: auto;
+
+        .aside__div {
+            display: flex;
+            align-items: center;
+
+            .edit-button {
+                padding: 0 0.2rem;
+                opacity: 0;
+                cursor: pointer;
+                transition: opacity 200ms ease-in-out;
+            }
+
+            &:hover .edit-button {
+                opacity: 1;
+            }
+
+            .save-button {
+                display: none;
+                padding: 0 0.2rem;
+                opacity: 0;
+                cursor: pointer;
+                transition: opacity 200ms ease-in-out;
+            }
+
+            &:hover .save-button {
+                opacity: 1;
+            }
+        }
+
+        &:hover {
+            background-color: a.$main-third;
+        }
+    }
+
+    &__input {
+        // @include a.color-scheme(yellow, brown);
+
+        display: inline-block;
+        color: white;
+        background-color: a.$main-second;
+        outline: none;
+        border: none;
         border-radius: a.$border-radius;
 
-        margin: 0 auto;
         margin-bottom: 0.3rem;
-        padding: 0.3rem 0.6rem;
+        padding: 0.3rem 0 0.3rem 0.8rem;
         transition: all 250ms ease-in-out;
         cursor: pointer;
+        width: 100%;
 
         /* Prevents text from going to a new line */
-        white-space: nowrap;
+        // white-space: nowrap;
 
         /* Hides the text that is going outside the container */
-        overflow: hidden;
+        // overflow: hidden;
 
         /* Add ... to the end of the longer text */
-        text-overflow: ellipsis;
+        // text-overflow: ellipsis;
 
         &:hover {
             background-color: a.$main-third;
@@ -48,16 +96,15 @@
         outline-offset: -2px;
         outline: 2px solid a.$shade-first;
 
-        width: calc(100% - 10%);
-        justify-content: space-between;
-        margin: 0.5rem 0 1rem 0;
+        width: 90%;
+        margin-inline: auto;
+        margin-block: 0.5rem;
+
 
         &-input {
             @include a.form-input;
             background-color: inherit;
         }
-
-
 
         img {
             cursor: pointer;

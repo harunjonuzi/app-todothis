@@ -1,12 +1,14 @@
-    $main-first: #1E1E1E;
-    $main-second: #282828;
-    $main-third: #333333;
+// Font
+$font-base: 0.875rem;
+$font-small: 0.625rem;
+$font-medium: 0.75rem;
+$font-large: 1.5rem;
 
-    $shade-first: #444444;
-    $shade-second: #666666;
+$font-family: 'Outfit', sans-serif;
 
-    $border-radius: 0.2rem;
+$fw-300: 300;
+$fw-400: 400;
+$fw-600: 600;
 
-    $inbox-list: hsl(216, 100%, 58%);
-    $today-list: hsl(136, 67%, 33%);
-    $upcoming-list: hsl(264, 100%, 72%);
+// Layout
+$border-radius: 0.2rem;

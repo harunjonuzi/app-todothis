@@ -1,0 +1,50 @@
+@use '../abstracts' as a;
+
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #fff;
+    min-height: 100dvh;
+    font-size: a.$font-medium;
+    font-family: a.$font-family;
+    width: 100%;
+    height: 100vh;
+    background-color: a.$main-first-clr;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input {
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+
+}
+
+.outer-container {}
+
+.inner-container {
+    display: flex;
+    height: calc(100% - 2.5rem);
+    width: 100%;
+}
+
+.form-icon {
+    cursor: pointer;
+}

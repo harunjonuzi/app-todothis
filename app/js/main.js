@@ -3,6 +3,7 @@ import { createList } from "./createList.js";
 import { createTask } from "./createTask.js";
 ////////////////////////////////////////////////////////!
 const asideListsContainer = document.querySelector("[data-aside-lists]");
+const asideCustomListsContainer = document.querySelector("[data-aside-custom-lists]");
 const asideNewListForm = document.querySelector("[data-aside-new-list-form]");
 const asideNewListFormInput = document.querySelector("[data-aside-new-list-input]");
 const asideNewListFormImg = asideNewListForm.querySelector("img");
@@ -82,7 +83,15 @@ asideNewListFormImg.addEventListener("click", function () {
 ////////////////////////////////////////////////////////!
 // 🟢 Whichever list we click, we set the value of the data-list-id to the selectedListId
 asideListsContainer.addEventListener("click", (e) => {
-  if (e.target.tagName.toLowerCase() === "li") {
+  if (e.target.tagName.toLowerCase() === "input") {
+    selectedListId = e.target.dataset.listId;
+    console.log(selectedListId);
+    saveAndRender();
+  }
+});
+
+asideCustomListsContainer.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "input") {
     selectedListId = e.target.dataset.listId;
     console.log(selectedListId);
     saveAndRender();
@@ -220,15 +229,66 @@ function pushPermanentLists() {
 // 🟢
 function renderLists() {
   lists.forEach((list) => {
-    const asideListElement = document.createElement("li");
-    asideListElement.dataset.listId = list.id;
-    asideListElement.classList.add("aside__list");
-    asideListElement.innerText = list.name;
+    const asideListDiv = document.createElement("div");
+    const asideListInput = document.createElement("input");
+    // const asideListElement = document.createElement("li");
+    const editButton = document.createElement("img");
+    const saveButton = document.createElement("img");
+
+    asideListDiv.classList.add("aside__div");
+    //
+    asideListInput.setAttribute("readonly", true);
+    asideListInput.value = list.name;
+    asideListInput.dataset.listId = list.id;
+    asideListInput.classList.add("aside__input");
+    //
+    editButton.classList.add("edit-button");
+    editButton.id = list.id;
+    editButton.setAttribute("src", "app/utilities/svg/edit.svg");
+    editButton.setAttribute("alt", "Edit button for tasks");
+    //
+    saveButton.classList.add("save-button");
+    saveButton.id = list.id;
+    saveButton.setAttribute("src", "app/utilities/svg/save.svg");
+    saveButton.setAttribute("alt", "Save button for tasks");
+
+    ////////////////////////////////////////////////////////!
+    // 🟢 Edit feature
+    function handleEdit() {
+      saveButton.style.display = "block";
+      editButton.style.display = "none";
+
+      asideListInput.removeAttribute("readonly");
+      asideListInput.focus();
+    }
+
+    editButton.addEventListener("click", handleEdit);
+
+    ////////////////////////////////////////////////////////!
+    // 🟢 Save feature
+    function handleSave() {
+      const currentList = lists.find((item) => item.id === editButton.id);
+      currentList.name = asideListInput.value;
+      saveButton.style.display = "none";
+      editButton.style.display = "block";
+      saveAndRender();
+    }
+
+    saveButton.addEventListener("click", handleSave);
 
     if (list.id === selectedListId) {
-      asideListElement.classList.add("active-list");
+      asideListInput.classList.add("active-list");
     }
-    asideListsContainer.appendChild(asideListElement);
+
+    asideListDiv.appendChild(asideListInput);
+
+    if (list.id === "10" || list.id === "20" || list.id === "30") {
+      asideListsContainer.appendChild(asideListDiv);
+    } else {
+      asideCustomListsContainer.appendChild(asideListDiv);
+      asideListDiv.appendChild(editButton);
+      asideListDiv.appendChild(saveButton);
+    }
   });
 }
 
@@ -236,7 +296,7 @@ function renderLists() {
 // 🟢
 function renderTasks(selectedList) {
   selectedList.tasks.forEach((task) => {
-    // 2.0 Create elements
+    // 2.0 Create task elements
     const taskDiv = document.createElement("div");
     const checkboxInput = document.createElement("input");
     const label = document.createElement("label");
@@ -380,6 +440,7 @@ function renderGraphics() {
 ////////////////////////////////////////////////////////!
 
 // TODO Wanting to remove the edit and save feature from inside the function
+// if the lists.find matches with === editButton.id, select it
 // const selectedLeest = lists.find((item) => item.id === selectedListId);
 // console.log(selectedLeest);
 
@@ -415,6 +476,7 @@ function render() {
     // 01 Phase
     selectedListId = "10";
     clearElement(asideListsContainer);
+    clearElement(asideCustomListsContainer);
     pushPermanentLists();
     save();
 
@@ -436,6 +498,7 @@ function render() {
     // 01 Phase
     const selectedList = lists.find((item) => item.id === selectedListId);
     clearElement(asideListsContainer);
+    clearElement(asideCustomListsContainer);
 
     // 02 Phase
     mainListTitle.innerText = selectedList.name;
