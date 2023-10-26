@@ -3,11 +3,12 @@ import { createList } from "./createList.js";
 import { createTask } from "./createTask.js";
 ////////////////////////////////////////////////////////!
 const asideListsContainer = document.querySelector("[data-aside-lists]");
-const asideCustomListsContainer = document.querySelector("[data-aside-custom-lists]");
+// const asideCustomListsContainer = document.querySelector("[data-aside-custom-lists]");
 const asideNewListForm = document.querySelector("[data-aside-new-list-form]");
 const asideNewListFormInput = document.querySelector("[data-aside-new-list-input]");
 const asideNewListFormImg = asideNewListForm.querySelector("img");
 const asideDeleteListButton = document.querySelector("[data-aside-delete-list]");
+const asidePermanentListsWrapper = document.querySelector("[data-aside-permanent-lists]");
 ////////////////////////////////////////////////////////!
 const mainTasksDisplayContainer = document.querySelector("[data-main-tasks-container]");
 const mainListTitle = document.querySelector("[data-main-list-title]");
@@ -24,10 +25,14 @@ let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 // Empty array in the beginning, we populate it with permanentLists(), and then lists becomes an array of objects stored inside the localStorage
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_KEY);
 ////////////////////////////////////////////////////////!
-const taskWrapper = document.querySelector("#task-wrapper");
 const svgElementOne = document.querySelector("#svgElement-01");
 const svgElementTwo = document.querySelector("#svgElement-02");
 const svgElementThree = document.querySelector("#svgElement-03");
+
+function playSound() {
+  const audio = document.getElementById("checkboxSound");
+  audio.play();
+}
 
 const inbox = {
   id: "10",
@@ -47,18 +52,14 @@ const upcoming = {
 
 ////////////////////////////////////////////////////////!
 ////////////////////////////////////////////////////////!
-////////////////////////////////////////////////////////!
-// TODO - I can refactor here, make 1 function, call it twice
 // 🟢 We create new lists and populate the aside menu
 // Click: ENTER
 asideNewListForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
   // 01 Phase
   const listName = asideNewListFormInput.value;
   if (listName == null || listName === "") return;
   const list = createList(listName);
-  // Create an object named list which will populate it with an id, name and tasks [] array.
 
   // 02 Phase
   asideNewListFormInput.value = null;
@@ -72,7 +73,6 @@ asideNewListFormImg.addEventListener("click", function () {
   const listName = asideNewListFormInput.value;
   if (listName == null || listName === "") return;
   const list = createList(listName);
-  // Create an object named list which will populate it with an id, name and tasks [] array.
 
   // 02 Phase
   asideNewListFormInput.value = null;
@@ -83,17 +83,8 @@ asideNewListFormImg.addEventListener("click", function () {
 ////////////////////////////////////////////////////////!
 // 🟢 Whichever list we click, we set the value of the data-list-id to the selectedListId
 asideListsContainer.addEventListener("click", (e) => {
-  if (e.target.tagName.toLowerCase() === "input") {
+  if (e.target.tagName.toLowerCase() === "div") {
     selectedListId = e.target.dataset.listId;
-    console.log(selectedListId);
-    saveAndRender();
-  }
-});
-
-asideCustomListsContainer.addEventListener("click", (e) => {
-  if (e.target.tagName.toLowerCase() === "input") {
-    selectedListId = e.target.dataset.listId;
-    console.log(selectedListId);
     saveAndRender();
   }
 });
@@ -157,6 +148,7 @@ mainTasksWrapper.addEventListener("click", (e) => {
     selectedTask.complete = e.target.checked;
     // We toggle the true and false state of the complete key inside that task (object)
 
+    playSound();
     save();
     renderTaskCount(selectedList);
   }
@@ -229,66 +221,102 @@ function pushPermanentLists() {
 // 🟢
 function renderLists() {
   lists.forEach((list) => {
-    const asideListDiv = document.createElement("div");
-    const asideListInput = document.createElement("input");
-    // const asideListElement = document.createElement("li");
-    const editButton = document.createElement("img");
-    const saveButton = document.createElement("img");
+    const divElement = document.createElement("div");
+    const imgElement = document.createElement("img");
+    const spanElement = document.createElement("span");
 
-    asideListDiv.classList.add("aside__div");
+    divElement.innerHTML = list.name;
+    divElement.dataset.listId = list.id;
+    divElement.classList.add("aside__listerino");
+
+    if (list.id === "10") {
+      imgElement.setAttribute("src", "app/utilities/svg/inbox.svg");
+    }
+
+    if (list.id === "20") {
+      imgElement.setAttribute("src", "app/utilities/svg/calendar.svg");
+    }
+
+    if (list.id === "30") {
+      imgElement.setAttribute("src", "app/utilities/svg/upcoming.svg");
+    }
+
+    // if (list.id !== "10" && list.id !== "20" && list.id !== "30") {
+    //   imgElement.setAttribute("src", "app/utilities/svg/cpu.svg");
+    // }
+
+    const tasksCounter = list.tasks.filter((item) => !item.complete).length;
+    spanElement.innerHTML = tasksCounter;
+
+    // spanElement.innerHTML = "21";
+    divElement.appendChild(imgElement);
+    divElement.appendChild(spanElement);
+    // asideListsContainer.appendChild(divElement);
+    asidePermanentListsWrapper.appendChild(divElement);
+
+    if (list.id === selectedListId) {
+      divElement.classList.add("active-list");
+    }
+
+    // const asideListInput = document.createElement("input");
+    // const asideListElement = document.createElement("li");
+    // const editButton = document.createElement("img");
+    // const saveButton = document.createElement("img");
+    // const imgElement = document.createElement("img");
+
     //
-    asideListInput.setAttribute("readonly", true);
-    asideListInput.value = list.name;
-    asideListInput.dataset.listId = list.id;
-    asideListInput.classList.add("aside__input");
-    //
-    editButton.classList.add("edit-button");
-    editButton.id = list.id;
-    editButton.setAttribute("src", "app/utilities/svg/edit.svg");
-    editButton.setAttribute("alt", "Edit button for tasks");
-    //
-    saveButton.classList.add("save-button");
-    saveButton.id = list.id;
-    saveButton.setAttribute("src", "app/utilities/svg/save.svg");
-    saveButton.setAttribute("alt", "Save button for tasks");
+    // asideListInput.setAttribute("readonly", true);
+    // asideListInput.value = list.name;
+    // asideListInput.dataset.listId = list.id;
+    // asideListInput.classList.add("aside__input");
+    // //
+    // editButton.classList.add("edit-button");
+    // editButton.id = list.id;
+    // editButton.setAttribute("src", "app/utilities/svg/edit.svg");
+    // editButton.setAttribute("alt", "Edit button for tasks");
+    // //
+    // saveButton.classList.add("save-button");
+    // saveButton.id = list.id;
+    // saveButton.setAttribute("src", "app/utilities/svg/save.svg");
+    // saveButton.setAttribute("alt", "Save button for tasks");
 
     ////////////////////////////////////////////////////////!
     // 🟢 Edit feature
-    function handleEdit() {
-      saveButton.style.display = "block";
-      editButton.style.display = "none";
+    // function handleEdit() {
+    //   saveButton.style.display = "block";
+    //   editButton.style.display = "none";
 
-      asideListInput.removeAttribute("readonly");
-      asideListInput.focus();
-    }
+    //   asideListInput.removeAttribute("readonly");
+    //   asideListInput.focus();
+    // }
 
-    editButton.addEventListener("click", handleEdit);
+    // editButton.addEventListener("click", handleEdit);
 
     ////////////////////////////////////////////////////////!
     // 🟢 Save feature
-    function handleSave() {
-      const currentList = lists.find((item) => item.id === editButton.id);
-      currentList.name = asideListInput.value;
-      saveButton.style.display = "none";
-      editButton.style.display = "block";
-      saveAndRender();
-    }
+    // function handleSave() {
+    //   const currentList = lists.find((item) => item.id === editButton.id);
+    //   currentList.name = asideListInput.value;
+    //   saveButton.style.display = "none";
+    //   editButton.style.display = "block";
+    //   saveAndRender();
+    // }
 
-    saveButton.addEventListener("click", handleSave);
+    // saveButton.addEventListener("click", handleSave);
 
-    if (list.id === selectedListId) {
-      asideListInput.classList.add("active-list");
-    }
+    // if (list.id === "10") {
+    //   imgElement.setAttribute("src", "app/utilities/svg/inbox.svg");
+    //   asideListInput.appendChild(imgElement);
+    // }
 
-    asideListDiv.appendChild(asideListInput);
+    // asideListsContainer.appendChild(asideListInput);
 
-    if (list.id === "10" || list.id === "20" || list.id === "30") {
-      asideListsContainer.appendChild(asideListDiv);
-    } else {
-      asideCustomListsContainer.appendChild(asideListDiv);
-      asideListDiv.appendChild(editButton);
-      asideListDiv.appendChild(saveButton);
-    }
+    // if (list.id === "10" || list.id === "20" || list.id === "30") {
+    // } else {
+    //   asideListsContainer.appendChild(asideListInput);
+    //   // asideListDiv.appendChild(editButton);
+    //   // asideListDiv.appendChild(saveButton);
+    // }
   });
 }
 
@@ -300,7 +328,7 @@ function renderTasks(selectedList) {
     const taskDiv = document.createElement("div");
     const checkboxInput = document.createElement("input");
     const label = document.createElement("label");
-    const span = document.createElement("span");
+    // const span = document.createElement("span");
     const inputText = document.createElement("input");
     const editButton = document.createElement("img");
     const saveButton = document.createElement("img");
@@ -309,7 +337,7 @@ function renderTasks(selectedList) {
     taskDiv.classList.add("task");
     checkboxInput.classList.add("task__checkbox");
     checkboxInput.setAttribute("type", "checkbox");
-    span.classList.add("task__custom-checkbox");
+    // span.classList.add("task__custom-checkbox");
     inputText.classList.add("task__input");
     inputText.setAttribute("type", "text");
     inputText.setAttribute("readonly", true);
@@ -323,7 +351,8 @@ function renderTasks(selectedList) {
     // 4.0 Append elements in the corresponding places
     taskDiv.appendChild(checkboxInput);
     taskDiv.appendChild(label);
-    label.appendChild(span);
+    // label.appendChild(inputText);
+    // label.appendChild(span);
     taskDiv.appendChild(inputText);
     taskDiv.appendChild(editButton);
     taskDiv.appendChild(saveButton);
@@ -332,7 +361,13 @@ function renderTasks(selectedList) {
     checkboxInput.id = task.id;
     checkboxInput.checked = task.complete;
     label.htmlFor = task.id;
-    inputText.value = task.name;
+    label.innerHTML = task.name;
+
+    //////////
+    // label.style.display = "none";
+    inputText.style.display = "none";
+
+    // inputText.value = task.name;
     // inputText.id = task.id;
     editButton.id = task.id;
     editButton.dataset.id = task.id;
@@ -342,11 +377,16 @@ function renderTasks(selectedList) {
     ////////////////////////////////////////////////////////!
     // 🟢 Edit feature
     function handleEdit() {
-      saveButton.style.display = "block";
-      editButton.style.display = "none";
-
+      const taskValue = label.innerHTML;
+      label.style.display = "none";
+      inputText.style.display = "block";
+      inputText.value = taskValue;
       inputText.removeAttribute("readonly");
       inputText.focus();
+
+      saveButton.style.display = "block";
+      editButton.style.display = "none";
+      saveButton.style.opacity = "1";
     }
     editButton.addEventListener("click", handleEdit);
 
@@ -354,11 +394,19 @@ function renderTasks(selectedList) {
     // 🟢 Save feature
     function handleSave() {
       const currentTask = selectedList.tasks.find((item) => item.id === editButton.id);
-      currentTask.name = inputText.value;
+
+      const inputValue = inputText.value;
+      label.innerHTML = inputValue;
+      currentTask.name = inputValue;
+      label.style.display = "block";
+      inputText.style.display = "none";
+      inputText.setAttribute("readonly", "true");
+
       saveButton.style.display = "none";
       editButton.style.display = "block";
       saveAndRender();
     }
+
     saveButton.addEventListener("click", handleSave);
 
     // 🟢 Save on "Enter"
@@ -475,8 +523,8 @@ function render() {
 
     // 01 Phase
     selectedListId = "10";
-    clearElement(asideListsContainer);
-    clearElement(asideCustomListsContainer);
+    clearElement(asidePermanentListsWrapper);
+    // clearElement(asideCustomListsContainer);
     pushPermanentLists();
     save();
 
@@ -497,8 +545,8 @@ function render() {
 
     // 01 Phase
     const selectedList = lists.find((item) => item.id === selectedListId);
-    clearElement(asideListsContainer);
-    clearElement(asideCustomListsContainer);
+    clearElement(asidePermanentListsWrapper);
+    // clearElement(asideCustomListsContainer);
 
     // 02 Phase
     mainListTitle.innerText = selectedList.name;

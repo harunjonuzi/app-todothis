@@ -8,20 +8,6 @@
     border-radius: 50%;
 }
 
-@mixin form {
-    display: flex;
-    align-items: center;
-    border-radius: v.$border-radius;
-    padding: 0.3rem 0.6rem;
-}
-
-@mixin form-input {
-    color: white;
-    border: none;
-    outline: none;
-    width: 100%;
-}
-
 @mixin color-scheme($text, $bg) {
     background-color: $bg;
     color: $text;

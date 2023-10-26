@@ -1,54 +1,57 @@
 @use '../abstracts' as a;
 
 .main {
-    padding: 1.2rem 2rem;
-    /* width: calc(100% - 30%); */
-    width: 100%;
+    width: calc(1200px - 300px);
+    margin-inline: auto;
+    padding: 2rem 2rem;
     overflow-y: scroll;
 
-    /* main__header */
-    &__header {
-        width: 100%;
-        padding-bottom: 1rem;
-
+    // MAIN HEADER
+    .main__header {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+
+        h2 {
+            width: 15ch;
+            font-size: 1.2rem;
+
+            /* Prevents text from going to a new line */
+            white-space: nowrap;
+
+            /* Hides the text that is going outside the container */
+            overflow: hidden;
+
+            /* Add ... to the end of the longer text */
+            text-overflow: ellipsis;
+        }
+
+        p {
+            font-weight: a.$fw-200;
+            margin-left: auto;
+            padding-right: 1rem;
+        }
     }
 
-    &__title {
-        width: 15ch;
-        font-size: 1.2rem;
+    // MAIN TASKS
+    // .main__tasks {
+    //     //
+    // }
 
-        /* Prevents text from going to a new line */
-        white-space: nowrap;
-
-        /* Hides the text that is going outside the container */
-        overflow: hidden;
-
-        /* Add ... to the end of the longer text */
-        text-overflow: ellipsis;
-    }
-
-    &__counter {
-        font-size: 0.9rem;
-        margin-left: auto;
-        padding: 0 0.5rem;
-    }
-
-    // --- Form "Add new task"
-    &__form {
-        background-color: a.$main-second;
-
+    // MAIN FORM - Add new task
+    form {
+        width: 100%;
+        background-color: a.$main-second-clr;
         display: flex;
         justify-content: space-between;
-        margin: 1rem 0;
+        margin: 1.5rem 0 0.5rem 0;
+        padding: 0.5rem 1rem;
+        border-radius: a.$border-radius;
 
-        @include a.form;
-
-        &-input {
-            background-color: inherit;
-            @include a.form-input;
+        input {
+            color: #fff;
+            border: none;
+            outline: none;
+            background-color: a.$main-second-clr;
         }
 
         img {
@@ -64,8 +67,8 @@
         }
     }
 
-    // --- SVG Element when the list is empty
-    &__svg {
+    // SVG Illustrations
+    .main__svg {
         img {
             margin: 0 auto;
             width: 80%;
@@ -76,107 +79,95 @@
         h3 {
             text-align: center;
             margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
         p {
             text-align: center;
+            font-weight: a.$fw-100;
         }
     }
-
 }
 
 .task {
+    // width: 300px;
+    margin-top: 1.5rem;
     display: flex;
+    // align-items: center;
     // justify-content: center;
-    align-items: center;
-    font-size: 0.9rem;
-    border-bottom: 1px solid #454545c8;
+    border-bottom: 1px solid a.$main-third-clr;
+    padding-bottom: 1rem;
     position: relative;
 
-    // 01 - <input class='task__checkbox'>
-    &__checkbox {
+    label {
+        font-weight: a.$fw-100;
+        width: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    // Make the checkbox disappear
+    input[type='checkbox'] {
         opacity: 0;
         position: absolute;
-
-        &:checked+label::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        &:checked+label {
-            opacity: 0.5;
-        }
-
-        &:checked+label~img {
-            opacity: 0.5;
-        }
-
-        &:checked+label~input {
-            opacity: 0.5;
-        }
-
-        &:checked .edit-button,
-        &:checked .save-button {
-            opacity: 0.5;
-        }
-    }
-
-    // 02 - <label> (We have the custom checkbox inside label)
-    label {
-        // width: 100%;
-        // display: flex;
-        // justify-content: space-between;
-        // align-items: center;
-        padding: 0.6rem 0;
-
-        &::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 18px;
-            height: 2px;
-            background-color: a.$shade-first;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 100ms ease-in-out;
-        }
-    }
-
-    // 03 - <span class='task__custom-checkbox'> (inside label)
-    &__custom-checkbox {
-        display: inline-block;
-        width: .75em;
-        height: .75em;
-        margin-right: 0.4em;
         cursor: pointer;
-        border: 1px solid white;
-        border-radius: 50%;
+    }
 
-        transform: scale(1);
+    label::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border: 2px solid grey;
+        border-radius: 10px;
+        margin-right: 0.4rem;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+    }
+
+    // HOVER EFFECT
+    // 1. When you hover over a label, apply effect on label::before element
+    // 2. When you hover over an input type=checkbox, apply effect on label::before
+    // Summary: we are targetting only the custom checkbox, which is the label::before
+    label:hover::before,
+    input[type='checkbox']:hover+label::before {
+        // background-color: hsla(0, 0%, 51%, 0.9);
+        content: url('/app/utilities/svg/check.svg');
+    }
+
+    // CHECKED EFFECT
+    input[type='checkbox']:checked+label::before,
+    input[type='checkbox']:checked+label,
+    input[type='checkbox']:checked~.edit-button {
+        opacity: 0.5;
+    }
+
+    input[type='checkbox']:checked+label::before {
+        // background-color: hsla(0, 0%, 51%, 0.9);
+        content: url('/app/utilities/svg/check.svg');
+    }
+
+    label::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: a.$main-third-clr;
+        transform: scaleX(0);
+        transform-origin: right;
         transition: transform 200ms ease-in-out;
     }
 
-    &:hover .task__custom-checkbox {
-        transform: scale(1.3);
+    input[type='checkbox']:checked+label::after {
+        transform: scaleX(1);
+        transform-origin: left;
     }
 
-    // 04 - <input class='task__input'>
-    &__input {
-        color: white;
-        width: 100%;
-        border: none;
-        outline: none;
-        background-color: a.$main-first;
-        padding-left: 0.1rem;
-        // user-select: none;
-        // pointer-events: none;
-        cursor: pointer;
-    }
-
-    // 05 - <img>
+    // IMG
     .edit-button {
-        padding: 0 0.2rem;
+        padding: 0 0.2rem 0 0.8rem;
         opacity: 0;
         cursor: pointer;
         transition: opacity 200ms ease-in-out;
@@ -186,10 +177,10 @@
         opacity: 1;
     }
 
-    // 06 - <img>
+    // IMG
     .save-button {
         display: none;
-        padding: 0 0.2rem;
+        padding: 0 0.2rem 0 0.8rem;
         opacity: 0;
         cursor: pointer;
         transition: opacity 200ms ease-in-out;
@@ -198,73 +189,14 @@
     &:hover .save-button {
         opacity: 1;
     }
+
+    input[type='text'] {
+        border-radius: a.$border-radius;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        outline: 2px solid a.$main-third-clr;
+        border: none;
+        background-color: a.$main-first-clr;
+    }
 }
-
-////////////////////////////////
-////////////////////////////////
-// #svgElement-01 {
-//     margin-top: 2rem;
-//     display: none;
-//     // opacity: 0;
-//     // transform: scaleY(0);
-//     // transition: opacity 400ms ease-in-out // display: none;
-// }
-
-// #svgElement-01>img {
-//     margin: 0 auto;
-//     width: 80%;
-//     opacity: 0.8;
-// }
-
-// #svgElement-01>h3 {
-//     text-align: center;
-//     margin-bottom: 0.5rem;
-// }
-
-// #svgElement-01>p {
-//     text-align: center;
-// }
-
-////////////////////////////////
-////////////////////////////////
-// #svgElement-02 {
-//     margin-top: 2rem;
-//     display: none;
-// }
-
-// #svgElement-02>img {
-//     margin: 0 auto;
-//     width: 80%;
-//     opacity: 0.8;
-// }
-
-// #svgElement-02>h3 {
-//     text-align: center;
-//     margin-bottom: 0.5rem;
-// }
-
-// #svgElement-02>p {
-//     text-align: center;
-// }
-
-////////////////////////////////
-////////////////////////////////
-// #svgElement-03 {
-//     margin-top: 2rem;
-//     display: none;
-// }
-
-// #svgElement-03>img {
-//     margin: 0 auto;
-//     width: 80%;
-//     opacity: 0.8;
-// }
-
-// #svgElement-03>h3 {
-//     text-align: center;
-//     margin-bottom: 0.5rem;
-// }
-
-// #svgElement-03>p {
-//     text-align: center;
-// }

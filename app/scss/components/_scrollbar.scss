@@ -1,14 +1,14 @@
 @use '../abstracts' as a;
 
 ::-webkit-scrollbar {
-    background-color: a.$main-first;
+    background-color: a.$main-first-clr;
     width: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: a.$main-third;
+    background-color: a.$main-first-clr;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: a.$main-second;
+    background-color: a.$main-first-clr;
 }
