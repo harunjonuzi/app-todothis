@@ -12,6 +12,11 @@
     flex-direction: column;
     align-items: center;
 
+    @include a.breakpoint-down(small) {
+        position: absolute;
+        z-index: 99;
+    }
+
     // ASIDE LISTS
     .aside__listerino {
         font-size: a.$font-base;

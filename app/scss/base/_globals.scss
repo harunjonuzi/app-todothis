@@ -38,4 +38,8 @@ input {
 
 .wrapper {
     display: flex;
+
+    @include a.breakpoint-down(small) {
+        position: relative;
+    }
 }

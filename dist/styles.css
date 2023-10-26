@@ -36,6 +36,11 @@ input {
 .wrapper {
   display: flex;
 }
+@media (max-width: 39.9375em) {
+  .wrapper {
+    position: relative;
+  }
+}
 
 .nav__btn {
   background-color: #333333;
@@ -94,6 +99,12 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media (max-width: 39.9375em) {
+  .aside {
+    position: absolute;
+    z-index: 99;
+  }
 }
 .aside .aside__listerino {
   font-size: 1rem;
@@ -179,6 +190,11 @@ input {
   font-weight: 200;
   margin-left: auto;
   padding-right: 1rem;
+}
+@media (max-width: 39.9375em) {
+  .main .main__header p {
+    white-space: nowrap;
+  }
 }
 .main form {
   width: 100%;

@@ -29,6 +29,11 @@
             font-weight: a.$fw-200;
             margin-left: auto;
             padding-right: 1rem;
+
+            @include a.breakpoint-down(small) {
+                white-space: nowrap;
+            }
+
         }
     }
 
