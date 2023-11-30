@@ -15,18 +15,18 @@ html {
 }
 
 body {
+  min-height: 100dvh;
+  font-family: "Poppins", sans-serif;
   font-size: rem(16);
   font-weight: 300;
   line-height: 1.6;
-  min-height: 100dvh;
-  font-family: "Poppins", sans-serif;
-  overflow-x: hidden;
 }
 
 img,
 svg {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 a,
@@ -35,23 +35,10 @@ a:hover {
   text-decoration: none;
 }
 
+li {
+  list-style-type: none;
+}
+
 h1 {
   font-size: clamp(2rem, 0.5rem + 5vw, 5rem);
-  // font-size: $fs-head-h1;
-  // font-family: $ff-season;
-}
-
-h2 {
-  // font-size: $fs-head-h2;
-  // font-family: $ff-season;
-}
-
-h3 {
-  // font-size: $fs-head-h3;
-  // font-family: $ff-season;
-}
-
-h4 {
-  font-size: 0.9rem;
-  // font-family: $ff-poppins;
 }

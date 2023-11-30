@@ -16,3 +16,9 @@
     display: none;
   }
 }
+
+.noscroll {
+  overflow: hidden;
+  // This fixes the firefox issue with the scrollbar when hidden, because firefox handles calc functions differently from other browsers and it has a wider scrollbar
+  // margin-right: calc(100vw - 100% + 15px);
+}
