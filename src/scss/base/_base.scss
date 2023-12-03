@@ -1,0 +1,61 @@
+@use "../abstracts/" as *;
+
+/* =================================== */
+/* 🔖 Visibility */
+/* =================================== */
+.hide-for-mobile {
+
+  // hide for tablet and mobile
+  @include breakpoint-down(medium) {
+    display: none;
+  }
+}
+
+.hide-for-desktop {
+
+  // hide for desktop
+  @include breakpoint-up(large) {
+    display: none;
+  }
+}
+
+.noscroll {
+  overflow: hidden;
+  // This fixes the firefox issue with the scrollbar when hidden, because firefox handles calc functions differently from other browsers and it has a wider scrollbar
+  // margin-right: calc(100vw - 100% + 15px);
+}
+
+/* =================================== */
+/* 🔖 Container */
+/* =================================== */
+.container {
+  // This will grow to 1110px in desktop size, and on mobile size it will remove 32px from both sides, giving it a natural padding
+  width: min(a.rem(1110), calc(100% - a.rem(32)));
+  margin-inline: auto;
+}
+
+// v2
+// .container {
+//   max-width: 150rem;
+//   margin-inline: auto;
+//   padding-inline: 2.4rem;
+// }
+
+// .container {
+//   --padding: #{$container-min-margin-inline} * 2;
+//   --max-width: #{$container-max-width};
+//   width: min(100% - var(--padding), var(--max-width));
+//   margin-inline: auto;
+// }
+
+// .container[data-type="narrow"] {
+//   --max-width: #{$container-max-width-narrow};
+// }
+
+// .container[data-type="wide"] {
+//   --max-width: #{$container-max-width-wide};
+// }
+
+// .container[data-type="full-bleed"] {
+//   --max-width: 100%;
+// }

@@ -1,0 +1,72 @@
+// This makes it so that every two number pixel can be used as rem when adding . in between
+html {
+  font-size: calc(100vw / var(--desktop-width) * 10);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(16px, 1.6rem, 1.6rem);
+  font-weight: 400;
+  font-style: normal;
+  text-size-adjust: 100%;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+ul,
+ol {
+  margin-left: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+h1,
+.h1 {
+  @include fluid-type(430px, 1440px, 32px, 48px);
+  margin-bottom: 64px;
+  line-height: 1.3;
+}
+
+h2,
+.h2 {
+  @include fluid-type(430px, 1440px, 24px, 40px);
+  line-height: 1.2;
+  margin-bottom: 40px;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// Extras
+// h1 {
+//   font-size: clamp(2rem, 0.5rem + 5vw, 5rem);
+// }

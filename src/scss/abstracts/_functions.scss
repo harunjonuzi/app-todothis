@@ -1,5 +1,6 @@
-//////////////////////////////////////////
-// 🔖 Turn pixels into rem units
+/* =================================== */
+/* 🔖 Pixels into Rem or Em unit Converter */
+/* =================================== */
 @use 'sass:math';
 
 @function rem($pixel) {
@@ -21,5 +22,3 @@
     @error 'Don\'t use units when using the em() function; only numbers.';
   }
 }
-
-//////////////////////////////////////////

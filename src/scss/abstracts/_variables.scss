@@ -1,3 +1,24 @@
+/* =================================== */
+/* 🔖 Take example from this and update your variables */
+/* =================================== */
+:root {
+  --section-small: 8rem;
+  --section-medium: 16rem;
+  --section-big: 24rem;
+
+  @include below(1200px) {
+    --section-small: 6.4rem;
+    --section-medium: 12rem;
+    --section-big: 16rem;
+  }
+
+  @include below(750px) {
+    --section-small: 4rem;
+    --section-medium: 8rem;
+    --section-big: 12rem;
+  }
+}
+
 $-ff-poppins: "Poppins", sans-serif;
 $-ff-monsterrat: "Monsterrat", sans-serif;
 $-ff-inter: "Inter", sans-serif;
