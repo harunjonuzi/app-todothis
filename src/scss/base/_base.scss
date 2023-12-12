@@ -30,7 +30,7 @@
 /* =================================== */
 .container {
   // This will grow to 1110px in desktop size, and on mobile size it will remove 32px from both sides, giving it a natural padding
-  width: min(a.rem(1110), calc(100% - a.rem(32)));
+  width: min(rem(1110), calc(100% - rem(32)));
   margin-inline: auto;
 }
 
