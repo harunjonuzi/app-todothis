@@ -46,6 +46,10 @@
 }
 
 // Margins
+.section--default--margin {
+  margin-bottom: var(--section-default);
+}
+
 .section--small--margin {
   margin-top: var(--section-small) !important;
   margin-bottom: var(--section-small) !important;

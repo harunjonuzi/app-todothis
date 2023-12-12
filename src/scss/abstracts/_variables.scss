@@ -19,13 +19,6 @@
   }
 }
 
-$-ff-poppins: "Poppins", sans-serif;
-$-ff-monsterrat: "Monsterrat", sans-serif;
-$-ff-inter: "Inter", sans-serif;
-
-$font-family-base: $-ff-inter;
-$font-family-accent: $-ff-monsterrat;
-
 $font-sizes: (
   "small": ("900": 2.625rem,
     "800": 2.25rem,
@@ -40,3 +33,27 @@ $font-sizes: (
     "800": 2.625rem,
   ),
 );
+
+@use 'functions' as *;
+
+// 1.0 Font Family
+$ff-season: "the-seasons", sans-serif;
+$ff-poppins: "Poppins", sans-serif;
+
+// 2.0 Font Sizes
+// - Headings
+$fs-heading-h1: rem(54);
+$fs-heading-h2: rem(45);
+$fs-heading-h3: rem(32);
+
+// - Body
+$fs-body-xsmall: rem(12);
+$fs-body-small: rem(15);
+$fs-body-medium: rem(18);
+$fs-body-large: rem(22);
+$fs-body-xlarge: rem(26);
+
+// 3.0 Font Weight
+$fw-small: 200;
+$fw-medium: 500;
+$fw-large: 700;

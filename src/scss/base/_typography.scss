@@ -1,12 +1,7 @@
-// This makes it so that every two number pixel can be used as rem when adding . in between
-html {
-  font-size: calc(100vw / var(--desktop-width) * 10);
-}
-
 body {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(16px, 1.6rem, 1.6rem);
-  font-weight: 400;
+  font-size: $fs-body-medium;
+  font-weight: $fw-medium;
   font-style: normal;
   text-size-adjust: 100%;
   line-height: 1.5;
@@ -16,19 +11,27 @@ body {
 }
 
 p {
-  margin-bottom: 16px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 2;
+  margin-bottom: rem(25);
 }
 
 a,
 a:visited,
 a:hover {
+  color: $basic-900;
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
-  list-style: none;
+li {
+  list-style-type: none;
 }
 
 ul,
@@ -42,31 +45,39 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
+  font-family: $ff-season;
+  font-weight: $fw-large;
 }
 
+/* =================================== */
+/* 🔖 Fluid Typography v1 */
+/* =================================== */
 h1,
 .h1 {
-  @include fluid-type(430px, 1440px, 32px, 48px);
-  margin-bottom: 64px;
-  line-height: 1.3;
+  @include fluid-type(390px, 1440px, 32px, 54px);
+  line-height: 1.5;
+  margin-bottom: rem(25);
+
+  @include breakpoint-down(medium) {
+    text-align: center;
+  }
 }
 
 h2,
 .h2 {
-  @include fluid-type(430px, 1440px, 24px, 40px);
-  line-height: 1.2;
-  margin-bottom: 40px;
+  @include fluid-type(390px, 1440px, 32px, 45px);
+  line-height: 1.5;
+  margin-bottom: rem(25);
+
+  @include breakpoint-down(medium) {
+    text-align: center;
+  }
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
 
-// Extras
+/* =================================== */
+/* 🔖 Fluid Typography v2 */
+/* =================================== */
 // h1 {
 //   font-size: clamp(2rem, 0.5rem + 5vw, 5rem);
 // }

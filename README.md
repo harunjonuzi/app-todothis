@@ -9,12 +9,23 @@
 5. Plan the Layout before Executing the Code
 6. Start coding like a Pro
 
+# Vite Configuration
+
+```javascript
+import { defineConfig } from "vite";
+
+export default defineConfig({
+   base: "/yourreponame/", // Replace 'yourreponame' with your actual repository name
+});
+```
+
 # Useful Tools
 
 -  https://royalfig.github.io/fluid-typography-calculator/
 -  https://utopia.fyi/
 -  https://whatunit.com/
 -  https://tinypng.com/
+-  https://easings.co/
 
 # Notes
 
