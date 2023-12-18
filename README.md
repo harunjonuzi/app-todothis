@@ -1,11 +1,12 @@
 # Title
 
-A quick project for an imaginary Accounting firm that helped me refine my skills in writing semantic and accessible HTML, dived deeper into Scss functions and learned animations.
+I wanted to build the best todo-app in the world, it ended up being the best one in my neighborhood.
 
 ## Features
 
 -   Responsive
--   Dark/Light Mode
+-   Local Storage
+-   UI/UX Design
 
 ## Tech Stack
 
@@ -22,7 +23,7 @@ A quick project for an imaginary Accounting firm that helped me refine my skills
 Clone the project:
 
 ```bash
-  git clone https://github.com/harunjonuzi/Website-DigitusAccounting.git
+  git clone https://github.com/harunjonuzi/app-todo-this.git
 ```
 
 Go to the project directory:
