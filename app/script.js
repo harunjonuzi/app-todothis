@@ -274,10 +274,10 @@ function renderTasks(selectedList) {
         inputText.setAttribute("type", "text");
         inputText.setAttribute("readonly", true);
         editButton.classList.add("edit-button");
-        editButton.setAttribute("src", "/svg/edit.svg");
+        editButton.setAttribute("src", "svg/edit.svg");
         editButton.setAttribute("alt", "Edit button for tasks");
         saveButton.classList.add("save-button");
-        saveButton.setAttribute("src", "/svg/save.svg");
+        saveButton.setAttribute("src", "svg/save.svg");
         saveButton.setAttribute("alt", "Save button for tasks");
 
         taskDiv.appendChild(checkboxInput);
