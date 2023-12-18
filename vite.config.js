@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    base: "/Template-Vite-SCSS",
+    base: "/template-vite-javascript",
 });
