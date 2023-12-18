@@ -1,4 +1,4 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 /* Set core root defaults */
 html:focus-within {
@@ -6,11 +6,12 @@ html:focus-within {
 }
 
 html {
-  box-sizing: border-box;
   scroll-behavior: smooth;
+  box-sizing: border-box;
   font-size: 100%;
 }
 
+/* Box sizing rules */
 *,
 *::before,
 *::after {
@@ -20,8 +21,9 @@ html {
   user-select: none;
 }
 
+/* Set core body defaults */
 body {
-  min-height: 100dvh;
+  height: 100dvh;
 }
 
 /* Make images easier to work with */
@@ -67,4 +69,25 @@ select {
   border: 0;
   clip: rect(0 0 0 0);
   word-wrap: normal !important;
+}
+
+/* Lenis suggested default styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

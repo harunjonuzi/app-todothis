@@ -1,11 +1,9 @@
 @use '../abstracts' as *;
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: $ff-poppins;
   font-size: $fs-body-medium;
-  font-weight: $fw-medium;
-  font-style: normal;
-  text-size-adjust: 100%;
+  font-weight: $fw-small;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
@@ -17,13 +15,13 @@ p {
   font-size: inherit;
   font-weight: inherit;
   line-height: 2;
+
+  /* Margin Bottom */
   margin-bottom: rem(25);
 }
 
-a,
-a:visited,
-a:hover {
-  color: $basic-900;
+a {
+  color: $white-900;
   display: inline-block;
   font-family: inherit;
   font-size: inherit;
@@ -34,6 +32,13 @@ a:hover {
 
 li {
   list-style-type: none;
+  line-height: 2;
+}
+
+@include above(600px) {
+  .footer li {
+    list-style-type: disc;
+  }
 }
 
 ul,
@@ -47,40 +52,42 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $ff-season;
+  font-family: $ff-seasons;
   font-weight: $fw-large;
-  text-wrap: balance;
 }
 
-/* =================================== */
-/* 🔖 Fluid Typography v1 */
-/* =================================== */
 h1,
 .h1 {
   @include fluid-type(390px, 1440px, 32px, 54px);
   line-height: 1.5;
-  margin-bottom: rem(25);
 
-  @include breakpoint-down(medium) {
-    text-align: center;
-  }
+  /* Margin Bottom */
+  margin-bottom: rem(25);
 }
 
 h2,
 .h2 {
-  @include fluid-type(390px, 1440px, 32px, 45px);
+  @include fluid-type(390px, 1440px, 32px, 54px);
   line-height: 1.5;
-  margin-bottom: rem(25);
 
-  @include breakpoint-down(medium) {
-    text-align: center;
-  }
+  /* Margin Bottom */
+  margin-bottom: rem(25);
 }
 
+h3,
+.h3 {
+  @include fluid-type(390px, 1440px, 32px, 54px);
+  line-height: 1.5;
 
-/* =================================== */
-/* 🔖 Fluid Typography v2 */
-/* =================================== */
-// h1 {
-//   font-size: clamp(2rem, 0.5rem + 5vw, 5rem);
-// }
+  /* Margin Bottom */
+  margin-bottom: rem(25);
+}
+
+h4,
+.h4 {
+  @include fluid-type(390px, 1440px, 32px, 54px);
+  line-height: 1.5;
+
+  /* Margin Bottom */
+  margin-bottom: rem(25);
+}

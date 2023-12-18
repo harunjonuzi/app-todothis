@@ -1,0 +1,56 @@
+@use "../abstracts" as *;
+
+/* =================================== */
+/* 🔖 Container - Harun's */
+/* =================================== */
+.container {
+  width: min(rem(1120), calc(100% - rem(32)));
+  margin-inline: auto;
+}
+
+/* =================================== */
+/* 🔖 Container from Kevin Powell */
+/* =================================== */
+// .container {
+//   --padding: #{$container-min-margin-inline} * 2;
+//   --max-width: #{$container-max-width};
+//   width: min(100% - var(--padding), var(--max-width));
+//   margin-inline: auto;
+// }
+
+// .container[data-type="narrow"] {
+//   --max-width: #{$container-max-width-narrow};
+// }
+
+// .container[data-type="wide"] {
+//   --max-width: #{$container-max-width-wide};
+// }
+
+// .container[data-type="full-bleed"] {
+//   --max-width: 100%;
+// }
+
+/* =================================== */
+/* 🔖 Visibility */
+/* =================================== */
+.hide-for-mobile {
+
+  // Hide below 600px
+  @media (width <=600px) {
+    display: none !important;
+  }
+}
+
+.hide-for-desktop {
+
+  // Hide above 900px
+  @media (width >=900px) {
+    display: none !important;
+  }
+}
+
+.noscroll {
+  overflow: hidden;
+  // This fixes the firefox issue with the scrollbar when hidden, because firefox handles calc functions differently from other browsers and it has a wider scrollbar
+  // margin-right: calc(100vw - 100% + 15px);
+}

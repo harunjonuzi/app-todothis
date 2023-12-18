@@ -1,32 +1,27 @@
+@use 'breakpoints' as *;
+
 :root {
   --section-small: 8rem;
   --section-medium: 16rem;
   --section-big: 24rem;
+  --section-default: 12.5rem;
 
-  @include below(1200px) {
+  @include below(1100px) {
+    --section-default: 8rem;
     --section-small: 6.4rem;
     --section-medium: 12rem;
     --section-big: 16rem;
   }
 
-  @include below(750px) {
+  @include below(700px) {
     --section-small: 4rem;
     --section-medium: 8rem;
     --section-big: 12rem;
   }
 }
 
-.section--relative {
-  position: relative;
-}
-
-.section--dark {
-  background-color: var(--color-background--dark);
-  color: var(--color-text--white);
-}
-
-.section--beige {
-  background-color: var(--color-background--beige);
+.section--default--margin {
+  margin-bottom: var(--section-default);
 }
 
 // Padding
@@ -46,10 +41,6 @@
 }
 
 // Margins
-.section--default--margin {
-  margin-bottom: var(--section-default);
-}
-
 .section--small--margin {
   margin-top: var(--section-small) !important;
   margin-bottom: var(--section-small) !important;

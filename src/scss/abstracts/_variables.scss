@@ -1,5 +1,4 @@
 @use 'functions' as *;
-@use 'mixins' as *;
 
 /* =================================== */
 /* 🔖 Take example from this and update your variables */
@@ -9,33 +8,18 @@
   --section-medium: 16rem;
   --section-big: 24rem;
 
-  @include below(1200px) {
+  @media (width <=1200px) {
     --section-small: 6.4rem;
     --section-medium: 12rem;
     --section-big: 16rem;
   }
 
-  @include below(750px) {
+  @media (width <=750px) {
     --section-small: 4rem;
     --section-medium: 8rem;
     --section-big: 12rem;
   }
 }
-
-$font-sizes: (
-  "small": ("900": 2.625rem,
-    "800": 2.25rem,
-    "700": 1.5rem,
-    "600": 1.125rem,
-    "500": 1rem,
-    "400": 0.875rem,
-    "300": 2.625rem,
-    "200": 2.625rem,
-  ),
-  "large": ("900": 3.5rem,
-    "800": 2.625rem,
-  ),
-);
 
 // 1.0 Font Family
 $ff-season: "the-seasons", sans-serif;

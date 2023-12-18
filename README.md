@@ -1,106 +1,56 @@
-# Building a Website Workflow
+# Title
 
-1. Finish Figma Design
-2. Clone the Vite Template Repository from GitHub
-   1. run npm install
-   2. run npm run dev
-3. Copy Colors to SCSS Variables (maybe use that function to make darker and ligher shader?)
-4. Copy Font Sizes to SCSS Variables (use https://royalfig.github.io/fluid-typography-calculator/ )
-5. Plan the Layout before Executing the Code
-6. Start coding like a Pro
+A quick project for an imaginary Accounting firm that helped me refine my skills in writing semantic and accessible HTML, dived deeper into Scss functions and learned animations.
 
-# Vite Configuration
+## Features
 
-```javascript
-import { defineConfig } from "vite";
+-   Responsive
+-   Dark/Light Mode
 
-export default defineConfig({
-   base: "/yourreponame/", // Replace 'yourreponame' with your actual repository name
-});
+## Tech Stack
+
+**Client:** Scss, JavaScript, Vite
+
+**Server:** #
+
+## Preview
+
+![Logo](public/img/readme-screenshot1.png)
+
+## Run Locally
+
+Clone the project:
+
+```bash
+  git clone https://github.com/harunjonuzi/Website-DigitusAccounting.git
 ```
 
-# Useful Tools
+Go to the project directory:
 
--  https://royalfig.github.io/fluid-typography-calculator/
--  https://utopia.fyi/
--  https://whatunit.com/
--  https://tinypng.com/
--  https://easings.co/
-
-# Notes
-
--  When adding margin or padding, you should always think of elements pushing down stuff, that makes sense.
--  We can use different size images for bigger screens such as Retinas, normal size images 1x for normal screens and for Retinas we download the images from Figma in 2x quality.
--  I learned about the picture html tag, which lets me use different sizes of the same image in different screen sizes
-   -  The srcset attribute helps chrome to choose between 1x and 2x image version, it all depends on the screen pixel density, if for example the screen that the website is loaded is low res, the chrome engine will choose the 1x version, otherwise will choose 2x version.
-
-```html
-<picture>
-   <!-- Desktop version images -->
-   <source
-      media="(min-width: 1024px)"
-      srcset="/img/feature-desktop.jpg 1x, /img/feature-desktop-2x.jpg 2x"
-   />
-
-   <!-- Mobile version images (default) -->
-   <img
-      class="feature__img"
-      src="/img/feature-mobile.jpg"
-      alt="The Oslo Opera House"
-      srcset="/img/feature-mobile.jpg, 2x"
-   />
-</picture>
+```bash
+  cd my-project
 ```
 
--  I have to make projects work for Netlify, not for GitHub, don't give a damn about the url paths for GitHub Pages, make them work for real world hosting sites such as Netlify. (CodeCoder didn't upload the challenge on GitHub Pages, she did it on Netlify for a reason)
--  Learned a new way of using media queries in scss
+Install dependencies:
 
-```scss
-.header {
-   width: 20px;
-
-   @media (width >= 1110px) {
-      width: 40px;
-   }
-}
+```bash
+  npm install
 ```
 
--  We put width and height inside img tags so that when the image is loading, it doesn't load without aspect ratio first and then become adjusted.
+Start the server:
 
--  You can use functions inside variables in :root, but you have to use interpolation in order to make them really work:
-
-```css
-// This will not work
-:root {
-   --f-large: clamp(2rem, 5vh, 10rem);
-}
-
-// This will work
-:root {
-   --f-large: #{clamp(2rem, 5vh, 10rem)};
-}
+```bash
+  npm run dev
 ```
 
--  Make sure to use transition property when applying some animations to particular tags, so we don't animate everything
+## Contributing
 
-```css
-a,
-a:visited,
-a:hover {
-   transition: 150ms ease-in-out;
-   transition-property: color, background-color;
-}
-```
+This is an open-source project and I welcome contributions from the community.
 
--  Learned the pointer-events: none; command which lets you click through elements, makes elements interactable through that overlay element
--  Learned accessibility features:
+If you'd like to contribute, please fork the repository and make changes as you'd like. Pull requests are warmly welcome.
 
-```js
-// Accessibility features
-// - We don't want to select items with tab that are not shown on the screen, with this code when we press tab we can select the closebtn and the menu links that are not even visible on the screen
-document.addEventListener("keyup", (e) => {
-   if (e.key == "Tab") {
-      console.log(document.activeElement);
-   }
-});
-```
+## Links
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://harunjonuzi.com/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/harunjonuzi)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/harunjonuzi)
