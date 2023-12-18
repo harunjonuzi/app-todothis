@@ -2,7 +2,7 @@
 
 body {
   font-family: $font-family;
-  font-size: $font-base;
+  font-size: rem(20);
   font-weight: $fw-400;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
@@ -42,8 +42,8 @@ ol {
 
 button,
 input {
-  font-size: $font-base;
-  font-weight: $fw-100;
+  font-size: rem(20);
+  font-weight: 200;
 }
 
 .wrapper {

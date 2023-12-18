@@ -16,7 +16,7 @@ I wanted to build the best todo-app in the world, it ended up being the best one
 
 ## Preview
 
-![Preview](public/img/readme-screenshot2.png)
+![Preview](public/img/readme-screenshot1.png)
 
 ## Run Locally
 
