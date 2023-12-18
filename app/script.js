@@ -224,7 +224,7 @@ function renderLists() {
         const tasksCounter = list.tasks.filter((item) => !item.complete).length;
 
         // 02 - Adding attributes
-        imgElement.setAttribute("src", "public/svg/list.svg");
+        imgElement.setAttribute("src", "/public/svg/list.svg");
         divElement.dataset.listId = list.id;
         inputElement.value = list.name;
         spanElement.innerHTML = tasksCounter;
