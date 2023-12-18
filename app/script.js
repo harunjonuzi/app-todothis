@@ -224,7 +224,7 @@ function renderLists() {
         const tasksCounter = list.tasks.filter((item) => !item.complete).length;
 
         // 02 - Adding attributes
-        imgElement.setAttribute("src", "/public/svg/list.svg");
+        imgElement.setAttribute("src", "svg/list.svg");
         divElement.dataset.listId = list.id;
         inputElement.value = list.name;
         spanElement.innerHTML = tasksCounter;
@@ -237,11 +237,11 @@ function renderLists() {
         // 04 - Append custom img elements to permanent lists and divElements into the aside menu
         if (list.id === "10" || list.id === "20" || list.id === "30") {
             if (list.id === "10") {
-                imgElement.setAttribute("src", "public/svg/inbox.svg");
+                imgElement.setAttribute("src", "svg/inbox.svg");
             } else if (list.id === "20") {
-                imgElement.setAttribute("src", "public/svg/calendar.svg");
+                imgElement.setAttribute("src", "svg/calendar.svg");
             } else if (list.id === "30") {
-                imgElement.setAttribute("src", "public/svg/upcoming.svg");
+                imgElement.setAttribute("src", "svg/upcoming.svg");
             }
             asidePermanentListsWrapper.appendChild(divElement);
         } else {
