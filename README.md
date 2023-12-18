@@ -1,4 +1,4 @@
-# Title
+# Application | Todo This
 
 I wanted to build the best todo-app in the world, it ended up being the best one in my neighborhood.
 
