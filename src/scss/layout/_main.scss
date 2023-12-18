@@ -1,0 +1,205 @@
+@use '../abstracts' as a;
+
+.main {
+    width: calc(1200px - 300px);
+    margin-inline: auto;
+    padding: 2rem 2rem;
+    overflow-y: scroll;
+
+    // MAIN HEADER
+    .main__header {
+        display: flex;
+        align-items: center;
+
+        h2 {
+
+            font-size: 1.2rem;
+
+            // /* Prevents text from going to a new line */
+            white-space: nowrap;
+
+            // /* Hides the text that is going outside the container */
+            overflow: hidden;
+
+            // /* Add ... to the end of the longer text */
+            text-overflow: ellipsis;
+        }
+
+        p {
+            font-weight: a.$fw-200;
+            margin-left: auto;
+            padding-right: 1rem;
+            white-space: nowrap;
+
+            @include a.breakpoint-down(small) {
+                white-space: nowrap;
+            }
+        }
+
+    }
+
+    // MAIN FORM - Add new task
+    form {
+        width: 100%;
+        background-color: a.$main-second-clr;
+        display: flex;
+        justify-content: space-between;
+        margin: 1.5rem 0 0.5rem 0;
+        padding: 0.5rem 1rem;
+        border-radius: a.$border-radius;
+
+        input {
+
+            color: #fff;
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: a.$main-second-clr;
+        }
+
+        img {
+            cursor: pointer;
+            transform: scale(1);
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.4);
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    // Empty List Illustrations
+    .main__svg {
+        img {
+            margin: 0 auto;
+            width: 80%;
+            opacity: 0.8;
+            filter: grayscale(40%);
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        p {
+            text-align: center;
+            font-weight: a.$fw-100;
+        }
+    }
+}
+
+.task {
+    // width: 300px;
+    margin-top: 1.5rem;
+    display: flex;
+    // align-items: center;
+    // justify-content: center;
+    border-bottom: 1px solid a.$main-third-clr;
+    padding-bottom: 1rem;
+    position: relative;
+
+    label {
+        font-weight: a.$fw-100;
+        width: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    // Make the checkbox disappear
+    input[type='checkbox'] {
+        opacity: 0;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    label::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border: 2px solid grey;
+        border-radius: 10px;
+        margin-right: 0.4rem;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+    }
+
+    // HOVER EFFECT
+    // 1. When you hover over a label, apply effect on label::before element
+    // 2. When you hover over an input type=checkbox, apply effect on label::before
+    // Summary: we are targetting only the custom checkbox, which is the label::before
+    label:hover::before,
+    input[type='checkbox']:hover+label::before {
+        // background-color: hsla(0, 0%, 51%, 0.9);
+        content: url('//svg/check.svg');
+    }
+
+    // CHECKED EFFECT
+    input[type='checkbox']:checked+label::before,
+    input[type='checkbox']:checked+label,
+    input[type='checkbox']:checked~.edit-button {
+        opacity: 0.5;
+    }
+
+    input[type='checkbox']:checked+label::before {
+        // background-color: hsla(0, 0%, 51%, 0.9);
+        content: url('//svg/check.svg');
+    }
+
+    label::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: a.$main-third-clr;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 200ms ease-in-out;
+    }
+
+    input[type='checkbox']:checked+label::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    // IMG
+    .edit-button {
+        padding: 0 0.2rem 0 0.8rem;
+        opacity: 0;
+        cursor: pointer;
+        transition: opacity 200ms ease-in-out;
+    }
+
+    &:hover .edit-button {
+        opacity: 1;
+    }
+
+    // IMG
+    .save-button {
+        display: none;
+        padding: 0 0.2rem 0 0.8rem;
+        opacity: 0;
+        cursor: pointer;
+        transition: opacity 200ms ease-in-out;
+    }
+
+    &:hover .save-button {
+        opacity: 1;
+    }
+
+    input[type='text'] {
+        border-radius: a.$border-radius;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        outline: 2px solid a.$main-third-clr;
+        border: none;
+        background-color: a.$main-first-clr;
+    }
+}

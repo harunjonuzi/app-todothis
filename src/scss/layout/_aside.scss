@@ -1,0 +1,184 @@
+@use '../abstracts' as a;
+
+.aside {
+    min-width: 300px;
+    min-height: calc(100vh - 2.5rem);
+    height: auto;
+    max-height: 100%;
+    padding-top: 1rem;
+    overflow-y: scroll;
+    background-color: a.$main-second-clr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include a.breakpoint-down(small) {
+        position: absolute;
+        z-index: 99;
+    }
+
+    .aside__lists-permanent {
+        margin-bottom: 1rem;
+
+        div {
+            font-size: a.$font-base;
+            font-weight: a.$fw-100;
+            color: white;
+            border-radius: a.$border-radius;
+            width: 270px;
+            margin-bottom: 0.3rem;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            // justify-content: space-between;
+            // position: relative;
+            cursor: pointer;
+
+            /* Prevents text from going to a new line */
+            white-space: nowrap;
+
+            /* Hides the text that is going outside the container */
+            overflow: hidden;
+
+            /* Add ... to the end of the longer text */
+            text-overflow: ellipsis;
+
+            &:hover {
+                background-color: a.$main-third-clr;
+            }
+        }
+
+        img {
+            order: -1;
+            padding-right: 0.5rem;
+        }
+
+        input {
+            width: 18ch;
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            color: white;
+            cursor: pointer;
+
+            /* Prevents text from going to a new line */
+            white-space: nowrap;
+
+            /* Hides the text that is going outside the container */
+            overflow: hidden;
+
+            /* Add ... to the end of the longer text */
+            text-overflow: ellipsis;
+        }
+
+        span {
+            margin-left: auto;
+            display: inline-block;
+            font-size: a.$font-small;
+            opacity: 0.5;
+        }
+    }
+
+    .aside__custom-paragraph {
+        opacity: 0.5;
+        width: 270px;
+        margin-bottom: 0.3rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        font-size: a.$font-base;
+        font-weight: a.$fw-100;
+    }
+
+    .aside__lists-custom {
+        div {
+            font-size: a.$font-base;
+            font-weight: a.$fw-100;
+            color: white;
+            border-radius: a.$border-radius;
+            width: 270px;
+            margin-bottom: 0.3rem;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            // justify-content: space-between;
+            // position: relative;
+            cursor: pointer;
+
+            /* Prevents text from going to a new line */
+            white-space: nowrap;
+
+            /* Hides the text that is going outside the container */
+            overflow: hidden;
+
+            /* Add ... to the end of the longer text */
+            text-overflow: ellipsis;
+
+            &:hover {
+                background-color: a.$main-third-clr;
+            }
+        }
+
+        img {
+            order: -1;
+            padding-right: 0.5rem;
+        }
+
+        input {
+            width: 18ch;
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            color: white;
+            cursor: pointer;
+
+            /* Prevents text from going to a new line */
+            white-space: nowrap;
+
+            /* Hides the text that is going outside the container */
+            overflow: hidden;
+
+            /* Add ... to the end of the longer text */
+            text-overflow: ellipsis;
+        }
+
+        span {
+            margin-left: auto;
+            display: inline-block;
+            font-size: a.$font-small;
+            opacity: 0.5;
+        }
+    }
+
+    // ASIDE FORM
+    form {
+        width: 268px;
+        color: white;
+        border: 2px solid a.$main-third-clr;
+        border-radius: a.$border-radius;
+        display: flex;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+
+        input {
+            font-size: a.$font-base;
+            color: white;
+            border: none;
+            outline: none;
+            width: 100%;
+            background-color: a.$main-second-clr;
+        }
+
+        img {
+            cursor: pointer;
+            transform: scale(1) rotate(0deg);
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.4) rotate(45deg);
+            }
+        }
+    }
+}
+
+.active-list {
+    background-color: a.$main-third-clr;
+}

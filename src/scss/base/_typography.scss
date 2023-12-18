@@ -1,9 +1,9 @@
 @use '../abstracts' as *;
 
 body {
-  font-family: $ff-poppins;
-  font-size: $fs-body-medium;
-  font-weight: $fw-small;
+  font-family: $font-family;
+  font-size: $font-base;
+  font-weight: $fw-400;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
@@ -35,15 +35,24 @@ li {
   line-height: 2;
 }
 
-@include above(600px) {
-  .footer li {
-    list-style-type: disc;
-  }
-}
 
 ul,
 ol {
   margin-left: 1em;
+}
+
+button,
+input {
+  font-size: $font-base;
+  font-weight: $fw-100;
+}
+
+.wrapper {
+  display: flex;
+
+  @include breakpoint-down(small) {
+    position: relative;
+  }
 }
 
 h1,

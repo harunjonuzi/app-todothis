@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    base: "/template-vite-javascript",
+    base: "app-todo-this",
 });

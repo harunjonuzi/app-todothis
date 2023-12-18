@@ -1,3 +1,16 @@
+@mixin circleNav {
+  cursor: pointer;
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+@mixin color-scheme($text, $bg) {
+  background-color: $bg;
+  color: $text;
+}
+
 @mixin visually-hidden {
   position: absolute !important;
   overflow: hidden;

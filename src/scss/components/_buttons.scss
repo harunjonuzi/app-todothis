@@ -54,3 +54,41 @@
     }
   }
 }
+
+.nav__btn {
+  background-color: $main-third;
+  padding: 0.2rem;
+
+  &:hover {
+    background-color: $shade-first;
+  }
+}
+
+.main__btn {
+  background-color: $main-first;
+  padding: 0.2rem;
+  margin-left: 0.3rem;
+  min-width: 27px;
+
+  &:hover {
+    background-color: $main-second;
+  }
+}
+
+.main__btn-delete {
+  background-color: $main-second;
+  padding: 0.5rem 0.7rem;
+  color: hsl(0, 0%, 93%);
+
+  &:hover {
+    background-color: $main-third;
+  }
+
+}
+
+.btn {
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
