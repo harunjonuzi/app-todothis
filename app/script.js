@@ -3,30 +3,18 @@ import "../src/scss/styles.scss";
 
 const asideListsContainer = document.querySelector("[data-aside-lists]");
 const asideNewListForm = document.querySelector("[data-aside-new-list-form]");
-const asideNewListFormInput = document.querySelector(
-    "[data-aside-new-list-input]"
-);
+const asideNewListFormInput = document.querySelector("[data-aside-new-list-input]");
 const asideNewListFormImg = asideNewListForm.querySelector("img");
-const asideDeleteListButton = document.querySelector(
-    "[data-aside-delete-list]"
-);
-const asidePermanentListsWrapper = document.querySelector(
-    "[data-aside-permanent-lists]"
-);
-const asideCustomListsWrapper = document.querySelector(
-    "[data-aside-custom-lists]"
-);
-const mainTasksDisplayContainer = document.querySelector(
-    "[data-main-tasks-container]"
-);
+const asideDeleteListButton = document.querySelector("[data-aside-delete-list]");
+const asidePermanentListsWrapper = document.querySelector("[data-aside-permanent-lists]");
+const asideCustomListsWrapper = document.querySelector("[data-aside-custom-lists]");
+const mainTasksDisplayContainer = document.querySelector("[data-main-tasks-container]");
 const mainListTitle = document.querySelector("[data-main-list-title]");
 const mainListCounter = document.querySelector("[data-main-list-count]");
 const mainNewTaskForm = document.querySelector("[data-main-new-task-form]");
 const mainNewTaskInput = document.querySelector("[data-main-new-task-input]");
 const mainNewTaskFormImg = document.querySelector("[data-main-task-img]");
-const mainClearCompletedTasksButton = document.querySelector(
-    "[data-main-clear-tasks]"
-);
+const mainClearCompletedTasksButton = document.querySelector("[data-main-clear-tasks]");
 const mainTasksWrapper = document.querySelector("[data-tasks-wrapper]");
 const mainTaskHTMLTemplate = document.getElementById("task-template");
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
@@ -80,10 +68,7 @@ asideNewListFormImg.addEventListener("click", function () {
 // 🔖 - Whichever list we click, we set the value of the data-list-id to the selectedListId
 function setValueOfDataListId(e) {
     const divElement = e.target.closest("div");
-    if (
-        divElement &&
-        !divElement.classList.contains("aside__lists-permanent")
-    ) {
+    if (divElement && !divElement.classList.contains("aside__lists-permanent")) {
         selectedListId = divElement.dataset.listId;
         saveAndRender();
     }
@@ -99,11 +84,7 @@ asideCustomListsWrapper.addEventListener("click", (e) => {
 
 // 🔖 - Delete lists button
 asideDeleteListButton.addEventListener("click", () => {
-    if (
-        selectedListId === "10" ||
-        selectedListId === "20" ||
-        selectedListId === "30"
-    ) {
+    if (selectedListId === "10" || selectedListId === "20" || selectedListId === "30") {
         console.log("Cannot delete permanent lists!");
         return;
     } else {
@@ -161,9 +142,7 @@ mainTasksWrapper.addEventListener("click", (e) => {
         const selectedList = lists.find((item) => item.id === selectedListId);
         // Return: {id: '10', name: 'Inbox', tasks: Array(0)}
 
-        const selectedTask = selectedList.tasks.find(
-            (item) => item.id === e.target.id
-        );
+        const selectedTask = selectedList.tasks.find((item) => item.id === e.target.id);
         // Return: {id: '1696599101686', name: 'Buy tomatoes', complete: false}
 
         selectedTask.complete = e.target.checked;
@@ -317,9 +296,7 @@ function renderTasks(selectedList) {
 
         // 🔖 Save feature
         function handleSave() {
-            const currentTask = selectedList.tasks.find(
-                (item) => item.id === editButton.id
-            );
+            const currentTask = selectedList.tasks.find((item) => item.id === editButton.id);
 
             const inputValue = inputText.value;
             label.innerHTML = inputValue;
@@ -347,9 +324,7 @@ function renderTasks(selectedList) {
 }
 
 function renderTaskCount(selectedList) {
-    const incompleteTaskCount = selectedList.tasks.filter(
-        (item) => !item.complete
-    ).length;
+    const incompleteTaskCount = selectedList.tasks.filter((item) => !item.complete).length;
     const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
     mainListCounter.innerText = `${incompleteTaskCount} ${taskString} remaining`;
 }
