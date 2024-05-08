@@ -1,11 +1,13 @@
 "use strict";
 import "../src/scss/styles.scss";
 
-const asideListsContainer = document.querySelector("[data-aside-lists]");
+// const asideListsContainer = document.querySelector("[data-aside-lists]");
 const asideNewListForm = document.querySelector("[data-aside-new-list-form]");
+const harun_jonuzi = document.querySelector("[data-aside-new-list-form]");
 const asideNewListFormInput = document.querySelector(
     "[data-aside-new-list-input]"
 );
+
 const asideNewListFormImg = asideNewListForm.querySelector("img");
 const asideDeleteListButton = document.querySelector(
     "[data-aside-delete-list]"
@@ -16,9 +18,9 @@ const asidePermanentListsWrapper = document.querySelector(
 const asideCustomListsWrapper = document.querySelector(
     "[data-aside-custom-lists]"
 );
-const mainTasksDisplayContainer = document.querySelector(
-    "[data-main-tasks-container]"
-);
+// const mainTasksDisplayContainer = document.querySelector(
+//     "[data-main-tasks-container]"
+// );
 const mainListTitle = document.querySelector("[data-main-list-title]");
 const mainListCounter = document.querySelector("[data-main-list-count]");
 const mainNewTaskForm = document.querySelector("[data-main-new-task-form]");
@@ -28,7 +30,7 @@ const mainClearCompletedTasksButton = document.querySelector(
     "[data-main-clear-tasks]"
 );
 const mainTasksWrapper = document.querySelector("[data-tasks-wrapper]");
-const mainTaskHTMLTemplate = document.getElementById("task-template");
+// const mainTaskHTMLTemplate = document.getElementById("task-template");
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_KEY = "task.selectedListId";
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
@@ -444,7 +446,7 @@ render();
 // mainTasksWrapper.addEventListener("click", (e) => {
 //   const currentTasks = selectedList.tasks;
 //   console.log(currentTasks);
-//   // (3) [{…}, {…}, {…}]
+//   [{…}, {…}, {…}]
 
 //   const task = currentTasks.find((item) => item.id === e.target.id);
 //   console.log(task);
