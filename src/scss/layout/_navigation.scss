@@ -1,24 +1,27 @@
-@use '../abstracts' as a;
+@use "../abstracts" as a;
 
 .nav {
-    height: 2.5rem;
-    padding: 0 1.25rem;
-    background-color: a.$main-third-clr;
+  height: 2.5rem;
+  width: 100%;
+  background-color: a.$main-third-clr;
+  display: flex;
+  justify-content: space-between;
+
+  // NAV LEFT
+  .nav__left {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 0.3rem;
+    padding-left: 0.5rem;
+  }
 
-    // NAV LEFT
-    .nav__left {
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-    }
-
-    // NAV RIGHT
-    .nav__right {
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-    }
+  // NAV RIGHT
+  .nav__right {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding-right: 0.5rem;
+  }
 }
+
+// Extract snippets from vscode in mac to linux, and implement the block comment shortcut and console log, push the code to github and continue on macbook

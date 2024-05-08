@@ -38,19 +38,3 @@
 .fade-out {
   animation: fade-out 300ms ease-in-out forwards;
 }
-
-/* =================================== */
-/* 🔖 GSAP Animations */
-/* =================================== */
-[data-animation='text-reveal'] {
-  div {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: top;
-  }
-
-  div div {
-    transform: translateY(100%);
-    will-change: transform;
-  }
-}

@@ -40,7 +40,7 @@
   }
 
   &::before {
-    content: '';
+    content: "";
     transform-origin: 100% 50%;
     transform: scale3d(0, 1, 1);
     transition: transform 0.3s;
