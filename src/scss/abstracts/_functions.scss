@@ -1,24 +1,20 @@
 /* =================================== */
 /* 🔖 Pixels into Rem or Em unit Converter */
 /* =================================== */
-@use 'sass:math';
+@use "sass:math";
 
 @function rem($pixel) {
   @if math.is-unitless($pixel) {
-    @return math.div($pixel, 16)+rem;
-  }
-
-  @else {
+    @return math.div($pixel, 16) + rem;
+  } @else {
     @error 'Don\'t use units when using the rem() function; only numbers.';
   }
 }
 
 @function em($pixel) {
   @if math.is-unitless($pixel) {
-    @return math.div($pixel, 16)+em;
-  }
-
-  @else {
+    @return math.div($pixel, 16) + em;
+  } @else {
     @error 'Don\'t use units when using the em() function; only numbers.';
   }
 }
@@ -42,7 +38,10 @@
       font-size: $min-font-size;
 
       @media screen and (min-width: $min-vw) {
-        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
       }
 
       @media screen and (min-width: $max-vw) {

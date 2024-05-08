@@ -1,4 +1,37 @@
-@use 'functions' as *;
+@use "functions" as *;
+
+/* =================================== */
+/* 🔖 Font Family & Sizes (Golden Ratio - Base 16) */
+/* =================================== */
+$ff-season: "the-seasons", sans-serif;
+$ff-poppins: "Poppins", sans-serif;
+$ff-outfit: "Outfit", sans-serif;
+
+// Heading
+$fs-heading-h1: rem(80);
+$fs-heading-h2: rem(61);
+$fs-heading-h3: rem(47);
+$fs-heading-h4: rem(36);
+
+// Body
+$fs-body-xlarge: rem(27);
+$fs-body-large: rem(21);
+$fs-body-medium: rem(16);
+$fs-body-small: rem(12);
+$fs-body-xsmall: rem(9);
+
+// Weight
+$fw-100: 100;
+$fw-200: 200;
+$fw-300: 300;
+$fw-400: 400;
+$fw-500: 500;
+$fw-600: 600;
+$fw-700: 700;
+$fw-800: 800;
+
+// Layout
+$border-radius: 0.15rem;
 
 /* =================================== */
 /* 🔖 Take example from this and update your variables */
@@ -20,42 +53,3 @@
     --section-big: 12rem;
   }
 }
-
-// 1.0 Font Family
-$ff-season: "the-seasons", sans-serif;
-$ff-poppins: "Poppins", sans-serif;
-
-// 2.0 Font Sizes
-// - Headings
-$fs-heading-h1: rem(54);
-$fs-heading-h2: rem(45);
-$fs-heading-h3: rem(32);
-
-// - Body
-$fs-body-xsmall: rem(12);
-$fs-body-small: rem(15);
-$fs-body-medium: rem(18);
-$fs-body-large: rem(22);
-$fs-body-xlarge: rem(26);
-
-// 3.0 Font Weight
-$fw-small: 200;
-$fw-medium: 500;
-$fw-large: 700;
-
-// Font
-$font-small: 0.75rem; // 12px
-$font-medium: 0.875rem; // 14px
-$font-base: 1rem; // 16px
-$font-large: 1.75rem; // 28px
-
-$font-family: 'Outfit', sans-serif;
-
-$fw-100: 200;
-$fw-200: 200;
-$fw-300: 300;
-$fw-400: 400;
-$fw-600: 600;
-
-// Layout
-$border-radius: 0.15rem;
