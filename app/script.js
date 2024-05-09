@@ -30,6 +30,7 @@ const inbox = {
     name: "Inbox",
     tasks: [],
 };
+
 const today = {
     id: "20",
     name: "Today",
