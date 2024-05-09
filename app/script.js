@@ -68,7 +68,7 @@ asideNewListFormImg.addEventListener("click", function () {
 // 🔖 - Whichever list we click, we set the value of the data-list-id to the selectedListId
 function setValueOfDataListId(e) {
     const divElement = e.target.closest("div");
-    if (divElement && !divElement.classList.contains("aside__lists-permanent")) {
+    if (divElement && !divElement.classList.contains("aside__permanents")) {
         selectedListId = divElement.dataset.listId;
         saveAndRender();
     }
@@ -94,7 +94,7 @@ asideDeleteListButton.addEventListener("click", () => {
     }
 });
 
-// 🔖 - Toggle side menu
+// 🔖 Toggle aside
 const btnHamburger = document.querySelector(".hamburger");
 const asideMenu = document.querySelector(".aside");
 let toggleMe = true;
@@ -214,6 +214,7 @@ function renderLists() {
         // 02 - Adding attributes
         imgElement.setAttribute("src", "svg/list.svg");
         divElement.dataset.listId = list.id;
+        divElement.classList.add("listz");
         inputElement.value = list.name;
         spanElement.innerHTML = tasksCounter;
 

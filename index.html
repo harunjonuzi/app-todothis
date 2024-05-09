@@ -17,7 +17,6 @@
 
         <!-- Scripts -->
         <script type="module" src="app/script.js"></script>
-
         <title>Todo This</title>
     </head>
 
@@ -29,7 +28,7 @@
                 </button>
             </div>
             <div class="nav__right">
-                <button class="btn nav__btn help">
+                <button class="btn nav__btn sun">
                     <img src="/svg/sun.svg" alt="" />
                 </button>
                 <button class="btn nav__btn user">
@@ -37,28 +36,29 @@
                 </button>
             </div>
         </nav>
-
         <div class="wrapper">
             <aside class="aside" data-aside-lists>
-                <div class="aside__lists-permanent" data-aside-permanent-lists>
+                <div class="aside__permanents" data-aside-permanent-lists>
                     <!-- Permanent Lists go here -->
                 </div>
 
-                <p class="aside__custom-paragraph">Custom Lists</p>
+                <div class="aside__customs">
+                    <p class="aside__customs--title">Custom Lists</p>
+
+                    <form action="" data-aside-new-list-form>
+                        <input
+                            type="text"
+                            class="input sidebar__input"
+                            data-aside-new-list-input
+                            placeholder="Add new list"
+                        />
+                        <img src="/svg/plus.svg" alt="" />
+                    </form>
+                </div>
 
                 <div class="aside__lists-custom" data-aside-custom-lists>
                     <!-- Custom Lists go here -->
                 </div>
-
-                <form action="" data-aside-new-list-form>
-                    <input
-                        type="text"
-                        class="input sidebar__input"
-                        data-aside-new-list-input
-                        placeholder="Add new list"
-                    />
-                    <img src="/svg/plus.svg" alt="" />
-                </form>
             </aside>
 
             <main class="main" data-main-tasks-container>

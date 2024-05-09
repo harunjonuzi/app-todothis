@@ -1,39 +1,39 @@
-@use '../abstracts' as *;
+@use "../abstracts" as *;
 
 /* Set core root defaults */
 html:focus-within {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 html {
-  scroll-behavior: smooth;
-  box-sizing: border-box;
-  font-size: 100%;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-size: 100%;
 }
 
 /* Box sizing rules */
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-  user-select: none;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    user-select: none;
 }
 
 /* Set core body defaults */
 body {
-  height: 100dvh;
-  color: #fff;
-  background-color: $main-first-clr;
+    height: 100dvh;
+    color: var(--main-white-clr);
+    background-color: var(--main-first-clr);
 }
 
 /* Make images easier to work with */
 img,
 picture {
-  width: auto;
-  max-width: 100%;
-  display: block;
+    width: auto;
+    max-width: 100%;
+    display: block;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -41,54 +41,34 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+    font: inherit;
+    color: inherit;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
+    html:focus-within {
+        scroll-behavior: auto;
+    }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 .visually-hidden {
-  position: absolute !important;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  clip: rect(0 0 0 0);
-  word-wrap: normal !important;
-}
-
-/* Lenis suggested default styles */
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    word-wrap: normal !important;
 }

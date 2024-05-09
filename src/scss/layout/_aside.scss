@@ -1,125 +1,35 @@
 @use "../abstracts" as a;
 
 .aside {
+    box-sizing: border-box;
     min-width: 300px;
+    padding-block: 1rem;
     min-height: calc(100vh - 2.5rem);
-    height: auto;
-    max-height: 100%;
-    padding-top: 1rem;
-    overflow-y: scroll;
-    background-color: a.$main-second-clr;
+    background-color: var(--main-second-clr);
     display: flex;
     flex-direction: column;
     align-items: center;
-    // animation: fade-in;
 
     @include a.breakpoint-down(small) {
         position: absolute;
         z-index: 99;
     }
 
-    .aside__lists-permanent {
-        margin-bottom: 1rem;
-
-        div {
-            font-size: a.$fs-body-medium;
-            font-weight: a.$fw-100;
-            color: white;
-            border-radius: a.$border-radius;
-            width: 270px;
-            margin-bottom: 0.3rem;
-            padding: 0.5rem 1rem 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            // justify-content: space-between;
-            // position: relative;
-            cursor: pointer;
-
-            /* Prevents text from going to a new line */
-            white-space: nowrap;
-
-            /* Hides the text that is going outside the container */
-            overflow: hidden;
-
-            /* Add ... to the end of the longer text */
-            text-overflow: ellipsis;
-
-            &:hover {
-                background-color: a.$main-third-clr;
-            }
-        }
-
-        img {
-            order: -1;
-            padding-right: 0.5rem;
-        }
-
-        input {
-            width: 18ch;
-            background-color: transparent;
-            border: 0;
-            outline: 0;
-            color: white;
-            cursor: pointer;
-
-            /* Prevents text from going to a new line */
-            white-space: nowrap;
-
-            /* Hides the text that is going outside the container */
-            overflow: hidden;
-
-            /* Add ... to the end of the longer text */
-            text-overflow: ellipsis;
-        }
-
-        span {
-            margin-left: auto;
-            display: inline-block;
-            font-size: a.$fs-body-small;
-            opacity: 0.5;
-        }
-    }
-
-    .aside__custom-paragraph {
-        opacity: 0.5;
+    .listz {
+        border: 2px solid pink;
         width: 270px;
+        border-radius: 0.3rem;
         margin-bottom: 0.3rem;
         padding: 0.5rem 1rem 0.5rem 1rem;
-        font-size: a.$fs-body-medium;
-        font-weight: a.$fw-100;
-    }
+        display: flex;
+        align-items: center;
+        cursor: pointer;
 
-    .aside__lists-custom {
-        div {
-            font-size: a.$fs-body-medium;
-            font-weight: a.$fw-100;
-            color: white;
-            border-radius: a.$border-radius;
-            width: 270px;
-            margin-bottom: 0.3rem;
-            padding: 0.5rem 1rem 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            // justify-content: space-between;
-            // position: relative;
-            cursor: pointer;
-
-            /* Prevents text from going to a new line */
-            white-space: nowrap;
-
-            /* Hides the text that is going outside the container */
-            overflow: hidden;
-
-            /* Add ... to the end of the longer text */
-            text-overflow: ellipsis;
-
-            &:hover {
-                background-color: a.$main-third-clr;
-            }
+        &:hover {
+            background-color: var(--main-third-clr);
         }
 
         img {
-            order: -1;
             padding-right: 0.5rem;
         }
 
@@ -128,7 +38,6 @@
             background-color: transparent;
             border: 0;
             outline: 0;
-            color: white;
             cursor: pointer;
 
             /* Prevents text from going to a new line */
@@ -140,7 +49,9 @@
             /* Add ... to the end of the longer text */
             text-overflow: ellipsis;
         }
+    }
 
+    .aside__permanents {
         span {
             margin-left: auto;
             display: inline-block;
@@ -149,7 +60,77 @@
         }
     }
 
-    // ASIDE FORM
+    .aside__customs {
+        &--title {
+            opacity: 0.5;
+            width: 270px;
+            margin-bottom: 0.3rem;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            font-size: a.$fs-body-medium;
+            font-weight: a.$fw-100;
+        }
+    }
+
+    // .aside__lists-custom {
+    //     div {
+    //         font-size: a.$fs-body-medium;
+    //         font-weight: a.$fw-100;
+    //         color: white;
+    //         border-radius: a.$border-radius;
+    //         width: 270px;
+    //         margin-bottom: 0.3rem;
+    //         padding: 0.5rem 1rem 0.5rem 1rem;
+    //         display: flex;
+    //         align-items: center;
+    //         // justify-content: space-between;
+    //         // position: relative;
+    //         cursor: pointer;
+
+    //         /* Prevents text from going to a new line */
+    //         white-space: nowrap;
+
+    //         /* Hides the text that is going outside the container */
+    //         overflow: hidden;
+
+    //         /* Add ... to the end of the longer text */
+    //         text-overflow: ellipsis;
+
+    //         &:hover {
+    //             background-color: a.$main-third-clr;
+    //         }
+    //     }
+
+    //     img {
+    //         order: -1;
+    //         padding-right: 0.5rem;
+    //     }
+
+    //     input {
+    //         width: 18ch;
+    //         background-color: transparent;
+    //         border: 0;
+    //         outline: 0;
+    //         color: white;
+    //         cursor: pointer;
+
+    //         /* Prevents text from going to a new line */
+    //         white-space: nowrap;
+
+    //         /* Hides the text that is going outside the container */
+    //         overflow: hidden;
+
+    //         /* Add ... to the end of the longer text */
+    //         text-overflow: ellipsis;
+    //     }
+
+    //     span {
+    //         margin-left: auto;
+    //         display: inline-block;
+    //         font-size: a.$fs-body-small;
+    //         opacity: 0.5;
+    //     }
+    // }
+
     form {
         width: 268px;
         color: white;
