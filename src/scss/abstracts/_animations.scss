@@ -1,40 +1,40 @@
 @keyframes fade-in {
-  from {
-    visibility: hidden;
-    opacity: 0;
-  }
+    from {
+        visibility: hidden;
+        transform: translateX(-300px);
+    }
 
-  1% {
-    visibility: visible;
-    opacity: 0;
-  }
+    1% {
+        visibility: visible;
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        transform: translateX(0px);
+        display: inline-block;
+    }
 }
 
 .fade-in {
-  animation: fade-in 300ms ease-in-out forwards;
+    animation: fade-in 300ms ease-in-out forwards;
 }
 
 @keyframes fade-out {
-  from {
-    visibility: visible;
-    opacity: 1;
-  }
+    from {
+        visibility: visible;
+        transform: translateX(0px);
+    }
 
-  99% {
-    visibility: hidden;
-    opacity: 0;
-  }
+    99% {
+        visibility: hidden;
+        transform: translateX(-300px);
+    }
 
-  to {
-    visibility: hidden;
-    opacity: 0;
-  }
+    to {
+        visibility: hidden;
+        display: none;
+    }
 }
 
 .fade-out {
-  animation: fade-out 300ms ease-in-out forwards;
+    animation: fade-out 300ms ease-in-out forwards;
 }

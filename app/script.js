@@ -101,11 +101,15 @@ let toggleMe = true;
 
 btnHamburger.addEventListener("click", () => {
     if (toggleMe) {
+        asideMenu.classList.add("fade-out");
+        asideMenu.classList.remove("fade-in");
         // asideMenu.style.transform = "translateX(-300px)";
-        asideMenu.style.display = "none";
+        // asideMenu.style.display = "none";
     } else {
+        asideMenu.classList.add("fade-in");
+        asideMenu.classList.remove("fade-out");
         // asideMenu.style.transform = "translateX(0)";
-        asideMenu.style.display = "";
+        // asideMenu.style.display = "";
     }
     toggleMe = !toggleMe;
 });

@@ -1,4 +1,4 @@
-@use '../abstracts' as a;
+@use "../abstracts" as a;
 
 .aside {
     min-width: 300px;
@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    // animation: fade-in;
 
     @include a.breakpoint-down(small) {
         position: absolute;
@@ -169,7 +170,7 @@
         img {
             cursor: pointer;
             transform: scale(1) rotate(0deg);
-            transition: all 200ms ease-in-out;
+            // transition: all 300ms ease-in-out;
 
             &:hover {
                 opacity: 0.8;
