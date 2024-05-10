@@ -2,8 +2,7 @@
 
 body {
     font-family: $ff-outfit;
-    font-size: rem(20);
-    font-weight: $fw-400;
+    font-size: rem(16);
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
@@ -18,7 +17,7 @@ p {
 }
 
 a {
-    color: var(--main-second-clr);
+    color: var(--dark-clr-2);
     display: inline-block;
     font-family: inherit;
     font-size: inherit;
@@ -39,25 +38,14 @@ ol {
 
 button,
 input {
-    font-size: rem(20);
-    font-weight: 200;
-}
-
-.wrapper {
-    display: flex;
-
-    @include breakpoint-down(small) {
-        position: relative;
-    }
+    font-size: inherit;
+    font-weight: $fw-200;
 }
 
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
-    // font-family: $ff-seasons;
+h4 {
     font-weight: $fw-500;
 }
 

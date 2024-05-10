@@ -1,0 +1,8 @@
+@use "../abstracts" as *;
+
+.wrapper {
+    display: flex;
+    @include breakpoint-down(small) {
+        position: relative;
+    }
+}

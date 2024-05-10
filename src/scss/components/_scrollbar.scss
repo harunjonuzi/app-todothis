@@ -1,14 +1,14 @@
-@use '../abstracts' as *;
+@use "../abstracts" as *;
 
 ::-webkit-scrollbar {
-    background-color: $main-first-clr;
+    background-color: var(--dark-clr-2);
     width: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: $main-first-clr;
+    background-color: var(--dark-clr-2);
 }
 
 ::-webkit-scrollbar-track {
-    background-color: $main-first-clr;
+    background-color: var(--dark-clr-2);
 }

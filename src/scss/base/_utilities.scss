@@ -4,8 +4,8 @@
 /* 🔖 Container - Harun's */
 /* =================================== */
 .container {
-  width: min(rem(1120), calc(100% - rem(32)));
-  margin-inline: auto;
+    width: min(rem(1120), calc(100% - rem(32)));
+    margin-inline: auto;
 }
 
 /* =================================== */
@@ -34,23 +34,21 @@
 /* 🔖 Visibility */
 /* =================================== */
 .hide-for-mobile {
-
-  // Hide below 600px
-  @media (width <=600px) {
-    display: none !important;
-  }
+    // Hide below 600px
+    @media (width <=600px) {
+        display: none !important;
+    }
 }
 
 .hide-for-desktop {
-
-  // Hide above 900px
-  @media (width >=900px) {
-    display: none !important;
-  }
+    // Hide above 900px
+    @media (width >=900px) {
+        display: none !important;
+    }
 }
 
 .noscroll {
-  overflow: hidden;
-  // This fixes the firefox issue with the scrollbar when hidden, because firefox handles calc functions differently from other browsers and it has a wider scrollbar
-  // margin-right: calc(100vw - 100% + 15px);
+    overflow: hidden;
+    // This fixes the firefox issue with the scrollbar when hidden, because firefox handles calc functions differently from other browsers and it has a wider scrollbar
+    // margin-right: calc(100vw - 100% + 15px);
 }

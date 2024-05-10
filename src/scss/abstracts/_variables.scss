@@ -1,13 +1,10 @@
 @use "functions" as *;
 
-/* =================================== */
-/* 🔖 Font Family & Sizes (Golden Ratio - Base 16) */
-/* =================================== */
 $ff-season: "the-seasons", sans-serif;
 $ff-poppins: "Poppins", sans-serif;
 $ff-outfit: "Outfit", sans-serif;
 
-// Heading
+// Headings
 $fs-heading-h1: rem(80);
 $fs-heading-h2: rem(61);
 $fs-heading-h3: rem(47);
@@ -20,7 +17,7 @@ $fs-body-medium: rem(16);
 $fs-body-small: rem(12);
 $fs-body-xsmall: rem(9);
 
-// Weight
+// Weights
 $fw-100: 100;
 $fw-200: 200;
 $fw-300: 300;

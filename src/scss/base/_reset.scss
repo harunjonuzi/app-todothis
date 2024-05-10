@@ -24,8 +24,8 @@ html {
 /* Set core body defaults */
 body {
     height: 100dvh;
-    color: var(--main-white-clr);
-    background-color: var(--main-first-clr);
+    color: var(--general-white);
+    background-color: var(--dark-clr-1);
 }
 
 /* Make images easier to work with */
@@ -43,32 +43,4 @@ textarea,
 select {
     font: inherit;
     color: inherit;
-}
-
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-    html:focus-within {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-.visually-hidden {
-    position: absolute !important;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    clip: rect(0 0 0 0);
-    word-wrap: normal !important;
 }

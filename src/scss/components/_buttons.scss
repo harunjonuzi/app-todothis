@@ -1,39 +1,39 @@
 @use "../abstracts/" as *;
 
 .btn {
-    font-size: rem(18);
     border: none;
-    border-radius: $border-radius;
+    // border-radius: $border-radius;
+    border-radius: 2rem;
     cursor: pointer;
     transition: all 200ms ease-in-out;
 }
 
 .nav__btn {
-    background-color: var(--main-third-clr);
+    background-color: var(--dark-clr-3);
     padding: 0.2rem;
 
     &:hover {
-        background-color: var(--main-fourth-clr);
+        background-color: var(--dark-clr-4);
     }
 }
 
 .main__btn {
-    background-color: $main-first;
+    background-color: var(--dark-clr-1);
     padding: 0.2rem;
     margin-left: 0.3rem;
     min-width: 27px;
 
     &:hover {
-        background-color: $main-second;
+        background-color: var(--dark-clr-2);
     }
 }
 
 .main__btn-delete {
-    background-color: $main-second;
+    background-color: var(--dark-clr-2);
     padding: 0.5rem 0.7rem;
-    color: var(--main-white-clr);
+    color: var(--general-white);
 
     &:hover {
-        background-color: var(--main-third-clr);
+        background-color: var(--dark-clr-3);
     }
 }

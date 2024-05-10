@@ -39,7 +39,7 @@
     // MAIN FORM - Add new task
     form {
         width: 100%;
-        background-color: a.$main-second-clr;
+        background-color: var(--dark-clr-2);
         display: flex;
         justify-content: space-between;
         margin: 1.5rem 0 0.5rem 0;
@@ -51,7 +51,7 @@
             width: 100%;
             border: none;
             outline: none;
-            background-color: a.$main-second-clr;
+            background-color: var(--dark-clr-2);
         }
 
         img {
@@ -95,7 +95,7 @@
     display: flex;
     // align-items: center;
     // justify-content: center;
-    border-bottom: 1px solid a.$main-third-clr;
+    border-bottom: 1px solid var(--dark-clr-3);
     padding-bottom: 1rem;
     position: relative;
 
@@ -154,7 +154,7 @@
         left: 0;
         right: 0;
         height: 2px;
-        background-color: a.$main-third-clr;
+        background-color: var(--dark-clr-3);
         transform: scaleX(0);
         transform-origin: right;
         transition: transform 200ms ease-in-out;
@@ -195,8 +195,8 @@
         color: #fff;
         padding: 0.5rem 1rem;
         width: 100%;
-        outline: 2px solid a.$main-third-clr;
+        outline: 2px solid var(--dark-clr-3);
         border: none;
-        background-color: a.$main-first-clr;
+        background-color: var(--dark-clr-1);
     }
 }

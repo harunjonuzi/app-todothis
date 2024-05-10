@@ -5,7 +5,7 @@
     min-width: 300px;
     padding-block: 1rem;
     min-height: calc(100vh - 2.5rem);
-    background-color: var(--main-second-clr);
+    background-color: var(--dark-clr-2);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,6 @@
     }
 
     .listz {
-        border: 2px solid pink;
         width: 270px;
         border-radius: 0.3rem;
         margin-bottom: 0.3rem;
@@ -26,7 +25,7 @@
         cursor: pointer;
 
         &:hover {
-            background-color: var(--main-third-clr);
+            background-color: var(--dark-clr-3);
         }
 
         img {
@@ -134,7 +133,7 @@
     form {
         width: 268px;
         color: white;
-        border: 2px solid a.$main-third-clr;
+        border: 2px solid var(--dark-clr-3);
         border-radius: a.$border-radius;
         display: flex;
         padding: 0.5rem 1rem 0.5rem 1rem;
@@ -145,7 +144,7 @@
             border: none;
             outline: none;
             width: 100%;
-            background-color: a.$main-second-clr;
+            background-color: var(--dark-clr-2);
         }
 
         img {
@@ -162,5 +161,5 @@
 }
 
 .active-list {
-    background-color: a.$main-third-clr;
+    background-color: var(--dark-clr-3);
 }
