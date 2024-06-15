@@ -338,7 +338,6 @@ function renderTaskCount(selectedList) {
 function renderGraphics() {
     const selectedList = lists.find((list) => list.id === selectedListId);
     // console.log(selectedList);
-
     if (selectedList.id === "10" && selectedList.tasks.length === 0) {
         svgElementOne.style.display = "block";
         // svgElementOne.style.opacity = "1";
