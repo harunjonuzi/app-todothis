@@ -1,6 +1,6 @@
 # Application - Todothis
 
-I wanted to build the best todo-app in the world, it ended up being the best one in my neighborhood.
+📝 Literally the best todolist application in my neighborhood.
 
 ## Features
 
